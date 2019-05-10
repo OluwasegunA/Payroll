@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "Branch Information";
+    Layout = "~/Views/Shared/_LayoutSetup.cshtml";
+    ViewBag.PageTitle = "Branch Info";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header"><strong>BRANCH INFORMATION</strong></div>
+            <div class="card-body">
+               <div>
+                   <button class="btn btn-primary" id="NewBranch"><i class="fa fa-file-o"></i> New</button>
+                   <button class="btn btn-primary" type="submit" id="SaveBranch"><i class="fa fa-save"></i> Save</button>
+               </div>
+                @using (Html.BeginForm())
+                {
+                    <br />
+                    <div class="alert alert-success" id="successSave">
+
+                    </div>
+                    <fieldset class="form-group">
+
+                        <label>Code:</label>
+                        @Html.TextBox("code", null, new { @class = "form-control control-input-border", id = "code", @readonly = "true" })
+                    </fieldset>
+                    <fieldset class="form-group">
+
+                        <label class="label-success">Branch Name:</label>
+                        @Html.TextBox("branchName", null, new { @class = "form-control control-input-border", id = "branchName", placeholder = "Type Branch Name here" })
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label>Address:</label>
+                        @Html.TextArea("address", null, new { @class = "form-control control-input-border", id = "address", placeholder = "Type Branch Address here", rows = 10 })
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label>Phone No:</label>
+                        @Html.TextBox("PhoneNo", null, new { @class = "form-control control-input-border", id = "PhoneNo", placeholder = "Type Branch Phone Number here" })
+                       
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label>E-mail Address:</label>
+                        @Html.TextBox("Email", null, new { @class = "form-control control-input-border", id = "Email", placeholder = "Type Branch E-mail Address here" })
+                    </fieldset>
+                    <div class="alert alert-info" id="loading" style="padding:10px; position:absolute;border:2px solid #33bb0b;left:50%;top:50%;">
+                        Please wait.. <span>
+                            <img src="~/Images/ajax-loader7.gif" />
+                        </span>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header"><strong>LIST OF BRANCHES</strong></div>
+            <div class="card-body" id="branchDataList">
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/OperationJS/NewSetupJS.js"></script>
+<script>
+    $(function (e) {
+        LoadBranchInfo();
+        HideAjaxLoad();    
+    });
+</script>

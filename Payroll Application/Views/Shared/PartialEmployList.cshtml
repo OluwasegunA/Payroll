@@ -1,0 +1,36 @@
+﻿@model List<Payroll_Application.ViewModel.EmployList>
+@{
+    int sn = 0;
+}
+<div style="border:1px solid black; padding:5px;">
+    <table class="table table-hover table-bordered employeeList" id="TableEmployList" style="width:100%;">
+        <thead>
+            <tr>
+                <th>S/N</th>
+                <th>SURNAME</th>
+                <th>FIRST NAME</th>
+                <th>MIDDLE NAME</th>
+                <th>DEPARTMENT</th>
+                <th>STAFF NO</th>
+                <th>MOBILE NO</th>
+                <th>ACTION</th>
+            </tr>
+        </thead>
+        <tbody id="staffListBody">
+            @foreach (var m in Model)
+            {
+                sn++;
+                <tr>
+                    <td>@sn.ToString()</td>
+                    <td>@m.Surname</td>
+                    <td>@m.FirstName</td>
+                    <td>@m.MiddleName</td>
+                    <td>@m.Department</td>
+                    <td>@m.StaffNo</td>
+                    <td>@m.MobileNo</td>
+                    <td><a href="#" onclick="SelectRecord(@m.RegistrationID)" class="btn btn-primary">OK</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

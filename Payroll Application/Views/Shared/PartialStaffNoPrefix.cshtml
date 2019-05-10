@@ -1,0 +1,65 @@
+﻿
+<!-- Modal -->
+<div class="modal fade" id="popupEmpID" tabindex="-1" role="dialog" aria-labelledby="popupEmpLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Staff Number Prefix Setup</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-success" id="lblsuccpref">
+
+                </div>
+               @using (Html.BeginForm())
+               {
+                   <div class="row">
+                       <div class="col-md-3">
+                           <label class="custom-control-description">Prefix</label>
+                       </div>
+                       <div class="col-md-9">
+                           @Html.TextBox("prefix", null, new {@class= "form-control",id="txtPrefix" })
+                       </div>
+                   </div>
+               }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="btnSaveChanges">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function loadPrefix() {
+        $.ajax({
+            url: "/Employee/GetPrefixNo",
+            type: "GET",
+            cache: false
+        }).success(function (result) {
+            $("#txtPrefix").val(result.Prefix);
+        })
+    }
+    $(function (e) {
+        loadPrefix();
+        $("#lblsuccpref").hide();
+        $("#btnSaveChanges").click(function (evt) {
+            evt.preventDefault();
+            $("#lblsuccpref").hide();
+            var pref = $("#txtPrefix").val();
+            $.ajax({
+                url: "/Employee/SavePrefix",
+                data: { prefix: pref },
+                type:"POST"
+            }).success(function (result) {
+                if (result.status) {
+                    $("#lblsuccpref").show();
+                    $("#lblsuccpref").html("Prefix saved successfully!");
+                }
+            })
+        });
+    });
+</script>

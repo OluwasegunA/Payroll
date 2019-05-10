@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "Company Information";
+    Layout = "~/Views/Shared/_LayoutSetup.cshtml";
+    ViewBag.PageTitle = "Company Info";
+}
+
+
+<div class="row">
+    <div class="col-md-6">
+        
+            <div class="card">
+                <div class="card-header"><b>Setup Company Information</b></div>
+                <div class="card-body">
+                    <div class="alert alert-success" id="sucMsg">
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">Company Logo</div>
+                                <div class="card-body">
+                                    <div >
+                                        <img width="300" height="250" class="img-thumbnail"  id="companyLogo" />
+                                    </div>
+                                @using (Html.BeginForm("", "", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
+                                    <input type="file" id="logo" width="200" height="160" />
+                                    <div class="clearfix"></div><br />
+                                    <button class="btn btn-success" id="uploadImg">Upload</button>
+                                }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                        </div>
+                    </div>
+                @using (Html.BeginForm())
+                {
+                   
+                    
+
+                    <fieldset class="form-group">
+
+                        <label>Company Name:</label>
+                        @Html.TextBox("companyName", null, new { @class = "form-control control-input-border", id = "companyName", placeholder = "Type Company Name here" })
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label>Address:</label>
+                        @Html.TextArea("Compaddress", null, new { @class = "form-control control-input-border", id = "CompAddress", placeholder = "Type Company Address here", rows = 10 })
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label>Phone No:</label>
+                        @Html.TextBox("PhoneNo", null, new { @class = "form-control control-input-border", id = "PhoneNo", placeholder = "Type Company Phone Number here" })
+                        @Html.Hidden("imgurl",null,new {id="comgImgUrl"})
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label>E-mail Address:</label>
+                        @Html.TextBox("Email", null, new { @class = "form-control control-input-border", id = "Email", placeholder = "Type Company E-mail Address here" })
+                    </fieldset>
+                    <button type="submit" class="btn btn-success" id="SaveComp">Save</button>
+                 }
+                </div>
+                <div class="alert alert-info" id="loading" style="padding:10px; position:absolute;border:2px solid #33bb0b;left:50%;top:50%;">
+                    Please wait.. <span>
+                        <img src="~/Images/ajax-loader7.gif" />
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+    <div class="col-md-6">
+
+    </div>
+</div>
+@*Script Operation*@
+<script src="~/Content/OperationJS/CompanyInfoJS.js"></script>
+<script type="text/javascript">
+    $(document).ready(function (e) {
+
+    });
+   
+</script>
+
+
+

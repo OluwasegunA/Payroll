@@ -1,0 +1,112 @@
+﻿@{
+    ViewBag.Title = "Employee Information";
+    ViewBag.PageTitle = "Employee Information";
+    Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
+}
+<style>
+    .control-space {
+        margin-top: 8px;
+    }
+
+    label {
+        font-weight: bold;
+        font-family: Arial,'Times New Roman', Times, serif;
+        font-size: 14px;
+    }
+
+    .tab-border {
+        border: 1px solid gray;
+        margin-right: 5px;
+        color: black;
+    }
+
+    .hide-txt {
+        display: none;
+    }
+
+    .actionbtn {
+        padding: 2px;
+        margin: 2px;
+    }
+    .inputWithIcon input[type="text"] {
+        padding-left: 40px;
+    }
+
+    .inputWithIcon {
+        position: relative;
+    }
+
+    .inputWithIcon i {
+        position: absolute;
+        left: 0;
+        top: 0.4px;
+        padding: 9px 8px;
+        color: #aaa;
+        transition: 0.3s;
+     }
+
+   .inputWithIcon input[type="text"]:focus + i {
+         color: dodgerBlue;
+     }
+
+   .inputWithIcon.inputIconBg i {
+         background-color: #aaa;
+         color: #fff;
+         border-radius: 5px 0 0 5px;
+     }
+
+    .inputWithIcon.inputIconBg input[type="text"]:focus + i {
+         color: #fff;
+         background-color: dodgerBlue;
+     }
+</style>
+
+<div class="card">
+    <div class="card-header"><strong>Employee Information</strong></div>
+    <div class="card-body">
+        <div class="col-sm-6">
+            <div class="col-md-6 pull-left">
+                <div class="inputWithIcon inputIconBg">
+                     @Html.TextBox("search", null, new { @class = "form-control", placeholder = "Search...", id = "txtsearch" })
+                     <i class="fa fa-search"></i>
+                </div>
+            </div>
+            <div class="col-md-6 pull-right">
+                <a href="/Employee/RegisterEmployee" class="btn btn-primary"><i class="fa fa-file-o"></i> New </a>
+            </div>
+        </div>
+    </div>
+    <div class="card-header"><strong>Employee List</strong></div>
+    <div class="card-body" id="listEmployee">
+
+    </div>
+    <div class="alert alert-info" id="loading" style="padding:10px; position:absolute;border:2px solid #33bb0b;left:50%;top:50%;">
+        Please wait.. <span>
+            <img src="~/Images/ajax-loader7.gif" />
+        </span>
+    </div>
+</div>
+
+<script src="~/Content/OperationJS/EmployeeJS.js"></script>
+
+<script>
+    $(function () {
+        $("#loading").show();
+        $.ajax({
+            url: "/Employee/EmployeeListTa",
+            type: "POST"
+        }).success(function (result) {
+
+            $("#listEmployee").html(result);
+            $("#loading").hide();
+            $("#TableEmployList").DataTable({
+                "pageLength": 20
+
+            });
+        }).fail(function (error) {
+            $("#loading").hide();
+        });
+
+    });
+</script>
+

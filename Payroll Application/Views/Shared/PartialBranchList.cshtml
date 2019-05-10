@@ -1,0 +1,29 @@
+﻿@model List<Payroll_Application.Models.BranchEntity>
+@{ 
+    int sn = 0;
+}
+<table class="table table-hover table-bordered" id="BranchListTable" style="border:1px solid #000000;">
+    <thead>
+        <tr>
+            <th>S/N</th><th>BRANCH NAME</th><th>CODE</th><th>PHONE NO</th><th>E-MAIL</th><th>ACTION</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var m in Model)
+        {
+            sn++;
+            <tr>
+                <td>@sn.ToString()</td>
+                <td>@m.BranchName</td>
+                <td>@m.BranchCode.ToString()</td>
+                <td>@m.PhoneNo</td>
+                <td>@m.Email</td>
+                <td>
+                    <a href="#" onclick="EditBranchInfo(@m.BranchCode)" title="Edit @m.BranchName" ><i class="fa fa-pencil"></i></a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="DeleteBranchInfo(@m.BranchCode)" title="Delete @m.BranchName" ><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

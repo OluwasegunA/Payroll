@@ -1,0 +1,714 @@
+﻿
+@{
+    ViewBag.Title = "Employee Information";
+    ViewBag.PageTitle = "Employee Information";
+    Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
+}
+
+<style>
+    .control-space{
+        margin-top:8px;
+    }
+    label{
+        font-weight:bold;
+        font-family:Arial,'Times New Roman', Times, serif;
+        font-size:14px;
+    }
+    .tab-border{
+        border:1px solid gray;
+        margin-right:5px;
+        color:black;
+    }
+    .hide-txt{
+        display:none;
+    }
+    .actionbtn{
+        padding:2px;
+        margin:2px;
+    }
+    .ui-datepicker-calendar {
+        display: none;
+    }
+</style>
+<div class="card">
+    <div class="card-header"><strong>Employee Information</strong></div>
+    <div class="card-body">
+        <button class="btn btn-primary" type="submit" id="NewRecord"><i class="fa fa-file-o"></i> New</button>
+       
+        <button class="btn btn-primary" type="submit" id="searchRecord"><i class="fa fa-search"></i> Search</button>
+       
+        @using (Html.BeginForm())
+        {
+            <br />
+        <div class="alert alert-danger" id="lblErrorMsg">
+
+        </div>
+        <div class="alert alert-success" id="lblSuccessMsg">
+
+        </div>
+        <div class="row">
+           
+               <div class="col-md-5">
+                   <fieldset class="form-group">
+                       <div class="row">
+                         
+                           <div class="col-md-3">
+                               <label class="label">Registration ID:</label>
+                           </div>
+                           <div class="col-md-9">
+                               @Html.TextBox("RegID", null, new { @class = "form-control control-input-border", id = "txtRegId", @readonly = "true" })
+                               @Html.Hidden("empImg", null, new { @id = "empImg" })
+                           </div>
+                           
+                           <div class="col-md-3 control-space">
+                               <label class="label">Staff Number:</label>
+                           </div>
+                           <div class="col-md-9 control-space">
+                               @Html.TextBox("staffNo", null, new { @class = "form-control control-input-border", id = "txtStaffNo" })
+                           </div>
+                           <div class="col-md-3 control-space">
+                               <label class="label">Title:</label>
+                           </div>
+                           <div class="col-md-9 control-space">
+                               @Html.DropDownList("title", Enumerable.Empty<SelectListItem>(), "----Select----", new { @class = "form-control control-input-border", id = "cboTitle" })
+                           </div>
+
+                           <div class="col-md-3 control-space">
+                               <label class="label">Surname:</label>
+                           </div>
+                           <div class="col-md-9 control-space">
+                               @Html.TextBox("surname", null, new { @class = "form-control control-input-border", id = "txtsurname" })
+                           </div>
+                           <div class="col-md-3 control-space">
+                               <label class="label">Middle Name:</label>
+                           </div>
+                           <div class="col-md-9 control-space">
+                               @Html.TextBox("middlename", null, new { @class = "form-control control-input-border", id = "txtmiddlename" })
+                           </div>
+                           <div class="col-md-3 control-space">
+                               <label class="label">First Name:</label>
+                           </div>
+                           <div class="col-md-9 control-space">
+                               @Html.TextBox("firstname", null, new { @class = "form-control control-input-border", id = "txtfirstname" })
+                           </div>
+                       </div>
+                   </fieldset>
+               </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header">Photograph</div>
+                        <div class="card-body">
+                            <div>
+                                <img width="300" height="250" class="img-thumbnail" id="empImage" />
+                            </div>
+                            @using (Html.BeginForm("", "", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                <input type="file" id="empfile" width="200" height="180" />
+                                    <div class="clearfix"></div><br />
+                                    <button class="btn btn-success" id="uploadPhoto">Upload</button>
+                            }
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+
+                </div>
+            
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-10">
+                <div style="border:1px solid black; padding:10px;">
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <li class="nav-item tab-border">
+                            <a class="nav-link active" id="pills-personal-tab" data-toggle="pill" href="#pills-personal" role="tab" aria-controls="pills-personal" aria-expanded="true">Personal Info</a>
+                        </li>
+                        <li class="nav-item tab-border">
+                            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-expanded="true">Contact Info</a>
+                        </li>
+                        <li class="nav-item tab-border">
+                            <a class="nav-link" id="pills-nok-tab" data-toggle="pill" href="#pills-nok" role="tab" aria-controls="pills-nok" aria-expanded="true">Next of Kin & Guarrator</a>
+                        </li>
+                        <li class="nav-item tab-border">
+                            <a class="nav-link" id="pills-empInfo-tab" data-toggle="pill" href="#pills-empInfo" role="tab" aria-controls="pills-empInfo" aria-expanded="true">Employement Info</a>
+                        </li>
+                        <li class="nav-item tab-border">
+                            <a class="nav-link" id="pills-exp-tab" data-toggle="pill" href="#pills-exp" role="tab" aria-controls="pills-exp" aria-expanded="true">Experience</a>
+                        </li>
+                        <li class="nav-item tab-border">
+                            <a class="nav-link" id="pills-Qual-tab" data-toggle="pill" href="#pills-Qual" role="tab" aria-controls="pills-Qual" aria-expanded="true">Qualification</a>
+                        </li>
+                        <li class="nav-item tab-border">
+                            <a class="nav-link" id="pills-atta-tab" data-toggle="pill" href="#pills-atta" role="tab" aria-controls="pills-atta" aria-expanded="true">Attachment</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-personal" role="tabpanel" aria-labelledby="pills-personal-tab">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-3 control-space">
+                                            <label class="label">Date of Birth:</label>
+                                        </div>
+                                        <div class="col-md-9 control-space">
+                                            @Html.TextBox("dob", null, new { @class = "form-control control-input-border", id = "txtdob" })
+                                        </div>
+
+                                        <div class="col-md-3 control-space">
+                                            <label class="label">Gender:</label>
+                                        </div>
+                                        <div class="col-md-9 control-space">
+                                            @Html.DropDownList("gender", new List<SelectListItem> {
+                                   new SelectListItem {Text="Female",Value="Female" },
+                                     new SelectListItem { Text = "Male", Value = "Male" }
+                                   },
+
+"----Select----", new { @class = "form-control control-input-border", id = "cboGender" })
+                                        </div>
+
+                                        <div class="col-md-3 control-space">
+                                            <label class="label">Marital Status:</label>
+                                        </div>
+                                        <div class="col-md-9 control-space">
+                                            @Html.DropDownList("title", new List<SelectListItem> {
+                                   new SelectListItem {Text="Single",Value="Single" },
+                                     new SelectListItem { Text = "Married", Value = "Married" },
+                                      new SelectListItem { Text = "Divorce", Value = "Divorce" }
+                                   },
+
+"----Select----", new { @class = "form-control control-input-border", id = "cboMarital" })
+                                        </div>
+
+                                        <div class="col-md-3 control-space">
+                                            <label class="label">Country:</label>
+                                        </div>
+                                        <div class="col-md-9 control-space">
+                                            @Html.DropDownList("nation", Enumerable.Empty<SelectListItem>(), "----Select----", new { @class = "form-control control-input-border", id = "cboNation" })
+                                        </div>
+
+                                        <div class="col-md-3 control-space">
+                                            <label class="label">State:</label>
+                                        </div>
+                                        <div class="col-md-9 control-space">
+                                            @Html.DropDownList("state", Enumerable.Empty<SelectListItem>(), "----Select----", new { @class = "form-control control-input-border", id = "cboState" })
+                                            @Html.TextBox("state", null, new { @class = "form-control control-input-border hide-txt", placeholder = "Type the State", id = "txtstate" })
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-3 control-space">
+                                            <label class="label">Religion:</label>
+                                        </div>
+                                        <div class="col-md-9 control-space">
+                                            @Html.DropDownList("religion", new List<SelectListItem> {
+                                    new SelectListItem {Text="Christianity",Value="Christianity" },
+                                     new SelectListItem { Text = "Muslim", Value = "Muslim" },
+                                    new SelectListItem { Text = "Traditional", Value = "Traditional" },
+                                     new SelectListItem { Text = "Other", Value = "Other" }
+
+                                   },
+
+"----Select----", new { @class = "form-control control-input-border", id = "cboReligion" })
+                                        </div>
+
+                                        <div class="col-md-3 control-space">
+                                            <label class="label">Spouse Name:</label>
+                                        </div>
+                                        <div class="col-md-9 control-space">
+                                            @Html.TextBox("spouseName", null, new { @class = "form-control control-input-border", id = "txtspouseName" })
+                                        </div>
+
+                                        <div class="col-md-3 control-space">
+                                            <label class="label">Disability:</label>
+                                        </div>
+                                        <div class="col-md-9 control-space">
+                                            @Html.DropDownList("Disability", new List<SelectListItem> {
+                                    new SelectListItem {Text="No",Value="No" },
+                                     new SelectListItem { Text = "Yes", Value = "Yes" }
+
+
+                                   },
+
+"----Select----", new { @class = "form-control control-input-border", id = "cboDisability" })
+                                        </div>
+
+                                        <div class="col-md-3 control-space">
+                                            <label class="label">Disability Description:</label>
+                                        </div>
+                                        <div class="col-md-9 control-space">
+                                            @Html.TextArea("disabilityDesc", null, new { @class = "form-control control-input-border", id = "txtdisabilityDesc" })
+                                        </div>
+                                        <div class="col-md-3 control-space">
+
+                                        </div>
+                                        <div class="col-md-9 control-space">
+                                            <button class="btn btn-primary" type="submit" id="SavePersonal"><i class="fa fa-save"></i> Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                           <div class="row">
+                               <div class="col-md-6">
+                                   <div class="row">
+                                       <div class="col-md-3 control-space">
+                                           <label class="label">Address:</label>
+                                       </div>
+                                       <div class="col-md-9 control-space">
+                                           @Html.TextArea("address", null, new { @class = "form-control control-input-border", id = "txtaddress", rows = 6 })
+                                       </div>
+                                       <div class="col-md-3 control-space">
+                                           <label class="label">City:</label>
+                                       </div>
+                                       <div class="col-md-9 control-space">
+                                           @Html.TextBox("city", null, new { @class = "form-control control-input-border", id = "txtcity" })
+                                       </div>
+                                       <div class="col-md-3 control-space">
+                                           <label class="label">Country:</label>
+                                       </div>
+                                       <div class="col-md-9 control-space">
+                                           @Html.DropDownList("country", Enumerable.Empty<SelectListItem>(), "----Select----", new { @class = "form-control control-input-border", id = "cbocountry" })
+                                       </div>
+                                       <div class="col-md-3 control-space">
+                                           <label class="label">State:</label>
+                                       </div>
+                                       <div class="col-md-9 control-space">
+                                           @Html.DropDownList("state", Enumerable.Empty<SelectListItem>(), "----Select----", new { @class = "form-control control-input-border", id = "cboStateAdd" })
+                                           @Html.TextBox("state", null, new { @class = "form-control control-input-border hide-txt", placeholder = "Type the State", id = "txtstateAdd" })
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="col-md-6">
+                                   <div class="row">
+                                       <div class="col-md-3 control-space">
+                                           <label class="label">Mobile No:</label>
+                                       </div>
+                                       <div class="col-md-9 control-space">
+                                           @Html.TextBox("MobileNo", null, new { @class = "form-control control-input-border", id = "txtMobileNo" })
+                                       </div>
+
+                                       <div class="col-md-3 control-space">
+                                           <label class="label">Mobile No 2:</label>
+                                       </div>
+                                       <div class="col-md-9 control-space">
+                                           @Html.TextBox("MobileNo2", null, new { @class = "form-control control-input-border", id = "txtMobileNo2" })
+                                       </div>
+
+                                       <div class="col-md-3 control-space">
+                                           <label class="label">Work Phone:</label>
+                                       </div>
+                                       <div class="col-md-9 control-space">
+                                           @Html.TextBox("WorkPhone", null, new { @class = "form-control control-input-border", id = "txtWorkPhone" })
+                                       </div>
+
+                                       <div class="col-md-3 control-space">
+                                           <label class="label">E-mail:</label>
+                                       </div>
+                                       <div class="col-md-9 control-space">
+                                           @Html.TextBox("email", null, new { @class = "form-control control-input-border", id = "txtemail" })
+                                       </div>
+
+                                       <div class="col-md-3 control-space">
+                                           <label class="label">E-mail (work):</label>
+                                       </div>
+                                       <div class="col-md-9 control-space">
+                                           @Html.TextBox("emailwork", null, new { @class = "form-control control-input-border", id = "txtemailwork" })
+                                       </div>
+                                       <div class="col-md-3 control-space">
+
+                                       </div>
+                                       <div class="col-md-9 control-space">
+                                           <button class="btn btn-primary" type="submit" id="SaveCont"><i class="fa fa-save"></i> Save</button>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                        </div>
+                        
+                        <div class="tab-pane fade" id="pills-nok" role="tabpanel" aria-labelledby="pills-nok-tab">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-header">Next of Kin</div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-3 control-space">
+                                                    <label class="label">Full Name:</label>
+                                                </div>
+                                                <div class="col-md-9 control-space">
+                                                    @Html.TextBox("nokName", null, new { @class = "form-control control-input-border", id = "txtnokName" })
+                                                </div>
+                                                <div class="col-md-3 control-space">
+                                                    <label class="label">Phone No:</label>
+                                                </div>
+                                                <div class="col-md-9 control-space">
+                                                    @Html.TextBox("nokPhoneNo", null, new { @class = "form-control control-input-border", id = "txtnokPhoneNo" })
+                                                </div>
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-9">
+                                                    @Html.CheckBox("nokabove", false, new { @class = "checkbox", id = "chkNokAbove" }) Same as Contact Address
+                                                </div>
+                                                <div class="col-md-3 control-space">
+                                                    <label class="label">Address:</label>
+                                                </div>
+                                                <div class="col-md-9 control-space">
+                                                    @Html.TextArea("nokaddress", null, new { @class = "form-control control-input-border", id = "txtnokaddress", rows = 6 })
+                                                </div>
+                                                <div class="col-md-3 control-space">
+                                                    <label class="label">Country:</label>
+                                                </div>
+                                                <div class="col-md-9 control-space">
+                                                    @Html.DropDownList("nokcountry", Enumerable.Empty<SelectListItem>(), "----Select----", new { @class = "form-control control-input-border", id = "cboNOKcountry" })
+                                                </div>
+                                                <div class="col-md-3 control-space">
+                                                    <label class="label">State:</label>
+                                                </div>
+                                                <div class="col-md-9 control-space">
+                                                    @Html.DropDownList("nokstate", Enumerable.Empty<SelectListItem>(), "----Select----", new { @class = "form-control control-input-border", id = "cboNOKState" })
+                                                    @Html.TextBox("Nstate", null, new { @class = "form-control control-input-border hide-txt", placeholder = "Type the State", id = "txtnokState" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card">
+                                    <div class="card-header">Guarantor</div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-3 control-space">
+                                                <label class="label">Full Name:</label>
+                                            </div>
+                                            <div class="col-md-9 control-space">
+                                                @Html.TextBox("GName", null, new { @class = "form-control control-input-border", id = "txtGName" })
+                                            </div>
+                                            <div class="col-md-3 control-space">
+                                                <label class="label">Phone No:</label>
+                                            </div>
+                                            <div class="col-md-9 control-space">
+                                                @Html.TextBox("GPhoneNo", null, new { @class = "form-control control-input-border", id = "txtGPhoneNo" })
+                                            </div>
+                                            <div class="col-md-3"></div>
+                                            <div class="col-md-9">
+                                                @Html.CheckBox("Gabove", false, new { @class = "checkbox", id = "chkGAbove" }) Same as Contact Address
+                                            </div>
+                                            <div class="col-md-3 control-space">
+                                                <label class="label">Address:</label>
+                                            </div>
+                                            <div class="col-md-9 control-space">
+                                                @Html.TextArea("Gaddress", null, new { @class = "form-control control-input-border", id = "txtGaddress", rows = 6 })
+                                            </div>
+                                            <div class="col-md-3 control-space">
+                                                <label class="label">Country:</label>
+                                            </div>
+                                            <div class="col-md-9 control-space">
+                                                @Html.DropDownList("Gcountry", Enumerable.Empty<SelectListItem>(), "----Select----", new { @class = "form-control control-input-border", id = "cboGCountry" })
+                                            </div>
+                                            <div class="col-md-3 control-space">
+                                                <label class="label">State:</label>
+                                            </div>
+                                            <div class="col-md-9 control-space">
+                                                @Html.DropDownList("Gstate", Enumerable.Empty<SelectListItem>(), "----Select----", new { @class = "form-control control-input-border", id = "cboGState" })
+                                                @Html.TextBox("Gustate", null, new { @class = "form-control control-input-border hide-txt", placeholder = "Type the State", id = "txtGState" })
+                                            </div>
+                                           
+                                            <div class="col-md-3 control-space">
+
+                                            </div>
+                                            <div class="col-md-9 control-space">
+                                                <button class="btn btn-primary" type="submit" id="SaveKin"><i class="fa fa-save"></i> Save</button>
+                                            </div>
+                                                  
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                                <br />
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alert alert-info" id="loading" style="padding:10px; position:absolute;border:2px solid #33bb0b;left:50%;top:50%;">
+                            Please wait.. <span>
+                                <img src="~/Images/ajax-loader7.gif" />
+                            </span>
+                        </div>
+                        <div class="tab-pane fade" id="pills-empInfo" role="tabpanel" aria-labelledby="pills-empInfo-tab">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-3 control-space">
+                                            <label class="label">Branch:</label>
+                                        </div>
+                                        <div class="col-md-9 control-space">
+                                            @Html.DropDownList("branch", Enumerable.Empty<SelectListItem>(), "----Select----", new { @class = "form-control control-input-border", id = "cboBranch" })
+                                        </div>
+                                        <div class="col-md-3 control-space">
+                                            <label class="label">Date Joined:</label>
+                                        </div>
+                                        <div class="col-md-9 control-space">
+                                            @Html.TextBox("dateJoined", null, new { @class = "form-control control-input-border", id = "txtdateJoined", placeholder = "DD/MM/YYYY" })
+                                        </div>
+                                        <div class="col-md-3 control-space">
+                                            <label class="label">Grade/Level:</label>
+                                        </div>
+                                        <div class="col-md-9 control-space">
+                                            @Html.DropDownList("level", Enumerable.Empty<SelectListItem>(), "----Select----", new { @class = "form-control control-input-border", id = "cboLevel" })
+                                        </div>
+                                        <div class="col-md-3 control-space">
+                                            <label class="label">Date Started:</label>
+                                        </div>
+                                        <div class="col-md-9 control-space">
+                                            @Html.TextBox("dateStarted", null, new { @class = "form-control control-input-border", id = "txtdateStarted", placeholder = "DD/MM/YYYY" })
+                                        </div>
+                                        <div class="col-md-3 control-space">
+                                            <label class="label">Designation:</label>
+                                        </div>
+                                        <div class="col-md-9 control-space">
+                                            @Html.DropDownList("designation", Enumerable.Empty<SelectListItem>(), "----Select----", new { @class = "form-control control-input-border", id = "cbodesignation" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-4 control-space">
+                                            <label class="label">Employement Type:</label>
+                                        </div>
+                                        <div class="col-md-8 control-space">
+                                            @Html.DropDownList("empType", Enumerable.Empty<SelectListItem>(), "----Select----", new { @class = "form-control control-input-border", id = "cboempType" })
+                                        </div>
+                                        <div class="col-md-4 control-space">
+                                            <label class="label">Department:</label>
+                                        </div>
+                                        <div class="col-md-8 control-space">
+                                            @Html.DropDownList("dept", Enumerable.Empty<SelectListItem>(), "----Select----", new { @class = "form-control control-input-border", id = "cbodept" })
+                                        </div>
+                                        <div class="col-md-4 control-space">
+                                            <label class="label">Job Description:</label>
+                                        </div>
+                                        <div class="col-md-8 control-space">
+                                            @Html.TextArea("jobDescription", null, new { @class = "form-control control-input-border", id = "txtjobDescription", rows = 6 })
+                                        </div>
+                                        <div class="col-md-4 control-space">
+
+                                        </div>
+                                        <div class="col-md-8 control-space">
+                                            <button class="btn btn-primary" type="submit" id="SaveEmployment"><i class="fa fa-save"></i> Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-exp" role="tabpanel" aria-labelledby="pills-exp-tab">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header"><strong>Work Experience Information </strong></div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="col-md-5 control-space">
+                                                    <label class="label">Company Name:</label>
+                                                </div>
+                                                <div class="col-md-7 control-space">
+                                                    @Html.TextBox("compName", null, new { @class = "form-control clear control-input-border", id = "txtcompName", placeholder = "Type Company Name here" })
+                                                </div>
+                                                <div class="col-md-5 control-space">
+                                                    <label class="label">Job Position:</label>
+                                                </div>
+                                                <div class="col-md-7 control-space">
+                                                    @Html.TextBox("jobPosition", null, new { @class = "form-control clear control-input-border", id = "txtjobPosition", placeholder = "Type Job Position Name here" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="col-md-4 control-space">
+                                                    <label class="label">Date Joined:</label>
+                                                </div>
+                                                <div class="col-md-8 control-space">
+                                                    @Html.TextBox("dJoined", null, new { @class = "form-control clear control-input-border", id = "txtdJoined", placeholder = "DD/MM/YYYY" })
+                                                </div>
+                                                <div class="col-md-4 control-space">
+                                                    <label class="label">Date Left:</label>
+                                                </div>
+                                                <div class="col-md-8 control-space">
+                                                    @Html.TextBox("dLeft", null, new { @class = "form-control clear control-input-border", id = "txtdLeft", placeholder = "DD/MM/YYYY" })
+                                                </div>
+                                                <div class="col-md-4 control-space">
+
+                                                </div>
+                                                <div class="col-md-8 control-space">
+                                                    <button class="btn btn-primary" style="margin-bottom:10px;" type="submit" id="addExp"><i class="fa fa-save"></i> Add </button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="card">
+                                                <div class="card-header"><strong>LIST OF EXPERIENCES</strong></div>
+                                                <div class="card-body" id="experienceDataList">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="pills-Qual" role="tabpanel" aria-labelledby="pills-Qual-tab">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header"><strong>Educational and Other Qualifications Information </strong></div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-12 control-space">
+                                                            <label class="label">Institution Attended:</label>
+                                                        </div>
+                                                        <div class="col-md-12 control-space">
+                                                            @Html.TextBox("instiAtt", null, new { @class = "form-control clear control-input-border clear", id = "txtinstiAtt", placeholder = "Type Institution here..." })
+                                                        </div>
+                                                        <div class="col-md-12 control-space">
+                                                            <label class="label">Degree Obtained:</label>
+                                                        </div>
+                                                        <div class="col-md-12 control-space" style="margin-bottom:10px;">
+                                                            <div class="col-md-12 control-space" style="margin-bottom:10px;">
+                                                                @Html.DropDownList("edudegree", new List<SelectListItem> { new SelectListItem { Text = "PhD", Value = "PhD" },
+                                                                                new SelectListItem{Text = "Masters Degree", Value = "Masters Degree"},
+                                                                                new SelectListItem{Text = "Bachelor Degree", Value = "Bachelor Degreee"},
+                                                                                new SelectListItem{Text = "SSCE", Value = "SSCE"},
+                                                                                new SelectListItem{Text = "Others", Value = "Others"} }, " Please Select---", new { @class = "form-control control-input-border clear", id = "txtedudegree" })
+                                                            </div>
+                                                            <div class="col-md-12 control-space">
+                                                                @Html.TextBox("OthQuali", null, new { @class = "form-control clear control-input-border clear", id = "txtOthQuali", placeholder = " Please Specify---" })
+                                                            </div>
+                                                            </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-4 control-space">
+                                                            <label class="label">Year:</label>
+                                                        </div>
+                                                        <div class="col-md-8 control-space">
+                                                            @Html.DropDownList("year", Enumerable.Range(DateTime.Now.Year - 70, 70).Select(x => new SelectListItem { Text = x.ToString(), Value = x.ToString()}),
+                                                           "--Year--", new { @class = "form-control clear control-input-border", id = "txtyear" })
+                                                        </div>
+                                                        <div class="col-md-4 control-space">
+
+                                                        </div>
+                                                        <div class="col-md-8 control-space">
+                                                            <button class="btn btn-primary" type="submit" id="addQualifi"><i class="fa fa-save"></i> Save</button>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="card">
+                                                        <div class="card-header"><strong>LIST OF QUALIFICATIONS</strong></div>
+                                                        <div class="card-body" id="quaDataList">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="pills-atta" role="tabpanel" aria-labelledby="pills-atta-tab">
+
+                                </div>
+                            </div>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+
+            </div>
+        </div>
+        }
+    </div>
+</div>
+<br />
+
+
+
+
+
+@*sript start from here*@
+
+<script src="~/Content/OperationJS/EmployeeJS.js"></script>
+<script>
+    LoadTitles();
+    loadBranches();
+    //================loading countries========
+        loadCountries(cbocountry);
+        loadCountries(cboNation);
+        loadCountries(cboGCountry);
+        loadCountries(cboNOKcountry);
+        
+    //=========================================
+
+    //======================state population==========================
+        $(function (e) {
+           
+            $("#txtdob").datepicker({
+                dateFormat: "dd/mm/yy"
+            });
+            $("#txtdJoined").datepicker({
+                dateFormat: "dd/mm/yy"
+            });
+            $("#txtdLeft").datepicker({
+                dateFormat: "dd/mm/yy"
+            });
+            $("#txtdateJoined").datepicker({
+                dateFormat: "dd/mm/yy"
+            });
+            $("#txtdateStarted").datepicker({
+                dateFormat: "dd/mm/yy"
+            });
+                
+            $("#loading").hide();
+            $("#lblErrorMsg").hide();
+            $("#lblSuccessMsg").hide();
+            $("#txtOthQuali").hide();
+            $("#cboNation").change(function (evt) {
+                evt.preventDefault();
+                populateStates(cboNation, cboState, txtstate);
+            });
+            $("#cbocountry").change(function (evt) {
+                evt.preventDefault();
+                populateStates(cbocountry, cboStateAdd, txtstateAdd);
+            });
+            $("#cboNOKcountry").change(function (evt) {
+                evt.preventDefault();
+                populateStates(cboNOKcountry, cboNOKState, txtnokState);
+            });
+            $("#cboGCountry").change(function (evt) {
+                evt.preventDefault();
+                populateStates(cboGCountry, cboGState, txtGState);
+            });
+            $("#txtedudegree").change(function (evt) {
+                evt.preventDefault();
+                var myText = $("#txtedudegree :selected").text();
+                var myValue = $(this).val();
+                if (myText === "Others" && myValue === "Others") {
+                    $("#txtOthQuali").show();
+                    edudegree = $("#txtOthQuali").val();
+                }
+                else {
+                    $("#txtOthQuali").hide();
+                    edudegree = $("#txtedudegree").val();
+                }
+            });
+        });
+    //==================================================================
+        populateGrades();
+        populateDesignation();
+        populateEmploymentType();
+        populateDept();
+        LoadExperience();
+     
+</script>

@@ -1,0 +1,35 @@
+﻿@model List<Payroll_Application.Models.EmpExperienceEntity>
+@{
+    int no = 0;
+}
+        <table class="table table-hover table-bordered" id="ExperienceList" style="width:100%; border:1px solid black; padding:5px;">
+            <thead>
+                <tr>
+                    <th>S/N</th>
+                    <th>COMPANY</th>
+                    <th>JOB POSITION</th>
+                    <th>DATE JOINED</th>
+                    <th>DATE LEFT</th>
+                    <th>ACTION</th>
+                </tr>
+            </thead>
+            <tbody id="">
+                @foreach (var d in Model)
+                {
+                    no++;
+                    <tr>
+                        <td>@no.ToString()</td>
+                        <td>@d.CompName</td>
+                        <td>@d.JobPosition</td>
+                        <td>@d.DJoined.ToShortDateString()</td>
+                        <td>@d.DLeft.ToShortDateString()</td>
+                        <td>
+                            <a href="#" onclick="EditExperience(@d.ID)" class="btn btn-primary actionbtn" title="Edit @d.CompName"><i class="fa fa-pencil"></i></a>
+                            &nbsp;&nbsp;&nbsp;
+                            <a href="#" onclick="DeleteExperience(@d.ID)" class="btn btn-danger actionbtn" title="Delete @d.CompName"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+

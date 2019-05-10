@@ -1,0 +1,315 @@
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\ApplicationInsights.config
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\roslyn\csc.exe
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\roslyn\csc.exe.config
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\roslyn\csc.rsp
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\roslyn\csi.exe
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\roslyn\csi.rsp
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\roslyn\System.AppContext.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\roslyn\System.Collections.Immutable.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\roslyn\System.IO.FileSystem.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\roslyn\System.Reflection.Metadata.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\roslyn\vbc.exe
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\roslyn\vbc.exe.config
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\roslyn\vbc.rsp
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\roslyn\VBCSCompiler.exe
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\roslyn\VBCSCompiler.exe.config
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\Payroll Application.dll.config
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\Payroll Application.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\Payroll Application.pdb
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\Antlr3.Runtime.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\Microsoft.AI.Agent.Intercept.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\Microsoft.AI.DependencyCollector.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\Microsoft.AI.Web.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\Microsoft.AI.WindowsServer.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\Microsoft.ApplicationInsights.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\Microsoft.Web.Infrastructure.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\Newtonsoft.Json.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\System.Net.Http.Formatting.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\System.Web.Helpers.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\System.Web.Http.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\System.Web.Http.WebHost.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\System.Web.Mvc.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\System.Web.Optimization.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\System.Web.Razor.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\System.Web.WebPages.Deployment.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\System.Web.WebPages.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\System.Web.WebPages.Razor.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\WebGrease.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\System.Web.Helpers.xml
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\System.Web.Mvc.xml
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\System.Web.Optimization.xml
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\System.Web.Razor.xml
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\System.Web.WebPages.xml
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\System.Web.WebPages.Deployment.xml
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\System.Web.WebPages.Razor.xml
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\Antlr3.Runtime.pdb
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\Newtonsoft.Json.xml
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\System.Net.Http.Formatting.xml
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\System.Web.Http.xml
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\System.Web.Http.WebHost.xml
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\Microsoft.ApplicationInsights.xml
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\Microsoft.AI.DependencyCollector.xml
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\Microsoft.AI.WindowsServer.xml
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\Microsoft.AI.Web.xml
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\obj\Debug\Payroll Application.csprojResolveAssemblyReference.cache
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\obj\Debug\Payroll Application.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\obj\Debug\Payroll Application.pdb
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\EntityFramework.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\EntityFramework.SqlServer.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\Rotativa.dll
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\EntityFramework.xml
+C:\ICLASS APP\WEB APP\Payroll Application\Payroll Application\bin\EntityFramework.SqlServer.xml
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\ApplicationInsights.config
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\roslyn\csc.exe
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\roslyn\csc.exe.config
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\roslyn\csc.rsp
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\roslyn\csi.exe
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\roslyn\csi.rsp
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\roslyn\System.AppContext.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\roslyn\System.Collections.Immutable.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\roslyn\System.IO.FileSystem.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\roslyn\System.Reflection.Metadata.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\roslyn\vbc.exe
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\roslyn\vbc.exe.config
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\roslyn\vbc.rsp
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\roslyn\VBCSCompiler.exe
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\roslyn\VBCSCompiler.exe.config
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\Payroll Application.dll.config
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\Payroll Application.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\Payroll Application.pdb
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\Antlr3.Runtime.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\EntityFramework.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\EntityFramework.SqlServer.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\Microsoft.AI.Agent.Intercept.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\Microsoft.AI.DependencyCollector.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\Microsoft.AI.Web.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\Microsoft.AI.WindowsServer.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\Microsoft.ApplicationInsights.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\Microsoft.Web.Infrastructure.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\Newtonsoft.Json.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\Rotativa.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\System.Net.Http.Formatting.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\System.Web.Helpers.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\System.Web.Http.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\System.Web.Http.WebHost.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\System.Web.Mvc.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\System.Web.Optimization.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\System.Web.Razor.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\System.Web.WebPages.Deployment.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\System.Web.WebPages.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\System.Web.WebPages.Razor.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\WebGrease.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\EntityFramework.xml
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\EntityFramework.SqlServer.xml
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\Newtonsoft.Json.xml
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\System.Web.Helpers.xml
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\System.Web.Mvc.xml
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\System.Web.Optimization.xml
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\System.Web.Razor.xml
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\System.Web.WebPages.xml
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\System.Web.WebPages.Deployment.xml
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\System.Web.WebPages.Razor.xml
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\Antlr3.Runtime.pdb
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\System.Net.Http.Formatting.xml
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\System.Web.Http.xml
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\System.Web.Http.WebHost.xml
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\Microsoft.ApplicationInsights.xml
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\Microsoft.AI.DependencyCollector.xml
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\Microsoft.AI.WindowsServer.xml
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\bin\Microsoft.AI.Web.xml
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\obj\Debug\Payroll Application.csprojResolveAssemblyReference.cache
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\obj\Debug\Payroll Application.csproj.CoreCompileInputs.cache
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\obj\Debug\Payroll Application.dll
+C:\HAND OVER FOLDER\WEB APP PROGRAM\Payroll Application\Payroll Application\obj\Debug\Payroll Application.pdb
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\ApplicationInsights.config
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\roslyn\csc.exe
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\roslyn\csc.exe.config
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\roslyn\csc.rsp
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\roslyn\csi.exe
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\roslyn\csi.rsp
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\roslyn\System.AppContext.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\roslyn\System.Collections.Immutable.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\roslyn\System.IO.FileSystem.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\roslyn\System.Reflection.Metadata.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\roslyn\vbc.exe
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\roslyn\vbc.exe.config
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\roslyn\vbc.rsp
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\roslyn\VBCSCompiler.exe
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\roslyn\VBCSCompiler.exe.config
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\Payroll Application.dll.config
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\Payroll Application.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\Payroll Application.pdb
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\Antlr3.Runtime.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\EntityFramework.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\EntityFramework.SqlServer.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\Microsoft.AI.Agent.Intercept.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\Microsoft.AI.DependencyCollector.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\Microsoft.AI.Web.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\Microsoft.AI.WindowsServer.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\Microsoft.ApplicationInsights.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\Microsoft.Web.Infrastructure.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\Newtonsoft.Json.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\Rotativa.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\System.Net.Http.Formatting.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\System.Web.Helpers.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\System.Web.Http.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\System.Web.Http.WebHost.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\System.Web.Mvc.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\System.Web.Optimization.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\System.Web.Razor.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\System.Web.WebPages.Deployment.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\System.Web.WebPages.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\System.Web.WebPages.Razor.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\WebGrease.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\EntityFramework.xml
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\EntityFramework.SqlServer.xml
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\Newtonsoft.Json.xml
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\System.Web.Helpers.xml
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\System.Web.Mvc.xml
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\System.Web.Optimization.xml
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\System.Web.Razor.xml
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\System.Web.WebPages.xml
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\System.Web.WebPages.Deployment.xml
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\System.Web.WebPages.Razor.xml
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\Antlr3.Runtime.pdb
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\System.Net.Http.Formatting.xml
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\System.Web.Http.xml
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\System.Web.Http.WebHost.xml
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\Microsoft.ApplicationInsights.xml
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\Microsoft.AI.DependencyCollector.xml
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\Microsoft.AI.WindowsServer.xml
+C:\POS PROJECTS\Payroll Application\Payroll Application\bin\Microsoft.AI.Web.xml
+C:\POS PROJECTS\Payroll Application\Payroll Application\obj\Debug\Payroll Application.csprojAssemblyReference.cache
+C:\POS PROJECTS\Payroll Application\Payroll Application\obj\Debug\Payroll Application.csproj.CoreCompileInputs.cache
+C:\POS PROJECTS\Payroll Application\Payroll Application\obj\Debug\Payroll Application.csproj.CopyComplete
+C:\POS PROJECTS\Payroll Application\Payroll Application\obj\Debug\Payroll Application.dll
+C:\POS PROJECTS\Payroll Application\Payroll Application\obj\Debug\Payroll Application.pdb
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\ApplicationInsights.config
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\csc.exe
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\csc.exe.config
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\csc.rsp
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\csi.exe
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\csi.rsp
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\System.AppContext.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\vbc.exe
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\vbc.exe.config
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\vbc.rsp
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\VBCSCompiler.exe
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Payroll Application.dll.config
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Payroll Application.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Payroll Application.pdb
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Antlr3.Runtime.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\EntityFramework.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\EntityFramework.SqlServer.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Microsoft.AI.Web.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Microsoft.ApplicationInsights.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Newtonsoft.Json.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Rotativa.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\System.Net.Http.Formatting.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\System.Web.Helpers.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\System.Web.Http.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\System.Web.Http.WebHost.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\System.Web.Mvc.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\System.Web.Optimization.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\System.Web.Razor.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\System.Web.WebPages.Deployment.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\System.Web.WebPages.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\System.Web.WebPages.Razor.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\WebGrease.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\EntityFramework.xml
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\EntityFramework.SqlServer.xml
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Newtonsoft.Json.xml
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\System.Web.Helpers.xml
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\System.Web.Mvc.xml
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\System.Web.Optimization.xml
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\System.Web.Razor.xml
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\System.Web.WebPages.xml
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\System.Web.WebPages.Deployment.xml
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\System.Web.WebPages.Razor.xml
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Antlr3.Runtime.pdb
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\System.Net.Http.Formatting.xml
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\System.Web.Http.xml
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\System.Web.Http.WebHost.xml
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Microsoft.ApplicationInsights.xml
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Microsoft.AI.Web.xml
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\obj\Debug\Payroll Application.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\obj\Debug\Payroll Application.pdb
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\obj\Debug\Payroll Application.csprojResolveAssemblyReference.cache

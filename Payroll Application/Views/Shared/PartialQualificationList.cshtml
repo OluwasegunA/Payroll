@@ -1,0 +1,32 @@
+﻿@model List<Payroll_Application.Models.EmpQualificationEntity>
+@{
+    int no = 0;
+}
+<table class="table table-hover table-bordered" id="QualificationList" style="width:100%; border:1px solid black; padding:5px;">
+    <thead>
+        <tr>
+            <th>S/N</th>
+            <th>INSTITUTION</th>
+            <th>DEGREE OBT.</th>
+            <th>YEAR</th>
+            <th>ACTION</th>
+        </tr>
+    </thead>
+    <tbody id="">
+        @foreach (var d in Model)
+        {
+            no++;
+            <tr>
+                <td>@no.ToString()</td>
+                <td>@d.Institution</td>
+                <td>@d.EducationQua</td>
+                <td>@d.Year</td>
+                <td>
+                    <a href="#" onclick="EditQualification(@d.ID)" class="btn btn-primary actionbtn" title="Edit @d.Institution"><i class="fa fa-pencil"></i></a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a href="#" onclick="DeleteQualification(@d.ID)" class="btn btn-danger actionbtn" title="Delete @d.Institution"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

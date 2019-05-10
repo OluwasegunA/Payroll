@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Login Page";
+    Layout = "~/Views/Shared/_LayoutLoginPage.cshtml";
+}
+
+<div class="panel panel-default margin-form customize-panel ">
+    <div class="panel-heading login__header" ><strong>Login</strong></div>
+    
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post,new {@class= "" }))
+        {
+            <div class="panel-body">
+                @if (ViewBag.errorLogin != null)
+                {
+                    <div class="alert alert-danger">
+                        @ViewBag.errorLogin
+                    </div>
+                }
+                <div class="input-group input-separate inputarea">
+                    <span class="input-group-addon glyphicon glyphicon-user "></span>
+                    @Html.TextBox("username", null, new { @class = "form-control", placeholder = "Type your Username", required="true" })
+                </div>
+                <div class="input-group input-separate inputarea">
+                    <span class="input-group-addon glyphicon glyphicon-lock glyphicon-cust"></span>
+                    @Html.Password("password", null, new { @class = "form-control", placeholder = "Type your Password", required = "true" })
+                </div>
+            </div>
+            <div class="panel-footer footer-page">
+                
+                    <span class="glyphicon glyphicon-question-sign"></span> <a href="#" class="btn-link">Forget your Password</a>
+                
+                
+                    <button class="btn btn-success btn-custom pull-right" id="loginBtn">Log In</button>
+                
+            </div>
+        }
+           
+
+</div>

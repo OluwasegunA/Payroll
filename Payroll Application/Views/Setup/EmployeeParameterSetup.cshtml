@@ -1,0 +1,334 @@
+﻿
+@{
+    ViewBag.Title = "Employee Parameter Setup";
+    Layout = "~/Views/Shared/_LayoutSetup.cshtml";
+    ViewBag.PageTitle = "Parameters";
+}
+<style>
+    .spacing{
+        margin-top:5px;
+    }
+    .txt{
+        min-width:250px;
+    }
+</style>
+<div class="row">
+    @*Staff Title Start from here*@
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header"><strong>Staff Titles</strong></div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        
+                    </div>
+                    <div class="col-md-9">
+                        <button class="btn btn-primary" type="submit" id="NewTitle"><i class="fa fa-file-o"></i> New</button>
+                        <button class="btn btn-primary" type="submit" id="SaveTitle"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                </div>
+                @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-inline" }))
+                {
+                    <div class="row">
+                        <div class="col-md-3 spacing"><label class="form-control-label">Code:</label></div>
+                        <div class="col-md-9 spacing">
+                            @Html.TextBox("txtTitleCode", null, new { @class = "form-control txt", id = "txtTitleCode", @readonly = "true" })
+                        </div>
+                        <div class="col-md-3 spacing">
+                            <label class="form-control-label">Title:</label>
+                        </div>
+                        <div class="col-md-9 spacing">
+                            @Html.TextBox("txtTitle", null, new { @class = "form-control txt", id = "txtTitle", Placeholder = "Type Title" })
+                        </div>
+                    </div>
+
+                }
+                <br />
+                <table class="table table-bordered table-hover table-custom-border" id="titletable">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>TITLE</th>
+                            <th>CODE</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody id="titlebody">
+
+                    </tbody>
+                    <tfoot>
+
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    @*Employee Level Start from here*@
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header"><strong>Employee Levels</strong></div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+
+                    </div>
+                    <div class="col-md-9">
+                        <button class="btn btn-primary" type="submit" id="NewLevel"><i class="fa fa-file-o"></i> New</button>
+                        <button class="btn btn-primary" type="submit" id="SaveLevel"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                </div>
+                @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-inline" }))
+                {
+                    <div class="row">
+                        <div class="col-md-3 spacing"><label class="form-control-label">Code:</label></div>
+                        <div class="col-md-9 spacing">
+                            @Html.TextBox("txtLevelCode", null, new { @class = "form-control txt", id = "txtLevelCode", @readonly = "true" })
+                        </div>
+                        <div class="col-md-3 spacing">
+                            <label class="form-control-label">Level:</label>
+                        </div>
+                        <div class="col-md-9 spacing">
+                            @Html.TextBox("txtLevel", null, new { @class = "form-control txt", id = "txtLevel", Placeholder = "Type Level" })
+                        </div>
+                    </div>
+                    
+
+                }
+                <br />
+                <table class="table table-bordered table-hover table-custom-border" id="leveltable">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>LEVEL</th>
+                            <th>CODE</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody id="levelbody"></tbody>
+                    <tfoot>
+
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    @*Employment Type Start from here*@
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header"><strong>Employment Types</strong></div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+
+                    </div>
+                    <div class="col-md-9">
+                        <button class="btn btn-primary" type="submit" id="NewEmpTypeCode"><i class="fa fa-file-o"></i> New</button>
+                        <button class="btn btn-primary" type="submit" id="SaveempType"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                </div>
+                @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-inline" }))
+                {
+                    <div class="row">
+                        <div class="col-md-3 spacing"><label class="form-control-label">Code:</label></div>
+                        <div class="col-md-9 spacing">
+                            @Html.TextBox("txtempCode", null, new { @class = "form-control txt", id = "txtempCode", @readonly = "true" })
+                        </div>
+                        <div class="col-md-3 spacing">
+                            <label class="form-control-label">Description:</label>
+                        </div>
+                        <div class="col-md-9 spacing">
+                            @Html.TextBox("txtempType", null, new { @class = "form-control txt", id = "txtempType", Placeholder = "Type Description" })
+                        </div>
+                    </div>
+                    
+
+                }
+                <br />
+                <table class="table table-bordered table-hover table-custom-border" id="empTypetable">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>DESCRIPTION</th>
+                            <th>CODE</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody id="empTypebody"></tbody>
+                    <tfoot>
+
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    @*Staff Dept start from here*@
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header"><strong>Staff Department</strong></div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+
+                    </div>
+                    <div class="col-md-9">
+                        <button class="btn btn-primary" type="submit" id="NewDept"><i class="fa fa-file-o"></i> New</button>
+                        <button class="btn btn-primary" type="submit" id="SaveDept"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                </div>
+                @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-inline" }))
+                {
+                    <div class="row">
+                        <div class="col-md-3 spacing"><label class="form-control-label">Code:</label></div>
+                        <div class="col-md-9 spacing">
+                            @Html.TextBox("txtDeptCode", null, new { @class = "form-control txt", id = "txtDeptCode", @readonly = "true" })
+                        </div>
+                        <div class="col-md-3 spacing">
+                            <label class="form-control-label">Department:</label>
+                        </div>
+                        <div class="col-md-9 spacing">
+                            @Html.TextBox("txtdept", null, new { @class = "form-control txt", id = "txtdept", Placeholder = "Type Department" })
+                        </div>
+                    </div>
+                   
+
+                }
+                <br />
+                <table class="table table-bordered table-hover table-custom-border" id="deptTable">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>DEPT</th>
+                            <th>CODE</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody id="deptbody"></tbody>
+                    <tfoot>
+
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    @*Staff Designation Start from here*@
+   <div class="col-md-4">
+    <div class="card">
+        <div class="card-header"><strong>Staff Designation</strong></div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3">
+
+                </div>
+                <div class="col-md-9">
+                    <button class="btn btn-primary" type="submit" id="NewDes"><i class="fa fa-file-o"></i> New</button>
+                    <button class="btn btn-primary" type="submit" id="SaveDes"><i class="fa fa-save"></i> Save</button>
+                </div>
+            </div>
+            @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-inline" }))
+            {
+                <div class="row">
+                    <div class="col-md-3 spacing"><label class="form-control-label">Code:</label></div>
+                    <div class="col-md-9 spacing">
+                        @Html.TextBox("txtDesCode", null, new { @class = "form-control txt", id = "txtDesCode", @readonly = "true" })
+                    </div>
+                    <div class="col-md-3 spacing">
+                        <label class="form-control-label">Designation:</label>
+                    </div>
+                    <div class="col-md-9 spacing">
+                        @Html.TextBox("txtDes", null, new { @class = "form-control txt", id = "txtDes", Placeholder = "Type Designation" })
+                    </div>
+                </div>
+                    
+
+            }
+            <br />
+            <table class="table table-bordered table-hover table-custom-border" id="DesTable">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>DESIGNATION</th>
+                        <th>CODE</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+                <tbody id="descbody"></tbody>
+                <tfoot>
+
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+    @*Start the Academic Degree*@
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header"><strong>Academic Degree</strong></div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+
+                    </div>
+                    <div class="col-md-9">
+                        <button class="btn btn-primary" type="submit" id="NewDeg"><i class="fa fa-file-o"></i> New</button>
+                        <button class="btn btn-primary" type="submit" id="SaveDeg"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                </div>
+                @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-inline" }))
+            {
+                    <div class="row">
+                        <div class="col-md-3 spacing"><label class="form-control-label">Code:</label></div>
+                        <div class="col-md-9 spacing">
+                            @Html.TextBox("txtDegCode", null, new { @class = "form-control txt", id = "txtDegCode", @readonly = "true" })
+                        </div>
+                        <div class="col-md-3 spacing">
+                            <label class="form-control-label">Designation:</label>
+                        </div>
+                        <div class="col-md-9 spacing">
+                            @Html.TextBox("txtDeg", null, new { @class = "form-control txt", id = "txtDeg", Placeholder = "Type Degree" })
+                        </div>
+                    </div>
+
+
+                }
+                <br />
+                <table class="table table-bordered table-hover table-custom-border" id="DesTable">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>DESIGNATION</th>
+                            <th>CODE</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody id="degbody"></tbody>
+                    <tfoot>
+
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<br />
+
+<div class="alert alert-info" id="loading" style="padding:10px; position:absolute;border:2px solid #33bb0b;left:50%;top:50%;">
+    Please wait.. <span>
+        <img src="~/Images/ajax-loader7.gif" />
+    </span>
+</div>
+<script src="~/Content/OperationJS/NewSetupJS.js"></script>
+<script>
+    $(function (e) {
+        HideAjaxLoad();
+        loadAllTitles();
+        loadAllLevels();    
+        loadAllEmpTypes();
+        LoadAllDepts();
+        LoadAllDesignations();
+    })
+</script>
