@@ -69,6 +69,8 @@ namespace Payroll_Application.BusinessLayers
                 oldCont.State = contact.State;
                 oldCont.WorkEmail = contact.WorkEmail;
                 oldCont.WorkPhoneNo = contact.WorkPhoneNo;
+                oldCont.LGA = contact.LGA;
+                oldCont.Landmark = contact.Landmark;
                 
             }
             else
@@ -90,11 +92,9 @@ namespace Payroll_Application.BusinessLayers
                 oldNoF.Address = nextofKin.Address;
                 oldNoF.Country = nextofKin.Country;
                 oldNoF.State = nextofKin.State;
-                oldNoF.GFullName = nextofKin.GFullName;
-                oldNoF.GPhoneNo = nextofKin.GPhoneNo;
-                oldNoF.GAddress = nextofKin.GAddress;
-                oldNoF.GCountry = nextofKin.GCountry;
-                oldNoF.GState = nextofKin.GState;
+                oldNoF.Relationship = nextofKin.Relationship;
+                oldNoF.Name = nextofKin.Name;
+                oldNoF.Contact = nextofKin.Contact;
 
             }
             else
@@ -102,6 +102,73 @@ namespace Payroll_Application.BusinessLayers
                 db.EmpNextofKin.Add(nextofKin);
             }
             db.EmpNextofKin.Add(nextofKin);
+            db.SaveChanges();
+        }
+        // saving next of kin and guarantor information
+        public static void SaveGuarantor(GurrantorEntity guarantor)
+        {
+            MyDbContext db = new MyDbContext();
+            var oldNoF = db.EmpGurrantor.Where(d => d.RegistrationID == guarantor.RegistrationID).FirstOrDefault();
+            if (oldNoF != null)
+            {
+                oldNoF.GFullName = guarantor.GFullName;
+                oldNoF.GPhoneNo = guarantor.GPhoneNo;
+                oldNoF.GAddress = guarantor.GAddress;
+                oldNoF.GCountry = guarantor.GCountry;
+                oldNoF.GState = guarantor.GState;
+                oldNoF.GPayLevel = guarantor.GPayLevel;
+
+            }
+            else
+            {
+                db.EmpGurrantor.Add(guarantor);
+            }
+            db.EmpGurrantor.Add(guarantor);
+            db.SaveChanges();
+        }
+        // saving next of kin and guarantor information
+        public static void SaveReference(ReferenceEntity reference)
+        {
+            MyDbContext db = new MyDbContext();
+            var oldNoF = db.EmpReference.Where(d => d.RegistrationID == reference.RegistrationID).FirstOrDefault();
+            if (oldNoF != null)
+            {
+                oldNoF.RFullName = reference.RFullName;
+                oldNoF.RPhoneNo = reference.RPhoneNo;
+                oldNoF.RAddress = reference.RAddress;
+                oldNoF.RCountry = reference.RCountry;
+                oldNoF.RState = reference.RState;
+                oldNoF.RJobPosition = reference.RJobPosition;
+            }
+            else
+            {
+                db.EmpReference.Add(reference);
+            }
+            db.EmpReference.Add(reference);
+            db.SaveChanges();
+        }
+        //Saving Medical History
+        public static void SaveMedicalHis(MedicalEntity history)
+        {
+            MyDbContext db = new MyDbContext();
+            var oldMed = db.MedicalHistory.Where(r => r.RegistrationID == history.RegistrationID).FirstOrDefault();
+            if (oldMed != null)
+            {
+                oldMed.BGroup = history.BGroup;
+                oldMed.Genotype = history.Genotype;
+                oldMed.Weight = history.Weight;
+                oldMed.Height = history.Height;
+                oldMed.Smoke = history.Smoke;
+                oldMed.Drink = history.Drink;
+                oldMed.Allergies = history.Allergies;
+                oldMed.MedHistory = history.MedHistory;
+                oldMed.Comments = history.Comments;
+            }
+            else
+            {
+                db.MedicalHistory.Add(history);
+            }
+            db.MedicalHistory.Add(history);
             db.SaveChanges();
         }
         //Saving Employee Qualification

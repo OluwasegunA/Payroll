@@ -164,11 +164,98 @@ $("#uploadPhoto").click(function (evt) {
         $("#empImg").val(imgurl);
         $("#loading").hide();
     }).fail(function (error) {
-       // $("#lblError").val(error);
-       // $("#lblError").show();
+        // $("#lblError").val(error);
+        // $("#lblError").show();
         $("#loading").hide();
     })
-})
+});
+//upload attachment
+$("#uploadAttachment").click(function (evt) {
+    evt.preventDefault();
+    var myFrmdata = new FormData();
+    var files = $("#empfileAtt").get(0).files;
+    for (var i = 0; i < files.length; i++) {
+        myFrmdata.append(files[i].name, files[i]);
+    }
+    $("#loading").show();
+    $.ajax({
+        url: "/Employee/UploadEmployeeAttachment",
+        type: "POST",
+        data: myFrmdata,
+        processData: false,
+        contentType: false,
+        async: false,
+        cache: false
+    }).success(function (result) {
+        if (result != "") {
+            $('#FileBrowse').find("*").prop("disabled", true);
+            LoadProgressBar(result);
+            SaveFileUrl(evt);
+            var realFileUrl = "/Attachment/" + result
+            $("#empAtt").val(realFileUrl);
+            $("#loading").hide();
+        }
+    }).fail(function (error) {
+        $("#lblError").val(error.statusText);
+        $("#lblError").show();
+        $("#loading").hide();
+        })
+    alert(realFileUrl);
+});
+
+function SaveFileUrl(evt) {
+    evt.preventDefault();
+    var RegID = $("#txtRegId").val();
+    var fileUrl = $("#empAtt").val();
+    attachment = {
+        RegistrationID: RegID, FileUrl: fileUrl
+    }
+    $.ajax({
+        url: "/Employee/SaveUrl",
+        data: attachment,
+        type: "POST"
+    }).success(function (result) {
+        if (result.status) {
+            $("#lblSuccessMsg").html("Uploading completed. /n Attachment successfully!");
+            $("#lblSuccessMsg").show();
+            $("#loading").hide();
+        }
+    }).fail(function (error) {
+        $("#lblErrorMsg").html(error.Desc);
+        $("#lblErrorMsg").show();
+        $("#loading").hide();
+    });
+}
+
+//Progress bar Function
+function LoadProgressBar(result) {
+    var progressLabel = $(".progress-label");
+    var progressbar = $("#progressbar-5");
+    progressbar.show();
+    $("#progressbar-5").progressbar({
+        //value: false,
+        complete: function () {
+            progressLabel.text("Loading Completed!");
+            progressbar.progressbar("value", 0);
+            //progressLabel.text("");
+            progressbar.hide();
+            $('#FileBrowse').find("*").prop("disabled", false);
+        },
+        change: function () {
+            progressLabel.text(
+                progressbar.progressbar("value") + "%");
+        }
+    });
+    function progress() {
+        var val = progressbar.progressbar("value") || 0;
+        progressbar.progressbar("value", val + 1);
+        if (val < 99) {
+            setTimeout(progress, 25);
+        }
+    }
+    setTimeout(progress, 100);
+}
+
 //checkbox event
 $('#chkNokAbove').click(function () {
     if ($(this).is(':checked')) {
@@ -186,6 +273,23 @@ $('#chkGAbove').click(function () {
     }
     else {
         $("#txtGaddress").val("");
+    }
+});
+$('#chkRAbove').click(function () {
+    if ($(this).is(':checked')) {
+        $("#txtGaddress").val($("#txtaddress").val());
+    }
+    else {
+        $("#txtGaddress").val("");
+    }
+});
+
+$('#chkRAbove').click(function () {
+    if ($(this).is(':checked')) {
+        $("#txtRaddress").val($("#txtaddress").val());
+    }
+    else {
+        $("#txtRaddress").val("");
     }
 });
 
@@ -348,6 +452,8 @@ $("#SaveCont").click(function (evt) {
     var city = $("#txtcity").val();
     var country = $("#cbocountry").val();
     var state = "";
+    var lga = $("#txtlga").val();
+    var landmark = $("#txtlandmark").val();
     if ($("#txtstateAdd").is(":visible")) {
         state = $("#txtstateAdd").val();
     }
@@ -366,8 +472,8 @@ $("#SaveCont").click(function (evt) {
         return;
     }
     var contact = {
-        RegistrationID: RegID, StaffNo: staffNo, Address: address, City: city, Country: country, State: state,
-        MobileNo: mobileNo, MobileNo2: mobileNo2, WorkPhoneNo: workPhoneNo, Email: email, WorkEmail: emailWork
+        RegistrationID: RegID, StaffNo: staffNo, Address: address, City: city, Country: country, State: state, LGA: lga,
+        Landmark: landmark, MobileNo: mobileNo, MobileNo2: mobileNo2, WorkPhoneNo: workPhoneNo, Email: email, WorkEmail: emailWork
     };
     $("#lblSuccessMsg").hide();
     $("#lblErrorMsg").hide();
@@ -395,25 +501,17 @@ $("#SaveKin").click(function (evt) {
     var RegID = $("#txtRegId").val();
     var nokName = $("#txtnokName").val();
     var nokPhoneNo = $("#txtnokPhoneNo").val();
+    var nokRelationship = $("#txtnokRelationship").val();
     var nokaddress = $("#txtnokaddress").val();
     var nokcountry = $("#cbocountry").val();
     var Nstate = "";
-    var GName = $("#txtGName").val();
-    var GPhoneNo = $("#txtGPhoneNo").val();
-    var Gaddress = $("#txtGaddress").val();
-    var Gcountry = $("#cbocountry").val();
-    var Gustate = "";
+    var sosName = $("#txtsosName").val();
+    var sosPhoneNo = $("#txtsosPhoneNo").val();
     if ($("#txtnokstate").is(":visible")) {
         Nstate = $("#txtnokstate").val();
     }
     else {
         Nstate = $("#cboStateAdd").val();
-    }
-    if ($("#txtGstate").is(":visible")) {
-        Gustate = $("#txtGstate").val();
-    }
-    else {
-        Gustate = $("#cboStateAdd").val();
     }
     if (nokName === null || nokName === '') {
         $("#lblErrorMsg").val("Fullname cannot be blank!");
@@ -426,20 +524,10 @@ $("#SaveKin").click(function (evt) {
         $("#lblErrorMsg").show();
         $("#txtnokaddress").focus();
         return;
-    }  
-    else if (GName === null || GName === '') {
-        $("#lblErrorMsg").val("Fullname cannot be blank!");
-        $("#lblErrorMsg").show();
-        $("#txtGName").focus();
-    }
-    else if (Gaddress === null || Gaddress === '') {
-        $("#lblErrorMsg").val("Fullname cannot be blank!");
-        $("#lblErrorMsg").show();
-        $("#txtGName").focus();
     }
     var nextofKin = {
         RegistrationID: RegID, FullName: nokName, PhoneNo: nokPhoneNo, Address: nokaddress, Country: nokcountry, State: Nstate,
-        GFullName: GName, GPhoneNo: GPhoneNo, GAddress: Gaddress, GCountry: Gcountry, GState: Gustate
+        Relationship: nokRelationship, Name: sosName, Contact: sosPhoneNo
     };
     $("#lblSuccessMsg").hide();
     $("#lblErrorMsg").hide();
@@ -450,7 +538,7 @@ $("#SaveKin").click(function (evt) {
         type: "POST"
     }).success(function (result) {
         if (result.status) {
-            $("#lblSuccessMsg").html("Next of Kin and Guarantor Information saved successfully!");
+            $("#lblSuccessMsg").html("Next of Kin Information saved successfully!");
             $("#lblSuccessMsg").show();
         }
         $("#loading").hide();
@@ -460,6 +548,124 @@ $("#SaveKin").click(function (evt) {
         $("#loading").hide();
     });
 });
+
+//Saving Guarantor
+$("#AddGua").click(function (evt) {
+    evt.preventDefault();
+    var RegID = $("#txtRegId").val();
+    var GName = $("#txtGName").val();
+    var GPhoneNo = $("#txtGPhoneNo").val();
+    var Gaddress = $("#txtGaddress").val();
+    var Gcountry = $("#txtGcountry").val();
+    var Gustate = "";
+    var GPaylevel = $("#txtGPayLevel").val();
+    if ($("#txtGState").is(":visible")) {
+        Gustate = $("#txtGState").val();
+    }
+    else {
+        Gustate = $("#cboGState").val();
+    }
+    if (GName === null || GName === '') {
+        $("#lblErrorMsg").val("Fullname cannot be blank!");
+        $("#lblErrorMsg").show();
+        $("#txtnokName").focus();
+        return;
+    }
+    if (Gaddress.length === 0) {
+        $("#lblErrorMsg").val("Address cannot be blank!");
+        $("#lblErrorMsg").show();
+        $("#txtnokaddress").focus();
+        return;
+    }
+    if (GPaylevel.length === 0) {
+        $("#lblErrorMsg").val("Pay Level cannot be blank!");
+        $("#lblErrorMsg").show();
+        $("#txtnokaddress").focus();
+        return;
+    }
+    var guarantor = {
+        RegistrationID: RegID, GFullName: GName, GPhoneNo: GPhoneNo, GPayLevel: GPaylevel, GAddress: Gaddress, GCountry: Gcountry, GState: Gustate
+    };
+    $("#lblSuccessMsg").hide();
+    $("#lblErrorMsg").hide();
+    $("#loading").show();
+    $.ajax({
+        url: "/Employee/SaveGuarantorInformation",
+        data: guarantor,
+        type: "POST"
+    }).success(function (result) {
+        if (result.status) {
+            $("#lblSuccessMsg").html("Guarantor Information saved successfully!");
+            $("#lblSuccessMsg").show();
+            $("#loading").hide();
+        }
+    }).fail(function (error) {
+        $("#lblErrorMsg").html(error.Desc);
+        $("#lblErrorMsg").show();
+        $("#loading").hide();
+    });
+    $(".clear").val('');
+});
+
+//Add References
+$("#AddRef").click(function (evt) {
+    evt.preventDefault();
+    var RegID = $("#txtRegId").val();
+    var RName = $("#txtRName").val();
+    var RPhoneNo = $("#txtRPhoneNo").val();
+    var Raddress = $("#txtRaddress").val();
+    var Rcountry = $("#txtRcountry").val();
+    var Restate = "";
+    var RJobPosition = $("#txtRJobPosition").val();
+    if ($("#txtRState").is(":visible")) {
+        Restate = $("#txtRState").val();
+    }
+    else {
+        Gustate = $("#cboRState").val();
+    }
+    if (RName === null || RName === '') {
+        $("#lblErrorMsg").val("Fullname cannot be blank!");
+        $("#lblErrorMsg").show();
+        $("#txtRName").focus();
+        return;
+    }
+    if (Raddress.length === 0) {
+        $("#lblErrorMsg").val("Address cannot be blank!");
+        $("#lblErrorMsg").show();
+        $("#txtRaddress").focus();
+        return;
+    }
+    if (RJobPosition.length === 0) {
+        $("#lblErrorMsg").val("Address cannot be blank!");
+        $("#lblErrorMsg").show();
+        $("#txtRJobPosition").focus();
+        return;
+    }
+    var reference = {
+        RegistrationID: RegID, RFullName: RName, RPhoneNo: RPhoneNo, RAddress: Raddress, RCountry: Rcountry, RState: Restate,
+        RJobPosition: RJobPosition
+    };
+    $("#lblSuccessMsg").hide();
+    $("#lblErrorMsg").hide();
+    $("#loading").show();
+    $.ajax({
+        url: "/Employee/SaveReferenceInformation",
+        data: reference,
+        type: "POST"
+    }).success(function (result) {
+        if (result.status) {
+            $("#lblSuccessMsg").html("Reference Information saved successfully!");
+            $("#lblSuccessMsg").show();
+            $("#loading").hide();
+        }
+    }).fail(function (error) {
+        $("#lblErrorMsg").html(error.Desc);
+        $("#lblErrorMsg").show();
+        $("#loading").hide();
+    });
+    $(".clear").val('');
+});
+
 
 // Saving Employment Info
 $("#SaveEmployment").click(function (evt) {
@@ -588,6 +794,85 @@ $("#addQualifi").click(function (evt) {
     });
     $(".clear").val('');
 });
+
+// Saving medical history
+$("#SaveMed").click(function (evt) {
+    evt.preventDefault();
+    var RegID = $("#txtRegId").val();
+    var bgroup = $("#txtbgroup").val();
+    var genot = $("#txtgenot").val();
+    var weight = $("#txtweight").val();
+    var height = $("#txtheight").val();
+    var smoke = "";
+    var drink = "";
+    var allergies = $("#txtallergies").val();
+    var medHistory = "";
+    var medComm = $("#txtmedComm").val();
+    if ($("#chksmokeyes").is(':checked')) {
+        smoke = "Yes";
+    }
+    else if ($("#chksmokeno").is(':checked')) {
+        smoke = "No";
+    }
+    else {
+        $("#smokeInd").focus();
+        $("#lblErrorMsg").html("Please indicate where appropiate");
+        $("#lblErrorMsg").show();
+    }
+    if ($("#chksocial").is(':checked')) {
+        drink = "Social Drinker";
+    }
+    else if ($("#chkmoderate").is(':checked')) {
+        drink = "Moderate Drinker";
+    }
+    else if ($("#chkheavy").is(':checked')) {
+        drink = "Heavy Drinker";
+    }
+    else if ($("#chknodrink").is(':checked')) {
+        drink = "No";
+    }
+    if ($("#chkHBP").is(':checked')) {
+        medHistory = "HBP";
+    }
+    else if ($("#chkAsmathic").is(':checked')) {
+        medHistory = "Asmathic";
+    }
+    else if ($("#chkDiabetic").is(':checked')) {
+        medHistory = "Diabetic";
+    }
+    else if ($("#chkCancer").is(':checked')) {
+        medHistory = "Cancer";
+    }
+    else if ($("#chkTerminal").is(':checked')) {
+        medHistory = "Terminal Disease";
+    }
+    else if ($("#chkOther").is(':checked')) {
+        medHistory = "Others";
+    }
+    var history = {
+        RegistrationID: RegID, BGroup: bgroup, Genotype: genot, Weight: weight, Height: height, Smoke: smoke, Drink: drink, 
+        Allergies: allergies, MedHistory: medHistory, Comments: medComm
+    };
+    $("#lblSuccessMsg").hide();
+    $("#lblErrorMsg").hide();
+    $("#loading").show();
+    $.ajax({
+        url: "/Employee/SaveMedicalHistory",
+        data: history,
+        type: "POST"
+    }).success(function (result) {
+        if (result.status) {
+            $("#lblSuccessMsg").html("Medical History saved successfully!");
+            $("#lblSuccessMsg").show();
+            $("#loading").hide();
+        }
+    }).fail(function (error) {
+        $("#lblErrorMsg").html(error.Desc);
+        $("#lblErrorMsg").show();
+        $("#loading").hide();
+    });
+});
+
 //Populating the table
 function LoadQualification() {
    // var RegID = $("#txtRegId");

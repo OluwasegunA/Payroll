@@ -20,6 +20,8 @@ namespace Payroll_Application.Models
         public string WorkPhoneNo { get; set; }
         public string Email { get; set; }
         public string WorkEmail { get; set; }
+        public string LGA { get; set; }
+        public string Landmark { get; set; }
         public long ID { get; set; }
     }
 }

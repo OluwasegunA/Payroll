@@ -15,11 +15,9 @@ namespace Payroll_Application.Models
         public string Address { get; set; }
         public string Country { get; set; }
         public string State { get; set; }
-        public string GFullName { get; set; }
-        public string GPhoneNo { get; set; }
-        public string GAddress { get; set; }
-        public string GCountry { get; set; }
-        public string GState { get; set; }
+        public string Relationship { get; set; }
+        public string Name { get; set; }
+        public string Contact { get; set; }
         public long ID { get; set; }
     }
 }

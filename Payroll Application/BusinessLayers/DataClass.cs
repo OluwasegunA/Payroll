@@ -28,7 +28,6 @@ namespace Payroll_Application.BusinessLayers
                 sdoc.Description = description;
                 sdoc.StartNo = No;
                 db.StartDocumentNo.Add(sdoc);
-
             }
             db.SaveChanges();
             return No;

@@ -25,8 +25,14 @@ namespace Payroll_Application.Models
         public DbSet<PersonalInformationEntity> PersonalInfo { get; set; }
         public DbSet<EmpContactInfoEntity> EmployeeContactInfo { get; set; }
         public DbSet<NextofKinEntity> EmpNextofKin { get; set; }
+        public DbSet<GurrantorEntity> EmpGurrantor { get; set; }
+        public DbSet<ReferenceEntity> EmpReference { get; set; }
         public DbSet<EmpEmploymentEntity> EmpEmploymentInfo { get; set; }
         public DbSet<EmpExperienceEntity> EmpExperiences { get; set; }
         public DbSet<EmpQualificationEntity> EmpQualifications { get; set; }
+        public DbSet<MedicalEntity> MedicalHistory { get; set; }
+        public DbSet<AttachmentEntity> Attachments { get; set; }
+        public DbSet<AllowanceEntity> Allowances { get; set; }
+        public DbSet<PensionEntity> Pensions { get; set; }
     }
 }

@@ -162,6 +162,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BusinessLayers\DataClass.cs" />
     <Compile Include="BusinessLayers\EmployeeClass.cs" />
+    <Compile Include="BusinessLayers\PayrollClass.cs" />
     <Compile Include="BusinessLayers\SecurityClass.cs" />
     <Compile Include="BusinessLayers\SetupClass.cs" />
     <Compile Include="Controllers\AdminPortalController.cs" />
@@ -172,6 +173,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AllowanceEntity.cs" />
+    <Compile Include="Models\AttachmentEntity.cs" />
     <Compile Include="Models\BranchEntity.cs" />
     <Compile Include="Models\CompanyInfoEntity.cs" />
     <Compile Include="Models\CountryEntity.cs" />
@@ -184,11 +187,15 @@
     <Compile Include="Models\EmployeeInfoEntity.cs" />
     <Compile Include="Models\EmploymentTypeEntity.cs" />
     <Compile Include="Models\EmpQualificationEntity.cs" />
+    <Compile Include="Models\GurrantorEntity.cs" />
     <Compile Include="Models\LevelEntity.cs" />
+    <Compile Include="Models\MedicalEntity.cs" />
     <Compile Include="Models\MyDbContext.cs" />
     <Compile Include="Models\NextofKinEntity.cs" />
+    <Compile Include="Models\PensionEntity.cs" />
     <Compile Include="Models\PersonalInformationEntity.cs" />
     <Compile Include="Models\PrefixEntity.cs" />
+    <Compile Include="Models\ReferenceEntity.cs" />
     <Compile Include="Models\StartDocumentNoEntity.cs" />
     <Compile Include="Models\StateEntity.cs" />
     <Compile Include="Models\TitleEntity.cs" />
@@ -470,6 +477,7 @@
     <Content Include="Views\Shared\PartialEmployList.cshtml" />
     <Content Include="Views\Shared\_LayoutPayroll.cshtml" />
     <Content Include="Views\Payroll\Index.cshtml" />
+    <Content Include="Views\Payroll\GeneralSetup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

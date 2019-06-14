@@ -87,6 +87,60 @@ namespace Payroll_Application.Controllers
             }
             return Json(Convert.ToString(_imgname), JsonRequestBehavior.AllowGet);
         }
+
+        //Upload Attachment
+        [HttpPost]
+        public ActionResult UploadEmployeeAttachment()
+        {
+            string FileName = "";
+            HttpFileCollectionBase files = Request.Files;
+            for (int i = 0; i < files.Count; i++)
+            {
+                HttpPostedFileBase file = files[i];
+                string fname;
+                if (Request.Browser.Browser.ToUpper()== "IE" || Request.Browser.Browser.ToUpper() == "INTERNETEXPLORER"){
+                    string[] testfiles = file.FileName.Split(new char[] { '\\' });
+                    fname = testfiles[testfiles.Length - 1];
+                }
+                else
+                {
+                    fname = file.FileName;
+                    FileName = file.FileName;
+                }
+                fname = Path.Combine(Server.MapPath("~/Attachment/"), Convert.ToString(fname));
+                file.SaveAs(fname);
+            }
+            return Json(Convert.ToString(FileName), JsonRequestBehavior.AllowGet);
+        }
+        //Saving Attachment fileUrl
+        [HttpPost]
+        public ActionResult SaveUrl(AttachmentEntity attachment)
+        {
+            MyDbContext db = new MyDbContext();
+            var oldAtt = db.Attachments.Where(d => d.RegistrationID == attachment.RegistrationID).FirstOrDefault();
+            bool check = false; string desc = "";
+            try
+            {
+                if (oldAtt != null)
+                {
+                    oldAtt.FileUrl = attachment.FileUrl;
+                }
+                else
+                {
+                    db.Attachments.Add(attachment);
+                }
+                db.Attachments.Add(attachment);
+                db.SaveChanges();
+                check = true;
+            }
+            catch (Exception ex)
+            {
+                check = false;
+                desc = ex.Message;
+            }
+            return new JsonResult { Data = new { status = check, Desc = desc } };
+        }
+
         //save the Staff Prefix
         [HttpPost]
         public JsonResult SavePrefix(string prefix)
@@ -191,6 +245,57 @@ namespace Payroll_Application.Controllers
             try
             {
                 EmployeeClass.SaveNoKin(nextofKin);
+                check = true;
+            }
+            catch (Exception ex)
+            {
+                check = false;
+                desc = ex.Message;
+            }
+            return new JsonResult { Data = new { status = check, Desc = desc } };
+        }
+        //saving guarantor
+        [HttpPost]
+        public ActionResult SaveGuarantorInformation(GurrantorEntity guarantor)
+        {
+            bool check = false; string desc = "";
+            try
+            {
+                EmployeeClass.SaveGuarantor(guarantor);
+                check = true;
+            }
+            catch (Exception ex)
+            {
+                check = false;
+                desc = ex.Message;
+            }
+            return new JsonResult { Data = new { status = check, Desc = desc } };
+        }
+        //Saving MedicalHistory
+        [HttpPost]
+        public ActionResult SaveMedicalHistory(MedicalEntity history)
+        {
+            bool check = false; string desc = "";
+            try
+            {
+                EmployeeClass.SaveMedicalHis(history);
+                check = true;
+            }
+            catch (Exception ex)
+            {
+                check = false;
+                desc = ex.Message;
+            }
+            return new JsonResult { Data = new { status = check, Desc = desc } };
+        }
+        //saving Reference
+        [HttpPost]
+        public ActionResult SaveReferenceInformation(ReferenceEntity reference)
+        {
+            bool check = false; string desc = "";
+            try
+            {
+                EmployeeClass.SaveReference(reference);
                 check = true;
             }
             catch (Exception ex)
@@ -321,6 +426,10 @@ namespace Payroll_Application.Controllers
                          join e in db.EmpEmploymentInfo on p.RegistrationID equals e.RegistrationID
                          join x in db.EmpExperiences on p.RegistrationID equals x.RegistrationID
                          join q in db.EmpQualifications on p.RegistrationID equals q.RegistrationID
+                         join g in db.EmpGurrantor on p.RegistrationID equals g.RegistrationID
+                         join r in db.EmpReference on p.RegistrationID equals r.RegistrationID
+                         join m in db.MedicalHistory on p.RegistrationID equals m.RegistrationID
+                         join a in db.Attachments on p.RegistrationID equals a.RegistrationID
                          join c in db.EmployeeContactInfo on p.RegistrationID equals c.RegistrationID into t from rt in t.DefaultIfEmpty() orderby
                          p.Surname, p.FirstName, p.MiddleName  select new {
                              RegistrationID=p.RegistrationID,
