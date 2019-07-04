@@ -34,5 +34,10 @@ namespace Payroll_Application.Models
         public DbSet<AttachmentEntity> Attachments { get; set; }
         public DbSet<AllowanceEntity> Allowances { get; set; }
         public DbSet<PensionEntity> Pensions { get; set; }
+        public DbSet<LoanEntity> Loans { get; set; }
+        public DbSet<PenaltyEntity> Penalties { get; set; }
+        public DbSet<SalaryEntity> Salaries { get; set; }
+        public DbSet<StaffLoanEntity> StaffLoans { get; set; }
+        public DbSet<DeductionEntity> StaffDeductions { get; set; }
     }
 }

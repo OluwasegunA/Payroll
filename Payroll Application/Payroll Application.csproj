@@ -178,6 +178,7 @@
     <Compile Include="Models\BranchEntity.cs" />
     <Compile Include="Models\CompanyInfoEntity.cs" />
     <Compile Include="Models\CountryEntity.cs" />
+    <Compile Include="Models\DeductionEntity.cs" />
     <Compile Include="Models\DegreeEntity.cs" />
     <Compile Include="Models\DepartmentEntity.cs" />
     <Compile Include="Models\DesignationEntity.cs" />
@@ -189,13 +190,17 @@
     <Compile Include="Models\EmpQualificationEntity.cs" />
     <Compile Include="Models\GurrantorEntity.cs" />
     <Compile Include="Models\LevelEntity.cs" />
+    <Compile Include="Models\LoanEntity.cs" />
     <Compile Include="Models\MedicalEntity.cs" />
     <Compile Include="Models\MyDbContext.cs" />
     <Compile Include="Models\NextofKinEntity.cs" />
+    <Compile Include="Models\PenaltyEntity.cs" />
     <Compile Include="Models\PensionEntity.cs" />
     <Compile Include="Models\PersonalInformationEntity.cs" />
     <Compile Include="Models\PrefixEntity.cs" />
     <Compile Include="Models\ReferenceEntity.cs" />
+    <Compile Include="Models\SalaryEntity.cs" />
+    <Compile Include="Models\StaffLoanEntity.cs" />
     <Compile Include="Models\StartDocumentNoEntity.cs" />
     <Compile Include="Models\StateEntity.cs" />
     <Compile Include="Models\TitleEntity.cs" />
@@ -415,6 +420,11 @@
     <Content Include="Awesome Fonts\scss\_screen-reader.scss" />
     <Content Include="Awesome Fonts\scss\_stacked.scss" />
     <Content Include="Awesome Fonts\scss\_variables.scss" />
+    <Content Include="Attachment\DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING.docx" />
+    <Content Include="Attachment\Nigerian-PAYE-Calculator-4.0-1.xlsx" />
+    <Content Include="Attachment\PAYROLL PRESENTATION.pptx" />
+    <Content Include="Attachment\SWIES II Front pg.docx" />
+    <Content Include="Attachment\Valuation Front Page.docx" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Images\ajax-loader7.gif" />
     <Content Include="Rotativa\help-wkhtmltoimage.txt" />
@@ -478,6 +488,7 @@
     <Content Include="Views\Shared\_LayoutPayroll.cshtml" />
     <Content Include="Views\Payroll\Index.cshtml" />
     <Content Include="Views\Payroll\GeneralSetup.cshtml" />
+    <Content Include="Views\Payroll\StaffSetup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

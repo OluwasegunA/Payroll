@@ -494,7 +494,7 @@
 
                                                         </div>
                                                         <div class="col-md-9 control-space">
-                                                            <button class="btn btn-outline-primary" type="submit" id="AddGua"><i class="fa fa-creative-commons"></i> Add </button>
+                                                            <button class="btn btn-outline-primary" type="submit" id="AddGua"><i class="fa fa-save"></i> Add </button>
                                                         </div>
 
                                                     </div>
@@ -822,7 +822,7 @@
 
                                                     </div>
                                                     <div class="col-md-8 control-space">
-                                                        <button class="btn btn-primary" type="submit" id="addQualifi"><i class="fa fa-save"></i> Save</button>
+                                                        <button class="btn btn-primary" type="submit" id="addQualifi"><i class="fa fa-save"></i> Add</button>
                                                     </div>
 
                                                 </div>
@@ -862,10 +862,9 @@
                                 <img src="~/Images/ajax-loader7.gif" />
                             </span>
                         </div>
-                        </div>
+                    </div>
                 </div>
             </div>
-
             <div class="col-md-2">
 
             </div>
@@ -895,19 +894,29 @@
         $(function (e) {
            
             $("#txtdob").datepicker({
-                dateFormat: "dd/mm/yy"
+                dateFormat: "dd/mm/yyyy",
+                autoclose: true,
+                todayHighlight: true
             });
             $("#txtdJoined").datepicker({
-                dateFormat: "dd/mm/yy"
+                dateFormat: "dd/mm/yyyy",
+                autoclose: true,
+                todayHighlight: true
             });
             $("#txtdLeft").datepicker({
-                dateFormat: "dd/mm/yy"
+                dateFormat: "dd/mm/yyyy",
+                autoclose: true,
+                todayHighlight: true
             });
             $("#txtdateJoined").datepicker({
-                dateFormat: "dd/mm/yy"
+                dateFormat: "dd/mm/yyyy",
+                autoclose: true,
+                todayHighlight: true
             });
             $("#txtdateStarted").datepicker({
-                dateFormat: "dd/mm/yy"
+                dateFormat: "dd/mm/yyyy",
+                autoclose: true,
+                todayHighlight: true
             });
                 
             $("#loading").hide();

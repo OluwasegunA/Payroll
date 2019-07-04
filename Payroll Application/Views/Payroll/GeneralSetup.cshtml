@@ -65,7 +65,7 @@
                             <div class="tab-pane fade show active" id="pills-allowance" role="tabpanel" aria-labelledby="pills-allowance-tab">
                                 <button class="btn btn-primary ml-5" type="submit" id="NewAllowance" style="margin-right: 5px;"><i class="fa fa-file-o"></i> New</button>
 
-                                <button class="btn btn-outline-info" type="submit" id="SaveAllowance"><i class="fa fa-save"></i> Save</button>
+                                @*<button class="btn btn-outline-info" type="submit" id="SaveAllowance"><i class="fa fa-save"></i> Save</button>*@
                                 <br />
                                 <div class="row">
                                     <div class="col-md-5">
@@ -154,12 +154,12 @@
                             <div class="tab-pane fade" id="pills-pension" role="tabpanel" aria-labelledby="pills-pension-tab">
                                 <button class="btn btn-primary ml-5" type="submit" id="NewPension" style="margin-right: 5px;"><i class="fa fa-file-o"></i> New</button>
 
-                                <button class="btn btn-outline-info" type="submit" id="SavePension"><i class="fa fa-save"></i> Save</button>
+                                @*<button class="btn btn-outline-info" type="submit" id="SavePension"><i class="fa fa-save"></i> Save</button>*@
                                 <br />
                                 <div class="row">
+                                    <div class="col-md-5">
                                     @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-inline" }))
                                     {
-                                    <div class="col-md-5">
                                         <div class="row">
                                             <div class="col-md-3 control-space ml-2">
                                                 <label class="label">Code:</label>
@@ -190,19 +190,19 @@
                                                 <button class="btn btn-outline-info" style="margin-bottom:10px;" type="submit" id="SavePension"><i class="fa fa-save"></i> Save </button>
                                             </div>
                                         </div>
-                                    </div>
                                     }
+                                    </div>
                                     <div class="col-md-7">
                                         <div class="card">
                                             <div class="card-header"><strong>Pension Percentage</strong></div>
                                             <div class="card-body" id="">
-                                                <table class="table table-bordered table-hover table-custom-border" id="pensiontable">
+                                                <table class="table table-bordered table-hover table-custom-border" id="">
                                                     <thead>
                                                         <tr>
                                                             <th>S/N</th>
                                                             <th>DESCRIPTION</th>
-                                                            <th>EMPLOYEE</th>
-                                                            <th>EMPLOYER</th>
+                                                            <th>EMPLOYEE %</th>
+                                                            <th>EMPLOYER %</th>
                                                             <th>ACTION</th>
                                                         </tr>
                                                     </thead>
@@ -218,25 +218,24 @@
                             <div class="tab-pane fade" id="pills-loan" role="tabpanel" aria-labelledby="pills-loan-tab">
                                 <button class="btn btn-primary ml-5" type="submit" id="NewLoan" style="margin-right: 5px;"><i class="fa fa-file-o"></i> New</button>
 
-                                <button class="btn btn-outline-info" type="submit" id="SaveLoan"><i class="fa fa-save"></i> Save</button>
+                                @*<button class="btn btn-outline-info" type="submit" id="SaveLoan"><i class="fa fa-save"></i> Save</button>*@
                                 <br />
                                 <div class="row">
+                                    <div class="col-md-5">
                                     @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-inline" }))
                                     {
-                                    <div class="col-md-5">
                                         <div class="row">
                                             <div class="col-md-3 control-space ml-2">
                                                 <label class="label">Code:</label>
                                             </div>
                                             <div class="col-md-7 control-space">
-                                                @Html.TextBox("codeAll", null, new { @class = "form-control control-input-border", id = "txtcodeAll", @readonly = "true" })
-                                                @Html.Hidden("empImg", null, new { @id = "empImg" })
+                                                @Html.TextBox("codeLoan", null, new { @class = "form-control control-input-border", id = "txtcodeLoan", @readonly = "true" })
                                             </div>
                                             <div class="col-md-3 control-space ml-2">
                                                 <label class="label">Description:</label>
                                             </div>
                                             <div class="col-md-7 control-space">
-                                                @Html.TextBox("desAll", null, new { @class = "form-control control-input-border", id = "txtdesAll" })
+                                                @Html.TextBox("desLoan", null, new { @class = "form-control control-input-border", id = "txtdesLoan" })
                                             </div>
                                             <div class="col-md-5 control-space ml-2">
                                                 <label class="label">Min. Length of Repayment:</label>
@@ -249,7 +248,7 @@
                                                new SelectListItem { Text = "7months", Value = "7months" }, new SelectListItem { Text = "8months", Value = "8months" },
                                                new SelectListItem { Text = "9months", Value = "9months" }, new SelectListItem { Text = "10months", Value = "10months" },
                                                new SelectListItem { Text = "11months", Value = "11months" }, new SelectListItem { Text = "12months", Value = "12months" }
-                                           }, "Select Type...", new { @class = "form-control control-input-border", id = "minor" })
+                                           }, "Select...", new { @class = "form-control control-input-border", id = "iteminor" })
                                             </div>
                                             <div class="col-md-5 control-space ml-2">
                                                 <label class="label">Max. Length of Repayment:</label>
@@ -262,20 +261,31 @@
                                                new SelectListItem { Text = "7months", Value = "7months" }, new SelectListItem { Text = "8months", Value = "8months" },
                                                new SelectListItem { Text = "9months", Value = "9months" }, new SelectListItem { Text = "10months", Value = "10months" },
                                                new SelectListItem { Text = "11months", Value = "11months" }, new SelectListItem { Text = "12months", Value = "12months" }
-                                           }, "Select...", new { @class = "form-control control-input-border", id = "maxor" })
+                                           }, "Select...", new { @class = "form-control control-input-border", id = "itemaxor" })
                                             </div>
                                             <div class="col-md-4"></div>
                                             <div class="col-md-8 control-space">
                                                 <button class="btn btn-outline-info" style="margin-bottom:10px;" type="submit" id="SaveLoan"><i class="fa fa-save"></i> Save </button>
                                             </div>
                                         </div>
-                                    </div>
                                     }
+                                    </div>
                                     <div class="col-md-7">
                                         <div class="card">
                                             <div class="card-header"><strong>Loan List with Repayment Period</strong></div>
-                                            <div class="card-body" id="">
-
+                                            <div class="card-body">
+                                                <table class="table table-bordered table-hover table-custom-border">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>S/N</th>
+                                                            <th>DESCRIPTION</th>
+                                                            <th>MIN PAY LENGTH</th>
+                                                            <th>MAX PAY LENGTH</th>
+                                                            <th>ACTION</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="loanBody"></tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
@@ -284,27 +294,26 @@
                             <div class="tab-pane fade" id="pills-penalty" role="tabpanel" aria-labelledby="pills-penalty-tab">
                                 <button class="btn btn-primary ml-5" type="submit" id="NewPenalty" style="margin-right: 5px;"><i class="fa fa-file-o"></i> New</button>
 
-                                <button class="btn btn-outline-info" type="submit" id="SavePenalty"><i class="fa fa-save"></i> Save</button>
+                                @*<button class="btn btn-outline-info" type="submit" id="SavePenalty"><i class="fa fa-save"></i> Save</button>*@
                                 <br />
                                 <div class="row">
+                                    <div class="col-md-5">
                                     @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-inline" }))
                                     {
-                                    <div class="col-md-5">
                                         <div class="row">
                                             <div class="col-md-3 control-space ml-2">
                                                 <label class="label">Code:</label>
                                             </div>
                                             <div class="col-md-7 control-space">
-                                                @Html.TextBox("codePen", null, new { @class = "form-control control-input-border", id = "txtcodePen", @readonly = "true" })
-                                                @Html.Hidden("empImg", null, new { @id = "empImg" })
+                                                @Html.TextBox("codePenal", null, new { @class = "form-control control-input-border", id = "txtcodePenal", @readonly = "true" })
                                             </div>
                                             <div class="col-md-3 control-space ml-2">
                                                 <label class="label">Description:</label>
                                             </div>
                                             <div class="col-md-7 control-space">
-                                                @Html.TextBox("desPen", null, new { @class = "form-control control-input-border", id = "txtdesPen" })
+                                                @Html.TextBox("desPenal", null, new { @class = "form-control control-input-border", id = "txtdesPenal" })
                                             </div>
-                                            <div class="col-md-4 mt-2">
+                                            <div class="col-md-2 mt-2">
 
                                             </div>
                                             <div class="col-md-4 mt-2">
@@ -317,20 +326,31 @@
                                                 <label class="label">Percentage:</label>
                                             </div>
                                             <div class="col-md-7 control-space">
-                                                @Html.TextBox("percentPen", null, new { @class = "form-control control-input-border", id = "txtpercentPen", placeholder = "Enter %" })
+                                                @Html.TextBox("percentPenal", null, new { @class = "form-control control-input-border", id = "txtpercentPenal", placeholder = "Enter %" })
                                             </div>
                                             <div class="col-md-4"></div>
                                             <div class="col-md-8 control-space">
                                                 <button class="btn btn-outline-info" style="margin-bottom:10px;" type="submit" id="SavePenalty"><i class="fa fa-save"></i> Save </button>
                                             </div>
                                         </div>
-                                    </div>
                                     }
+                                    </div>
                                     <div class="col-md-7">
                                         <div class="card">
                                             <div class="card-header"><strong>List of Penalities for Employee</strong></div>
                                             <div class="card-body" id="">
-
+                                                <table class="table table-bordered table-hover table-custom-border">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>S/N</th>
+                                                            <th>DESCRIPTION</th>
+                                                            <th>DEDUCTION TYPE</th>
+                                                            <th>PERCENT</th>
+                                                            <th>ACTION</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="penaltyBody"></tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
