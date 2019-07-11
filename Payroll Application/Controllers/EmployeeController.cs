@@ -227,6 +227,7 @@ namespace Payroll_Application.Controllers
             try
             {
                 EmployeeClass.SaveContact(contact);
+                
                 check = true;
             }
             catch (Exception ex)

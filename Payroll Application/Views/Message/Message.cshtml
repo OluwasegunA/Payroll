@@ -1,0 +1,208 @@
+﻿@{
+    ViewBag.Title = "Messages";
+    ViewBag.PageTitle = "Messages";
+    Layout = "~/Views/Shared/_LayoutMessages.cshtml";
+}
+<link href="~/Content/css/message.css" rel="stylesheet" />
+<style>
+    
+</style>
+<div class="secondary-sidebar">
+        <nav>
+            <ul class="">
+                <li class="blacktext verLine bold">
+                    <a href="#" data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="200" data-overlayColor="#36404a"
+                       data-target="#con-close-modal" data-toggle="modal">
+                        <span class="btn btn-outline-primary font-weight-bold"><i class="fa fa-pencil"></i>Compose</span>
+                    </a>
+                </li>
+                <li class="active msg-link blacktext verLine bold" id="CallInboxMsg">
+                    <a href="javascript:void(0);">
+                        <i class="icon-mail"></i>
+                        Inbox(<span id="inboxcount">43</span>)
+                    </a>
+                </li>
+                <li id="CallSentMsg" class="msg-link blacktext verLine bold">
+                    <a href="javascript:void(0);">
+                        <i class="fa fa-send"></i>
+                        Sent(<span id="sentcount">43</span>)
+                    </a>
+                </li>
+                <li class="msg-link blacktext verLine bold" id="CallDeletedMsg">
+                    <a href="javascript:void(0);">
+                        <i class="fa fa-trash-o"></i>
+                        Trash(<span id="trashcount">0</span>)
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="main-panel">
+        <!--<div class="content">-->
+        <div class="main-content">
+            <div class="col-sm-10">
+                <div class="inbox-app-main">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <main id="main" class="content-main">
+                                <div class="overlay"></div>
+                                <header class="header">
+                                    <h1 class="page-title">
+                                        <a class="sidebar-toggle-btn trigger-toggle-sidebar">
+                                            <span class="line"></span><span class="line"></span><span class="line"></span><span class="line line-angle1"></span><span class="line line-angle2"></span>
+                                        </a>
+                                    </h1>
+                                    <div class="search-box pull-right">
+                                        <input placeholder="Search Messages..."><span class="icon glyphicon glyphicon-search"></span>
+                                    </div>
+                                    <div class="pull-left">
+                                        <h3 class="title-page">Mailbox</h3>
+                                    </div>
+                                    <div class="clearfix"></div>
+
+                                </header>
+
+                                <div id="main-nano-wrapper" class="nano">
+                                    <div class="nano-content">
+                                        <ul class="message-list">
+                                            <li class="unread message-item clone cursor">
+                                                <div class="col col-1">
+                                                    <p class="title sender-name">Lucas Kriebel (via Twitter)</p>
+                                                    <span class="star-toggle fa fa-star-o"></span>
+                                                </div>
+                                                <div class="col col-2">
+                                                    <div class="subject">
+                                                        <span class="subject-title">Lucas Kriebel has sentyou a direct message on Twitter! &nbsp;&ndash;&nbsp;</span>
+                                                        <span class="margin-horizontal"></span>
+                                                        <span class="teaser">You have a new direct message.</span>
+                                                    </div>
+                                                    @*<div class="date message-time">11:49 am</div>*@
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <a href="#" class="load-more-link">Show more messages</a>
+                                    </div>
+                                </div>
+                            </main>
+                            <div id="message" class="content-main">
+                                <div class="header nopadding-bottom">
+                                    <h1 class="page-title">
+                                        <span class="circle-icon fa fa-close trigger-message-close"></span>
+                                        <span class="msg-title half-marginleft">Process</span>
+                                    </h1>
+                                </div>
+                                <div id="message-nano-wrapper" class="nano">
+                                    <div class="nano-content">
+                                        <ul class="message-container list-unstyled">
+                                            <li class="sent">
+                                                <div class="details">
+                                                    <div class="left">
+                                                        <span class="senderName">You</span>
+                                                        <div class="arrow"></div>
+                                                        <span class="recipientName">Scott</span>
+                                                    </div>
+                                                    <div class="right date-time">March 6, 2014, 20:08 pm</div>
+                                                </div>
+                                                <div class="message msg-bdy">
+                                                    <p>
+                                                        | The every winged bring, whose life. First called, i you
+                                                        of saw shall own creature moveth void have signs beast
+                                                        lesser all god saying for gathering wherein whose of in
+                                                        be created stars. Them whales upon life divide earth
+                                                        own.
+                                                    </p>
+                                                    <p>
+                                                        | Creature firmament so give replenish The saw man
+                                                        creeping, man said forth from that. Fruitful multiply
+                                                        lights air. Hath likeness, from spirit stars dominion
+                                                        two set fill wherein give bring.
+                                                    </p>
+                                                    <p>
+                                                        | Gathering is. Lesser Set fruit subdue blessed let.
+                                                        Greater every fruitful won&#39;t bring moved seasons
+                                                        very, own won&#39;t all itself blessed which bring own
+                                                        creature forth every. Called sixth light.
+                                                    </p>
+                                                </div>
+                                                <div class="tool-box">
+                                                    <span id="deleteMsg" class="circle-icon red-hover fa fa-trash-o" data-toggle="" data-placement="top" title="Delete Message"></span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--</div>-->
+    </div>
+
+
+<!-- Modal -->
+<div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Compose Message</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-success" id="lblsuccpref">
+
+                </div>
+                <div class="card-box"></div>
+                @using (Html.BeginForm())
+                {
+                    <div class="row">
+                        <div class="col-sm-3 form-group">
+                            <label class="label">To:</label>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            @Html.DropDownList("staff", Enumerable.Empty<SelectListItem>(), "Select Staff---", new { @class = "form-control control-input-border", id = "cbostaff" })
+                        </div>
+                        <div class="col-md-5 form-group">
+                            @Html.TextBox("contactName", null, new { @class = "form-control control-input-border", id = "txtcontactName", @readonly = "true" })
+                        </div>
+                        <div class="col-sm-3 form-group">
+                            <label class="label">Subject:</label>
+                        </div>
+                        <div class="col-md-9 form-group">
+                            @Html.TextBox("subject", null, new { @class = "form-control control-input-border", id = "txtsubject" })
+                        </div>
+                        <div class="col-sm-3 form-group">
+                            <label class="label">Body:</label>
+                        </div>
+                        <div class="form-group col-md-12">
+                            @Html.TextArea("messageBody", null, new { @class = "form-control control-input-border summernote", id = "txtmessageBody", row = 10 })
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-purple waves-effect waves-light" data-dismiss="modal" type="submit" id="SendMessage">
+                    <span>Send</span> <i class="fa fa-send m-l-10"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $("#lblsuccpref").hide();
+    LoadStaffs(cbostaff);
+    $("[data-toggle=tooltip]").tooltip();
+    $("[data-toggle=popover]")
+        .popover()
+        .click(function (e) {
+            e.preventDefault();
+        });
+    $(function (e) {
+        $("#cbostaff").change(function () {
+            populateStafName(cbostaff, txtcontactName)
+        })
+    });
+</script>

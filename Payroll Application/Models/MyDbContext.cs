@@ -39,5 +39,6 @@ namespace Payroll_Application.Models
         public DbSet<SalaryEntity> Salaries { get; set; }
         public DbSet<StaffLoanEntity> StaffLoans { get; set; }
         public DbSet<DeductionEntity> StaffDeductions { get; set; }
+        public DbSet<MessageEntity> Messages { get; set; }
     }
 }

@@ -342,7 +342,7 @@ $("#SavePenalty").click(function (evt) {
         $("#lblErrorMsg").show("Please Check the fields")
         $("#loading").hide();
     })
-});
+})
 
 function LoadPenalty() {
     $.ajax({
@@ -362,7 +362,7 @@ function LoadPenalty() {
             html = html + "<tr><td>" + no + "</td><td>" + penalty.Description + "</td><td>" + penalty.DeductType + "</td><td>" + penalty.Percentage + "</td><td>" + link + space + link2 + "</td></tr>";
         }
         $("#penaltyBody").html(html);
-    });
+    })
 }
 
 //delete Penalty
@@ -524,8 +524,8 @@ $("#SaveSalary").click(function () {
         $("#lblErrorMsg").html(error.Desc);
         $("#lblErrorMsg").show();
         $("#loading").hide();
-    });
-});
+    })
+})
 
 // formating currency to naira
 function PriceFormat(price) {
@@ -598,18 +598,19 @@ $("#SaveStaffLoan").click(function () {
     var interest = $("#txtinterest").val();
     var staffNameLoan = "";
     var staffSalary = $("#cbostaffSalary").val();
-    Number(staffSalary.replace(/[^0-9\.]+/g, ""));
+    staffSalary.replace(/[^0-9\.]+/g, "");
     var staffLoan = $("#cbostaffLoanType").val();
     var totalLoanAmt = $("#txttotalLoanAmt").val();
     var installment = $("#txtinstallment").val();
     var repaymentAmt = $("#txtrepaymentAmt").val();
     if (staffIdLoan.length === 0 || staffIdLoan === "") {
-        $("#lblErrorMsg").val("Staff ID cannot be blank! Select an ID");
+        $("#lblErrorMsg").html("Staff ID cannot be blank! Select an ID");
         $("#lblErrorMsg").show();
+        $("#cbostaffIdLoan").focus();
         return;
     }
     else if (staffLoanAmt.length === 0) {
-        $("#lblErrorMsg").val("Loan Amount cannot be blank!");
+        $("#lblErrorMsg").html("Loan Amount cannot be blank!");
         $("#lblErrorMsg").show();
         $("#cbostaffLoanAmt").focus();
         return;
@@ -620,14 +621,14 @@ $("#SaveStaffLoan").click(function () {
     else {
         staffNameLoan = $("#cboStaffNameLoan").val();
     }
-    var staffLoan = {
+    var indiviLoan = {
         StaffNo: staffIdLoan, StaffName: staffNameLoan, NetSalary: staffSalary, LoanType: staffLoan, LoanAmount: staffLoanAmt,
         Interest: interest, TotalLoanAmount: totalLoanAmt, Installment: installment, Repayment: repaymentAmt
     }
     $("#loading").show();
     $.ajax({
         url: "/Payroll/SaveStaffLoan",
-        data: staffLoan,
+        data: indiviLoan,
         type: "POST"
     }).success(function (result) {
         if (result.status) {
@@ -676,21 +677,11 @@ function LoadDeductionType(description, deductType) {
 //Saving Penalty Deduction for Staff
 $("#SaveDeduction").click(function () {
     var staffIdDed = $("#cbostaffIdDed").val();
-    var staffDedAmt = $("#cbostaffDedAmt").val();
     var staffNameDed = "";
-    var deductionType = $("#cbodeductionType").val();
     var penaltyType = $("#cbopenaltyType").val();
-    if (staffIdDed.length === 0 || staffIdDed === "") {
-        $("#lblErrorMsg").val("Staff ID cannot be blank! Select an ID");
-        $("#lblErrorMsg").show();
-        return;
-    }
-    else if (staffDedAmt.length === 0) {
-        $("#lblErrorMsg").val("Loan Amount cannot be blank!");
-        $("#lblErrorMsg").show();
-        $("#cbostaffDedAmt").focus();
-        return;
-    }
+    var deductionType = $("#cbodeductionType").val();
+    var staffDedAmt = $("#cbostaffDedAmt").val();
+    
     if ($("#txtstaffNameAddDed").is(":visible")) {
         staffNameDed = $("#txtstaffNameAddDed").val();
     }
@@ -698,8 +689,7 @@ $("#SaveDeduction").click(function () {
         staffNameDed = $("#cboStaffNameDed").val();
     }
     var staffDeduction = {
-        StaffNo: staffIdDed, StaffName: staffNameDed, PenaltyType: penaltyType, Amount: staffDedAmt,
-        DeductionType: deductionType
+        StaffNo: staffIdDed, StaffName: staffNameDed, PenaltyType: penaltyType, DeductionType: deductionType, Amount: staffDedAmt
     }
     $("#loading").show();
     $.ajax({
@@ -716,5 +706,5 @@ $("#SaveDeduction").click(function () {
         $("#lblErrorMsg").html(error.Desc);
         $("#lblErrorMsg").show();
         $("#loading").hide();
-    });
+    })
 })

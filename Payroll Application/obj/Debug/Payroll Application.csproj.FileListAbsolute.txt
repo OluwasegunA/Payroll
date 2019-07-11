@@ -310,6 +310,6 @@ C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Applica
 C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Microsoft.AI.Web.xml
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\obj\Debug\Payroll Application.csprojResolveAssemblyReference.cache
 C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\obj\Debug\Payroll Application.dll
 C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\obj\Debug\Payroll Application.pdb
-C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\obj\Debug\Payroll Application.csprojResolveAssemblyReference.cache

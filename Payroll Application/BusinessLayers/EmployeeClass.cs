@@ -1,14 +1,17 @@
 ﻿using Payroll_Application.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using Payroll_Application.BusinessLayers;
+using System.Configuration;
 
 namespace Payroll_Application.BusinessLayers
 {
     public class EmployeeClass
     {
-       
+        public static string conString = ConfigurationManager.ConnectionStrings["MyDbContext"].ConnectionString;
         //get Prefix
         public static string GetStaffPrefixNo()
         {
@@ -26,7 +29,9 @@ namespace Payroll_Application.BusinessLayers
         public static void SavePersonalInformation(PersonalInformationEntity personal)
         {
             MyDbContext db = new MyDbContext();
+            MyDbContext db2 = new MyDbContext();
             var oldper = db.PersonalInfo.Where(d => d.RegistrationID == personal.RegistrationID).FirstOrDefault();
+            var userInfo = db2.Users.FirstOrDefault();
             if (oldper != null)
             {
                 oldper.DateofBirth = personal.DateofBirth;
@@ -50,6 +55,14 @@ namespace Payroll_Application.BusinessLayers
                 db.PersonalInfo.Add(personal);
                 
             }
+            userInfo.OtherID = personal.StaffNo;
+            userInfo.FullName = personal.Surname + " " + personal.FirstName;
+            userInfo.Password = SecurityClass.Encrypt(personal.Surname);
+            userInfo.UserRole = personal.StaffStatus;
+            userInfo.Username = personal.FirstName;
+            userInfo.ImageUrl = personal.ImageUrl;
+            db2.Users.Add(userInfo);
+            db2.SaveChanges();
             db.SaveChanges();
         }
 
@@ -57,7 +70,9 @@ namespace Payroll_Application.BusinessLayers
         public static void SaveContact(EmpContactInfoEntity contact)
         {
             MyDbContext db = new MyDbContext();
+            MyDbContext db2 = new MyDbContext();
             var oldCont = db.EmployeeContactInfo.Where(d => d.RegistrationID == contact.RegistrationID).FirstOrDefault();
+            //var userInformation = db2.Users.Where(p => p.OtherID == contact.StaffNo).FirstOrDefault();
             if (oldCont != null)
             {
                 oldCont.Address = contact.Address;
@@ -71,15 +86,21 @@ namespace Payroll_Application.BusinessLayers
                 oldCont.WorkPhoneNo = contact.WorkPhoneNo;
                 oldCont.LGA = contact.LGA;
                 oldCont.Landmark = contact.Landmark;
-                
+
             }
             else
             {
                 db.EmployeeContactInfo.Add(contact);
+
             }
+            SqlConnection con = new SqlConnection(conString);
+            con.Open();
+            string sql = "Update tblUser set Email='" + contact.Email + "',PhoneNo='"+contact.MobileNo+"' where OtherID='" + contact.StaffNo + "'";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.ExecuteNonQuery();
+
             db.SaveChanges();
         }
-
         // saving next of kin and guarantor information
         public static void SaveNoKin(NextofKinEntity nextofKin)
         {

@@ -1,6 +1,7 @@
 ﻿using Payroll_Application.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 
@@ -8,6 +9,7 @@ namespace Payroll_Application.BusinessLayers
 {
     public class DataClass
     {
+       
         //get next No of Document
         public static long GetNextDocumentNo(string description, long startNo)
         {

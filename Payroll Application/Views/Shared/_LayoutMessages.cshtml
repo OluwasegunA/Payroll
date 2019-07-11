@@ -9,7 +9,7 @@
     <title>@ViewBag.Title</title>
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
-   
+
     <link rel="stylesheet" href="~/Content/ExternalFiles/css/bootstrap.css">
     @*<link href="~/Content/Bootstrap4 beta/css/bootstrap.css" rel="stylesheet" />*@
     <!-- Google fonts - Roboto -->
@@ -32,7 +32,6 @@
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
-
     @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>*@
     <script src="~/Content/ExternalFiles/js/jquery v1.11.0.min.js"></script>
     @*<script src="~/Scripts/jquery-3.1.1.min.js"></script>*@
@@ -40,8 +39,19 @@
     <!-- Custom stylesheet - for your changes-->
     <link href="~/Content/CustomStyles/AdminPageStyle.css" rel="stylesheet" />
     <link href="~/Content/CustomStyles/PageCss.css" rel="stylesheet" />
+    <link href="~/Content/css/app.css" rel="stylesheet" />
+    <link href="~/Content/css/app.skins.css" rel="stylesheet" />
+    <link href="~/Content/css/summernote.css" rel="stylesheet" />
+        @*<link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/Content/css/components.css" rel="stylesheet" />
+        <link href="~/Content/css/icons.css" rel="stylesheet" />
+        <link href="~/Content/css/menu.css" rel="stylesheet" />
+        <link href="~/Content/css/morris.css" rel="stylesheet" />
+        <link href="~/Content/css/responsive.css" rel="stylesheet" />
+        <link href="~/Content/css/pages.css" rel="stylesheet" />
+        <link href="~/Content/css/shopcss.css" rel="stylesheet" />*@
 </head>
-<body>
+<body class="skin-4">
     <!-- Side Navbar -->
     <nav class="side-navbar">
         <div class="side-navbar-wrapper">
@@ -49,22 +59,22 @@
                 <div class="sidenav-header-inner text-center">
                     @if (Session["CompanyLogo"] != null)
                     {
-                     <img src="@Session["CompanyLogo"]" alt="logo" class="img-fluid rounded-circle">
+                        <img src="@Session["CompanyLogo"]" alt="logo" class="img-fluid rounded-circle">
                     }
-@if (Session["CompanyName"] != null)
-{
-                    <h2 class="h5 text-uppercase">@Session["CompanyName"]</h2>
-}
+                    @if (Session["CompanyName"] != null)
+                    {
+                        <h2 class="h5 text-uppercase">@Session["CompanyName"]</h2>
+                    }
                 </div>
                 <div class="sidenav-header-logo"><a href="/AdminPortal/Index" class="brand-small text-center"> <strong>B</strong><strong class="text-primary">N</strong></a></div>
             </div>
             <div class="main-menu">
                 <ul id="side-main-menu" class="side-menu list-unstyled">
                     <li class="active"><a href="/AdminPortal/Index"> <i class="icon-home"></i><span>Home</span></a></li>
-                    <li class="active"><a href="/Message/Message"> <i class="icon-mail"></i><span>Messages</span></a></li>
+                    @*<li class="active"><a href="/Message/Message"> <i class="icon-mail"></i><span>Messages</span></a></li>*@
                 </ul>
             </div>
-           
+
         </div>
     </nav>
     <div class="page home-page">
@@ -147,19 +157,20 @@
                                     <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong> <i class="fa fa-envelope"></i>Read all messages    </strong></a></li>
                                 </ul>
                             </li>
-                            
+
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="text-transform:capitalize;">
                                     <i class="fa fa-user fa-fw"></i> @Session["Username"] <b class="caret"></b>
+                                    <input type="hidden" id="UserID" name="" value="@Session["ID"]"/>
                                 </a>
                                 <ul class="dropdown-menu dropdown-user">
                                     @if (Session["UserImg"] != null)
                                     {
-                                    <li class="pull-right">
-                                        <div>
-                                            <img src='~/UserImages/@Session["UserImg"]' class="img-circle" alt="User Picture" width="80" height="70" />
-                                        </div>
-                                    </li>
+                                        <li class="pull-right">
+                                            <div>
+                                                <img src='~/UserImages/@Session["UserImg"]' class="img-circle" alt="User Picture" width="80" height="70" />
+                                            </div>
+                                        </li>
                                     }
                                     <li>
                                         <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
@@ -178,10 +189,10 @@
                 </div>
             </nav>
         </header>
-          <div class="col-md-12" style="margin-top:20px;">
-             
-              @RenderBody()
-          </div>
+        <div class="col-md-12" style="margin-top:20px;">
+
+            @RenderBody()
+        </div>
         <footer class="main-footer">
             <div class="container-fluid">
                 <div class="row">
@@ -189,16 +200,16 @@
                         <p>@Session["CompanyName"] &copy; @DateTime.Now.Year</p>
                     </div>
                     <div class="col-sm-6 text-right">
-                        <p>Design by <a href="http://iclassitsolutions.com.ng" class="external">POS Shop Ltd.</a></p>
+                        <p>Design by <a href="http://posshop-ng.com" class="external">POS Shop Ltd.</a></p>
                         <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
                     </div>
                 </div>
             </div>
         </footer>
     </div>
-    
+
     <!-- Javascript files-->
-    
+
     <script src="~/Content/ExternalFiles/js/tether.min.js"></script>
     <script src="~/Content/ExternalFiles/js/bootstrap.min.js"></script>
     <script src="~/Content/ExternalFiles/js/jquery.cookie.js"> </script>
@@ -209,6 +220,17 @@
     @*<script src="~/Content/ExternalFiles/js/charts-home.js"></script>*@
     <script src="~/Content/ExternalFiles/js/front.js"></script>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID.-->
+    <script src="~/Content/js/detect.js"></script>
+    <script src="~/Content/js/fastclick.js"></script>
+    <script src="~/Content/js/jquery.app.js"></script>
+    <script src="~/Content/js/jquery.blockUI.js"></script>
+    <script src="~/Content/js/jquery.core.js"></script>
+    <script src="~/Content/js/jquery.knob.js"></script>
+    <script src="~/Content/js/jquery.nicescroll.js"></script>
+    <script src="~/Content/js/modernizr.min.js"></script>
+    <script src="~/Content/js/morris.js"></script>
+    <script src="~/Content/js/waves.js"></script>
+    <script src="~/Content/js/summernote.js"></script>
     <!---->
     <script>
         //(function (b, o, i, l, e, r) {
@@ -219,7 +241,7 @@
         //    r.parentNode.insertBefore(e, r)
         //}(window, document, 'script', 'ga'));
         //ga('create', 'UA-XXXXX-X'); ga('send', 'pageview');
-
+        var resizefunc = [];
         function LogOut() {
             bootbox.confirm({
                 title: "Log Out",
@@ -244,7 +266,7 @@
             })
         }
     </script>
-       
-   
+
+
 </body>
 </html>

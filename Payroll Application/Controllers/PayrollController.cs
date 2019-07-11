@@ -373,12 +373,12 @@ namespace Payroll_Application.Controllers
 
         //Saving Staff Loan
         [HttpPost]
-        public ActionResult SaveStaffLoan(StaffLoanEntity staffloan)
+        public ActionResult SaveStaffLoan(StaffLoanEntity indiviLoan)
         {
             bool check = false; string desc = "";
             try
             {
-                PayrollClass.SaveStaffLoan(staffloan);
+                PayrollClass.SaveStaffLoan(indiviLoan);
                 check = true;
                 desc = "Staff Loan successfully saved!";
             }

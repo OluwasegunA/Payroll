@@ -107,19 +107,19 @@ namespace Payroll_Application.BusinessLayers
         }
 
         //Save Staff loan
-        public static void SaveStaffLoan(StaffLoanEntity staffloan)
+        public static void SaveStaffLoan(StaffLoanEntity indiviLoan)
         {
             MyDbContext db = new MyDbContext();
             StaffLoanEntity oldSL = new StaffLoanEntity();
-            oldSL.StaffNo = staffloan.StaffNo;
-            oldSL.StaffName = staffloan.StaffName;
-            oldSL.NetSalary = staffloan.NetSalary;
-            oldSL.LoanType = staffloan.LoanType;
-            oldSL.LoanAmount = staffloan.LoanAmount;
-            oldSL.Interest = staffloan.Interest;
-            oldSL.TotalLoanAmount = staffloan.TotalLoanAmount;
-            oldSL.Installment = staffloan.Installment;
-            oldSL.Repayment = staffloan.Repayment;
+            oldSL.StaffNo = indiviLoan.StaffNo;
+            oldSL.StaffName = indiviLoan.StaffName;
+            oldSL.NetSalary = indiviLoan.NetSalary;
+            oldSL.LoanType = indiviLoan.LoanType;
+            oldSL.LoanAmount = indiviLoan.LoanAmount;
+            oldSL.Interest = indiviLoan.Interest;
+            oldSL.TotalLoanAmount = indiviLoan.TotalLoanAmount;
+            oldSL.Installment = indiviLoan.Installment;
+            oldSL.Repayment = indiviLoan.Repayment;
             db.StaffLoans.Add(oldSL);
             db.SaveChanges();
         }

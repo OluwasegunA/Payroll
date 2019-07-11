@@ -1,0 +1,160 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 26-Oct-2017, 07:59:47
+    Author     : Stephen
+*/
+.content-main{
+    top: 0 !important;
+}
+.user-profile-card{
+    display: inline-block;
+    vertical-align: top;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 1em;
+    margin-right: 1em;
+}
+.small-user-image img{
+    width: 70px !important;
+    height: 70px !important;
+}
+.tiny-user-image img{
+    width: 30px !important;
+    height: 30px !important;
+}
+.user-profile-details{
+    display: inline-block;
+    vertical-align: middle;
+    width: 200px;
+}
+
+/*  [ 16 ] - Website Loading
+============================== */
+#website-loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 9999999999;
+    text-align: center;
+    display: none; }
+#website-loading .loader {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    margin-top: -56px; }
+
+#loading-progress {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center; }
+#loading-progress::before, #loading-progress::after {
+    transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0.8s; }
+#loading-progress::before, #loading-progress::after {
+    content: "";
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; }
+#loading-progress::before {
+    background: #ffc527; }
+#loading-progress::after {
+    background: #fff; }
+#loading-progress.hide-it {
+    visibility: hidden;
+    transition-delay: 1.5s; }
+#loading-progress.hide-it::before, #loading-progress.hide-it::after {
+    transform: translateY(-100%); }
+#loading-progress.hide-it::before {
+    transition-delay: 1.1s; }
+#loading-progress .logo {
+    position: absolute;
+    top: 150px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    transition: all 0.4s 0.3s; }
+#loading-progress .lp-content {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    z-index: 1;
+    transform: translateY(-50%);
+    transition: all 0.4s; }
+#loading-progress .lp-counter {
+    margin-bottom: 9px;
+    font-size: 14px;
+    font-weight: 300;
+    font-family: "Poppins", "Droid Arabic Kufi", sans-serif;
+    color: #999; }
+#loading-progress .lp-counter #lp-counter {
+    display: inline-block;
+    width: 33px;
+    font-weight: 600;
+    text-align: left;
+    color: #000; }
+#loading-progress .lp-bar {
+    position: relative;
+    margin: auto;
+    width: 150px;
+    background: #eee; }
+#loading-progress .lp-bar #lp-bar {
+    height: 2px;
+    background: #ffc527;
+    width: 0; }
+.textcontrol{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 10px;
+    max-width: 15px;
+}
+
+/* -----------------  Login Page CSS ---------------*/
+
+.login_body
+{
+    margin: 0;
+    padding: 0;
+    height: 100% !important;
+    font-family: 'Montserrat', sans-serif;
+    background-image: url(../images/loginBground.png);
+    background-size: cover;
+}
+.main_logo
+{
+    width: 96%;
+    padding: 1% 2%;
+    text-align: center;
+}
+.logo_container
+{
+    width: 100%;
+}
+.wmlogo
+{
+    display: inline-block;
+    width: 20%;
+    background-image: url(../images/small-logo.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.logo_title
+{
+    color: white;
+    font-weight: bold;
+}
+
