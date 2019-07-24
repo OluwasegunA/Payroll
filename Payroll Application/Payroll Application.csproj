@@ -171,6 +171,7 @@
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\PayrollController.cs" />
     <Compile Include="Controllers\SetupController.cs" />
+    <Compile Include="Controllers\StaffPortalController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -228,15 +229,18 @@
     <Content Include="Content\Bootstrap4 beta\js\bootstrap.js" />
     <Content Include="Content\Bootstrap4 beta\js\bootstrap.min.js" />
     <Content Include="Content\css\app.css" />
+    <Content Include="Content\css\app.skins.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\components.css" />
     <Content Include="Content\css\core.css" />
     <Content Include="Content\css\icons.css" />
     <Content Include="Content\css\menu.css" />
+    <Content Include="Content\css\message.css" />
     <Content Include="Content\css\morris.css" />
     <Content Include="Content\css\pages.css" />
     <Content Include="Content\css\responsive.css" />
     <Content Include="Content\css\shopcss.css" />
+    <Content Include="Content\css\summernote.css" />
     <Content Include="Content\CustomStyles\AdminPageStyle.css" />
     <Content Include="Content\CustomStyles\LoginStyle.css" />
     <Content Include="Content\CustomStyles\PageCss.css" />
@@ -514,6 +518,11 @@
     <Content Include="Views\Payroll\StaffSetup.cshtml" />
     <Content Include="Views\Shared\_LayoutMessages.cshtml" />
     <Content Include="Views\Message\Message.cshtml" />
+    <Content Include="Views\Shared\_LayoutStaffPortal.cshtml" />
+    <Content Include="Views\StaffPortal\Index.cshtml" />
+    <Content Include="Views\StaffPortal\LeaveApplication.cshtml" />
+    <Content Include="Views\StaffPortal\LoanApplication.cshtml" />
+    <Content Include="Views\StaffPortal\Training.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

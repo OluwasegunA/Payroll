@@ -48,18 +48,17 @@ namespace Payroll_Application.BusinessLayers
                 oldper.State = personal.State;
                 oldper.Surname = personal.State;
                 oldper.TitleCode = personal.TitleCode;
-               
             }
             else
             {
                 db.PersonalInfo.Add(personal);
-                
             }
             userInfo.OtherID = personal.StaffNo;
             userInfo.FullName = personal.Surname + " " + personal.FirstName;
             userInfo.Password = SecurityClass.Encrypt(personal.Surname);
             userInfo.UserRole = personal.StaffStatus;
             userInfo.Username = personal.FirstName;
+            userInfo.UserID = personal.ID;
             userInfo.ImageUrl = personal.ImageUrl;
             db2.Users.Add(userInfo);
             db2.SaveChanges();

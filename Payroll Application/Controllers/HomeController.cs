@@ -66,5 +66,6 @@ namespace Payroll_Application.Controllers
             Response.AddHeader("Pragma", "no-cache");
             return View("Index");
         }
+
     }
 }

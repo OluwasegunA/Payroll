@@ -379,8 +379,8 @@
 #main .message-list li {
   position: relative;
   display: block;
-  height: 50px;
-  line-height: 50px;
+  height: 40px;
+  line-height: 40px;
   cursor: default;
   transition-duration: .3s;
 }
@@ -415,7 +415,7 @@
   margin-right: 0px;
 }
 #main .message-list li .col-1 .star-toggle {
-  margin-top: -30px;
+  margin-top: -33px !important;
   font-size: 16px;
   margin-left: 5px;
 }
@@ -434,6 +434,7 @@
   left: 400px;
   right: 0;
   bottom: 0;
+  display: block;
 }
 #main .message-list li .col-2 .subject,
 #main .message-list li .col-2 .date {
@@ -451,6 +452,7 @@
   right: 0;
   width: 200px;
   padding-left: 0;
+  display: block;
 }
 #main .message-list li.active,
 #main .message-list li.selected {
@@ -674,3 +676,7 @@
         .checkbox-wrapper-mail label:active {
             background: #87949b;
         }
+.right{
+    float: right;
+    display: inline-block;
+}

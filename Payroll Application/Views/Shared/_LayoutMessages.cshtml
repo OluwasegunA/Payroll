@@ -70,7 +70,14 @@
             </div>
             <div class="main-menu">
                 <ul id="side-main-menu" class="side-menu list-unstyled">
-                    <li class="active"><a href="/AdminPortal/Index"> <i class="icon-home"></i><span>Home</span></a></li>
+                    @if (Session["UserRole"] != "Admin")
+                    {
+                        <li class="active"><a href="/StaffPortal/Index"> <i class="icon-home"></i><span>Home</span></a></li>
+                    }
+                    @if (Session["UserRole"] != "REGULAR")
+                    {
+                        <li class="active"><a href="/AdminPortal/Index"> <i class="icon-home"></i><span>Home</span></a></li>
+                    }
                     @*<li class="active"><a href="/Message/Message"> <i class="icon-mail"></i><span>Messages</span></a></li>*@
                 </ul>
             </div>
@@ -161,7 +168,7 @@
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="text-transform:capitalize;">
                                     <i class="fa fa-user fa-fw"></i> @Session["Username"] <b class="caret"></b>
-                                    <input type="hidden" id="UserID" name="" value="@Session["ID"]"/>
+                                    <input type="hidden" id="UserID" name="" value="@Session["OtherID"]"/>
                                 </a>
                                 <ul class="dropdown-menu dropdown-user">
                                     @if (Session["UserImg"] != null)
@@ -207,9 +214,9 @@
             </div>
         </footer>
     </div>
-
+    <script src="~/Content/OperationJS/MessageJS.js"></script>
     <!-- Javascript files-->
-
+    <script src="~/Content/OperationJS/EmployeeJS.js"></script>
     <script src="~/Content/ExternalFiles/js/tether.min.js"></script>
     <script src="~/Content/ExternalFiles/js/bootstrap.min.js"></script>
     <script src="~/Content/ExternalFiles/js/jquery.cookie.js"> </script>

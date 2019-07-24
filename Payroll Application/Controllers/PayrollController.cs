@@ -32,9 +32,19 @@ namespace Payroll_Application.Controllers
                 }
                 return View();
             }
-            //=================================NEW ALLOWANCE===================================================
-            //Get Allowance Code
-            [HttpGet]
+
+        // GET: StaffSetup
+        public ActionResult StaffSetup()
+        {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+        //=================================NEW ALLOWANCE===================================================
+        //Get Allowance Code
+        [HttpGet]
             public ActionResult GetAllowanceCode()
             {
                 try
@@ -304,15 +314,7 @@ namespace Payroll_Application.Controllers
         }
         //==============================================================================================
 
-        // GET: Setup
-        public ActionResult StaffSetup()
-        {
-            if (Session["UserID"] == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            return View();
-        }
+        
         //Loading Staff
         [HttpGet]
         public ActionResult LoadAllStaff()
@@ -360,7 +362,7 @@ namespace Payroll_Application.Controllers
                 desc = ex.Message;
                 check = false;
             }
-            return new JsonResult { Data = new { Status = check, Desc = desc } };
+            return new JsonResult { Data = new { status = check, Desc = desc } };
         }
 
         //Loading Net Salary for Staff
@@ -387,7 +389,7 @@ namespace Payroll_Application.Controllers
                 desc = ex.Message;
                 check = false;
             }
-            return new JsonResult { Data = new { Status = check, Desc = desc } };
+            return new JsonResult { Data = new { status = check, Desc = desc } };
         }
 
         //Loading Net Salary for Staff
@@ -414,7 +416,31 @@ namespace Payroll_Application.Controllers
                 desc = ex.Message;
                 check = false;
             }
-            return new JsonResult { Data = new { Status = check, Desc = desc } };
+            return new JsonResult { Data = new { status = check, Desc = desc } };
+        }
+
+        //load from Salary table with ID
+        [HttpGet]
+        public ActionResult LoadALL(string sID)
+        {
+            var data = db.Salaries.Where(d => d.StaffNo == sID).ToList();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+        //load from StaffLoan table with ID
+        [HttpGet]
+        public ActionResult PStaffLoan(string sID)
+        {
+            var data = db.StaffLoans.Where(d => d.StaffNo == sID).ToList();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+        //load from StaffPenalty table with ID
+        [HttpGet]
+        public ActionResult PStaffDeduction(string sID)
+        {
+            var data = db.StaffDeductions.Where(d => d.StaffNo == sID).ToList();
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
     }
 }

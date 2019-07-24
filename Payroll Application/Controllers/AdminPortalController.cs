@@ -31,5 +31,12 @@ namespace Payroll_Application.Controllers
             }
            
         }
+
+        [HttpGet]
+        public ActionResult GetEmpCount()
+        {
+            var EmpCount = db.PersonalInfo.Count();
+            return Json(EmpCount, JsonRequestBehavior.AllowGet);
+        }
     }
 }

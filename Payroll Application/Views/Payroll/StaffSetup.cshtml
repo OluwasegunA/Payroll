@@ -54,6 +54,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" id="pills-penalty-tab" data-toggle="pill" href="#pills-penalty" role="tab" aria-controls="pills-penalty" aria-expanded="true">Penalty Deduction</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-paye-tab" data-toggle="pill" href="#pills-paye" role="tab" aria-controls="pills-paye" aria-expanded="true">PAY E</a>
+                            </li>
                         </ul>
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-salary" role="tabpanel" aria-labelledby="pills-salary-tab">
@@ -78,74 +81,108 @@
                                                     @Html.TextBox("staffName", null, new { @class = "form-control control-input-border hide-txt", placeholder = "Type Name here", id = "txtstaffNameAdd" })
                                                 </div>
                                                 <div class="col-md-3 control-space ml-2">
-                                                    <label class="label">Allowance Type1:</label>
+                                                    <label class="label">Basic Allowance:</label>
                                                 </div>
-                                                <div class="col-md-3 control-space">
+                                                <div class="col-md-2 control-space">
                                                     @Html.DropDownList("allowanceDes1", Enumerable.Empty<SelectListItem>(), "----Select----", new { @class = "form-control control-input-border", id = "cboallowanceDes1" })
                                                 </div>
                                                 <div class="col-md-2 control-space">
                                                     @Html.TextBox("allowanceType1", null, new { @class = "form-control control-input-border", id = "cboallowanceType1", @readonly= "true", placeholder = "Allowance Type"})
                                                 </div>
-                                                <div class="col-md-2 control-space">
+                                                <div class="col-md-1 control-space">
                                                     @Html.TextBox("allPercent1", null, new{@class = "form-control control-input-border", id = "txtallPercent1", @readonly = "true", placeholder = "%"})
                                                 </div>
-                                                <div class="col-md-3 control-space ml-2">
-                                                    <label class="label">Allowance Type2:</label>
+                                                <div class="col-md-2 control-space">
+                                                    @Html.TextBox("allAmount1", null, new { @class = "form-control control-input-border", id = "txtallAmount1", @readonly = "true"})
                                                 </div>
-                                                <div class="col-md-3 control-space">
+                                                <div class="col-md-3 control-space ml-2">
+                                                    <label class="label">Housing Allowance:</label>
+                                                </div>
+                                                <div class="col-md-2 control-space">
                                                     @Html.DropDownList("allowanceDes2", Enumerable.Empty<SelectListItem>(), "----Select----", new { @class = "form-control control-input-border", id = "cboallowanceDes2" })
                                                 </div>
                                                 <div class="col-md-2 control-space">
                                                     @Html.TextBox("allowanceType2", null, new { @class = "form-control control-input-border", id = "cboallowanceType2",  @readonly= "true", placeholder = "Allowance Type"})
                                                 </div>
-                                                <div class="col-md-2 control-space">
+                                                <div class="col-md-1 control-space">
                                                     @Html.TextBox("allPercent2", null, new{@class = "form-control control-input-border", id = "txtallPercent2", @readonly = "true", placeholder = "%"})
                                                 </div>
-                                                <div class="col-md-3 control-space ml-2">
-                                                    <label class="label">Allowance Type3:</label>
+                                                <div class="col-md-2 control-space">
+                                                    @Html.TextBox("allAmount2", null, new{@class = "form-control control-input-border", id = "txtallAmount2", @readonly = "true"})
                                                 </div>
-                                                <div class="col-md-3 control-space">
+                                                <div class="col-md-3 control-space ml-2">
+                                                    <label class="label">Transport Allowance:</label>
+                                                </div>
+                                                <div class="col-md-2 control-space">
                                                     @Html.DropDownList("allowanceDes3", Enumerable.Empty<SelectListItem>(), "----Select----", new { @class = "form-control control-input-border", id = "cboallowanceDes3" })
                                                 </div>
                                                 <div class="col-md-2 control-space">
                                                     @Html.TextBox("allowanceType3", null, new { @class = "form-control control-input-border", id = "cboallowanceType3",  @readonly= "true", placeholder = "Allowance Type"})
                                                 </div>
-                                                <div class="col-md-2 control-space">
+                                                <div class="col-md-1 control-space">
                                                     @Html.TextBox("allPercent3", null, new{@class = "form-control control-input-border", id = "txtallPercent3", @readonly = "true", placeholder = "%"})
                                                 </div>
-                                                <div class="col-md-3 control-space ml-2">
-                                                    <label class="label">Allowance Type4:</label>
+                                                <div class="col-md-2 control-space">
+                                                    @Html.TextBox("allAmount3", null, new { @class = "form-control control-input-border", id = "txtallAmount3", @readonly = "true"})
                                                 </div>
-                                                <div class="col-md-3 control-space">
+                                                <div class="col-md-3 control-space ml-2">
+                                                    <label class="label">Utility Allowance:</label>
+                                                </div>
+                                                <div class="col-md-2 control-space">
                                                     @Html.DropDownList("allowanceDes4", Enumerable.Empty<SelectListItem>(), "----Select----", new { @class = "form-control control-input-border", id = "cboallowanceDes4" })
                                                 </div>
                                                 <div class="col-md-2 control-space">
                                                     @Html.TextBox("allowanceType4", null, new { @class = "form-control control-input-border", id = "cboallowanceType4",  @readonly= "true", placeholder = "Allowance Type"})
                                                 </div>
-                                                <div class="col-md-2 control-space">
+                                                <div class="col-md-1 control-space">
                                                     @Html.TextBox("allPercent4", null, new{@class = "form-control control-input-border", id = "txtallPercent4", @readonly = "true", placeholder = "%"})
                                                 </div>
-                                                <div class="col-md-3 control-space ml-2">
-                                                    <label class="label">Allowance Type5:</label>
+                                                <div class="col-md-2 control-space">
+                                                    @Html.TextBox("allAmount4", null, new { @class = "form-control control-input-border", id = "txtallAmount4", @readonly = "true"})
                                                 </div>
-                                                <div class="col-md-3 control-space">
+                                                <div class="col-md-3 control-space ml-2">
+                                                    <label class="label">Lunch Allowance:</label>
+                                                </div>
+                                                <div class="col-md-2 control-space">
                                                     @Html.DropDownList("allowanceDes5", Enumerable.Empty<SelectListItem>(), "----Select----", new { @class = "form-control control-input-border", id = "cboallowanceDes5" })
                                                 </div>
                                                 <div class="col-md-2 control-space">
                                                     @Html.TextBox("allowanceType5", null, new { @class = "form-control control-input-border", id = "cboallowanceType5",  @readonly= "true", placeholder = "Allowance Type"})
                                                 </div>
-                                                <div class="col-md-2 control-space">
+                                                <div class="col-md-1 control-space">
                                                     @Html.TextBox("allPercent5", null, new{@class = "form-control control-input-border", id = "txtallPercent5", @readonly = "true", placeholder = "%"})
                                                 </div>
+                                                <div class="col-md-2 control-space">
+                                                    @Html.TextBox("allAmount5", null, new { @class = "form-control control-input-border", id = "txtallAmount5", @readonly = "true"})
+                                                </div>
                                                 <div class="col-md-3 control-space ml-2">
-                                                    <label class="label">Amount:</label>
+                                                    <label class="label">Other Allowance:</label>
+                                                </div>
+                                                <div class="col-md-2 control-space">
+                                                    @Html.DropDownList("allowanceDes6", Enumerable.Empty<SelectListItem>(), "----Select----", new { @class = "form-control control-input-border", id = "cboallowanceDes6" })
+                                                </div>
+                                                <div class="col-md-2 control-space">
+                                                    @Html.TextBox("allowanceType6", null, new { @class = "form-control control-input-border", id = "cboallowanceType6", @readonly = "true", placeholder = "Allowance Type" })
+                                                </div>
+                                                <div class="col-md-1 control-space">
+                                                    @Html.TextBox("allPercent6", null, new { @class = "form-control control-input-border", id = "txtallPercent6", @readonly = "true", placeholder = "%" })
+                                                </div>
+                                                <div class="col-md-2 control-space">
+                                                    @Html.TextBox("allAmount6", null, new { @class = "form-control control-input-border", id = "txtallAmount6", @readonly = "true" })
+                                                </div>
+                                                <div class="col-md-3 control-space ml-2">
+                                                    <label class="label">Gross Salary:</label>
                                                 </div>
                                                 <div class="col-md-7 control-space">
                                                     @Html.TextBox("amount", null, new { @class = "form-control control-input-border", id = "txtamount"})
                                                 </div>
                                                 <div class="col-md-3"></div>
-                                                <div class="col-md-8 control-space">
-                                                    <button class="btn btn-outline-info" style="margin-bottom:10px;" type="submit" id="SaveSalary"><i class="fa fa-save"></i> Save </button>
+                                                <div class="col-md-3 control-space">
+                                                    <button class="btn btn-dark" type="button" style="margin-bottom:10px;" id="calAllowance"><i class="fa fa-calculator"></i> Calculate Allowance </button>
+                                                </div>
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-3 control-space">
+                                                    <button class="btn btn-outline-info" style="margin-bottom:10px;" type="button" id="SaveSalary"><i class="fa fa-save"></i> Save </button>
                                                 </div>
                                             </div>
                                         }
@@ -224,7 +261,7 @@
                                             </div>
                                             <div class="col-md-3 ml-2 control-space"></div>
                                             <div class="col-md-7 control-space">
-                                                <button class="btn btn-outline-info" style="margin-bottom:10px;" type="submit" id="SaveStaffLoan"><i class="fa fa-save"></i> Save </button>
+                                                <button class="btn btn-outline-info" style="margin-bottom:10px;" type="button" id="SaveStaffLoan"><i class="fa fa-save"></i> Save </button>
                                             </div>
                                         </div>
                                         }
@@ -272,8 +309,112 @@
                                                 </div>
                                                 <div class="col-md-4"></div>
                                                 <div class="col-md-8 control-space">
-                                                    <button class="btn btn-outline-info" style="margin-bottom:10px;" type="submit" id="SaveDeduction"><i class="fa fa-save"></i> Save </button>
+                                                    <button class="btn btn-outline-info" style="margin-bottom:10px;" type="button" id="SaveDeduction"><i class="fa fa-save"></i> Save </button>
                                                 </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="pills-paye" role="tabpanel" aria-labelledby="pills-paye-tab">
+                                @*<button class="btn btn-primary ml-5" type="submit" id="NewLoan" style="margin-right: 5px;"><i class="fa fa-file-o"></i> New</button>*@
+
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-inline" }))
+                                        {
+                                            <div class="col-md-8">
+                                                <div class="row">
+                                                    <div class="col-md-3 control-space ml-2">
+                                                        <label class="label">Staff ID:</label>
+                                                    </div>
+                                                    <div class="col-md-7 control-space">
+                                                        @Html.DropDownList("staffIdPay", Enumerable.Empty<SelectListItem>(), "----Select----", new { @class = "form-control control-input-border", id = "cbostaffIdPay" })
+                                                    </div>
+                                                    <div class="col-md-3 control-space ml-2">
+                                                        <label class="label">Staff Name:</label>
+                                                    </div>
+                                                    <div class="col-md-7 control-space">
+                                                        @Html.TextBox("staffNamePay", null, new { @class = "form-control control-input-border", id = "cboStaffNamePay", @readonly = "true" })
+                                                        @Html.TextBox("staffNamePay", null, new { @class = "form-control control-input-border hide-txt", placeholder = "Type Name here", id = "txtstaffNamePay" })
+                                                    </div>
+                                                    <div class="col-md-3 control-space ml-2">
+                                                        <label class="label">Pay Period:</label>
+                                                    </div>
+                                                    <div class="col-md-7 control-space">
+                                                        @Html.DropDownList("payPeriod", new List<SelectListItem> {new SelectListItem {Text="Monthly",Value="Monthly" },
+                                                    new SelectListItem { Text = "Annually", Value = "Annually" }},
+                                                    "----Select----", new { @class = "form-control control-input-border", id = "cbopayPeriod" })
+                                                    </div>
+                                                    <div class="col-md-3 control-space">
+                                                        <label class="label">Gross Income:</label>
+                                                    </div>
+                                                    <div class="col-md-9 control-space">
+                                                        @Html.TextBox("income", null, new { @class = "form-control control-input-border", id = "txtIncome" })
+                                                    </div>
+                                                    <div class="col-md-3 control-space">
+                                                        <label class="label">Basic Salary:</label>
+                                                    </div>
+                                                    <div class="col-md-9 control-space">
+                                                        @Html.TextBox("basic", null, new { @class = "form-control control-input-border", id = "txtbasic" })
+                                                    </div>
+                                                    <div class="col-md-3 control-space">
+                                                        <label class="label">Housing Allowance:</label>
+                                                    </div>
+                                                    <div class="col-md-9 control-space">
+                                                        @Html.TextBox("housing", null, new { @class = "form-control control-input-border", id = "txthousing" })
+                                                    </div>
+                                                    <div class="col-md-3 control-space">
+                                                        <label class="label">Utility Allowance:</label>
+                                                    </div>
+                                                    <div class="col-md-9 control-space">
+                                                        @Html.TextBox("Utility", null, new { @class = "form-control control-input-border", id = "txtUtility" })
+                                                    </div>
+                                                    <div class="col-md-3 control-space">
+                                                        <label class="label">Lunch Allowance:</label>
+                                                    </div>
+                                                    <div class="col-md-9 control-space">
+                                                        @Html.TextBox("Lunch", null, new { @class = "form-control control-input-border", id = "txtLunch" })
+                                                    </div>
+                                                    <div class="col-md-3 control-space">
+                                                        <label class="label">Transport Allowance:</label>
+                                                    </div>
+                                                    <div class="col-md-9 control-space">
+                                                        @Html.TextBox("transport", null, new { @class = "form-control control-input-border", id = "txtTransport" })
+                                                    </div>
+                                                    <div class="col-md-3 control-space">
+                                                        <label class="label">Others:</label>
+                                                    </div>
+                                                    <div class="col-md-9 control-space">
+                                                        @Html.TextBox("others", null, new { @class = "form-control control-input-border", id = "txtOthers" })
+                                                    </div>
+                                                    <div class="col-md-3"></div>
+                                                    <div class="col-md-3 control-space">
+                                                        <button class="btn btn-danger" type="button" style="margin-bottom:10px;" id="calculPAYE"><i class="fa fa-calculator"></i> Calculate PAYE </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="row">
+                                                    <div class="card">
+                                                        <div class="card-header"> Deductions </div>
+                                                        <div class="card-body">
+                                                            <div class="col-md-3 control-space">
+                                                                <label class="label">Loan Deduction:</label>
+                                                            </div>
+                                                            <div class="col-md-9 control-space">
+                                                                @Html.TextBox("loanDeduct", null, new { @class = "form-control control-input-border", id = "txtloanDeduct", @readonly = "true" })
+                                                            </div>
+                                                            <div class="col-md-3 control-space">
+                                                                <label class="label">Penalty Deduction:</label>
+                                                            </div>
+                                                            <div class="col-md-9 control-space">
+                                                                @Html.TextBox("penaDeduct", null, new { @class = "form-control control-input-border", id = "txtpenaDeduct", @readonly = "true" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         }
                                     </div>
                                 </div>
@@ -298,11 +439,13 @@
     LoadStaffs(cbostaffId);
     LoadStaffs(cbostaffIdLoan);
     LoadStaffs(cbostaffIdDed);
+    LoadStaffs(cbostaffIdPay);
     LoadAllowanceType(cboallowanceDes1);
     LoadAllowanceType(cboallowanceDes2);
     LoadAllowanceType(cboallowanceDes3);
     LoadAllowanceType(cboallowanceDes4);
     LoadAllowanceType(cboallowanceDes5);
+    LoadAllowanceType(cboallowanceDes6);
     LoadLoanDescription();
     LoadPenalty();
     //LoadTLA(txttotalLoanAmt);
@@ -327,6 +470,10 @@
             evt.preventDefault();
             populateAllowance(cboallowanceDes5, cboallowanceType5, txtallPercent5);
         });
+        $("#cboallowanceDes6").change(function (evt) {
+            evt.preventDefault();
+            populateAllowance(cboallowanceDes6, cboallowanceType6, txtallPercent6);
+        });
         $("#cbostaffId").change(function (evt) {
             evt.preventDefault();
             populateStafName(cbostaffId, cboStaffName, txtstaffNameAdd);
@@ -340,13 +487,30 @@
             evt.preventDefault();
             populateStafName(cbostaffIdDed, cboStaffNameDed, txtstaffNameAddDed);
         });
+        $("#cbostaffIdPay").change(function (evt) {
+            evt.preventDefault();
+            populateStafName(cbostaffIdPay, cboStaffNamePay, txtstaffNamePay);
+            LoadSalaryPAYE(cbostaffIdPay, txtIncome, txtbasic, txthousing, txtTransport, txtUtility, txtLunch, txtOthers);
+        });
         //$("#txtstaffNameAddLoan").hide();
         $("#txttotalLoanAmt").focus(function () {
-            LoadTLA(txttotalLoanAmt)
+            LoadTLA(txttotalLoanAmt);
+        });
+        $("#txtrepaymentAmt").focus(function () {
+            Repayment(txtrepaymentAmt);
         });
         $("#cbopenaltyType").change(function (evt) {
             evt.preventDefault();
             LoadDeductionType(cbopenaltyType, cbodeductionType);
         });
+    });
+
+    $("#calAllowance").click(function () {
+        LoadAllowancesAmount(txtallAmount1, txtallPercent1, txtamount);
+        LoadAllowancesAmount(txtallAmount2, txtallPercent2, txtamount);
+        LoadAllowancesAmount(txtallAmount3, txtallPercent3, txtamount);
+        LoadAllowancesAmount(txtallAmount4, txtallPercent4, txtamount);
+        LoadAllowancesAmount(txtallAmount5, txtallPercent5, txtamount);
+        LoadAllowancesAmount(txtallAmount6, txtallPercent6, txtamount);
     });
 </script>

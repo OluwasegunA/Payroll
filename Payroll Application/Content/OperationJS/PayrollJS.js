@@ -484,30 +484,76 @@ $("#SaveSalary").click(function () {
     var allowanceDes5 = $("#cboallowanceDes5").val();
     var allowanceType5 = $("#cboallowanceType5").val();
     var allPercent5 = $("#txtallPercent5").val();
+    var allAmt6 = $("#txtallAmount6").val();
+    var allowanceDes6 = $("#cboallowanceDes6").val();
+    var allowanceType6 = $("#cboallowanceType6").val();
+    var allPercent6 = $("#txtallPercent6").val();
+    var allAmt1 = $("#txtallAmount1").val();
+    var allAmt2 = $("#txtallAmount2").val();
+    var allAmt3 = $("#txtallAmount3").val();
+    var allAmt4 = $("#txtallAmount4").val();
+    var allAmt5 = $("#txtallAmount5").val();
     var amount = $("#txtamount").val();
     if (staffId.length === 0 || staffId === "") {
         $("#lblErrorMsg").val("Staff ID cannot be blank! Select an ID");
         $("#lblErrorMsg").show();
         return;
     }
-    else if (amount.length === 0){
+    else if (amount.length === 0) {
         $("#lblErrorMsg").val("Salary Amount cannot be blank!");
         $("#lblErrorMsg").show();
         $("#txtamount").focus();
         return;
     }
     if ($("#txtstaffNameAdd").is(":visible")) {
-        staffName = $("#txtstaffNameAdd").val(); 
+        staffName = $("#txtstaffNameAdd").val();
     }
     else {
         staffName = $("#cboStaffName").val();
     }
+    //if (allowanceType1 !== "BASIC" || allowanceType1 !== null) {
+    //    $("#lblErrorMsg").val("Basic allowance type is Incorrect");
+    //    $("#lblErrorMsg").show();
+    //    $("#cboallowanceType1").focus();
+    //    return;
+    //}
+    //if (allowanceType2 !== "HOUSING" || allowanceType2 !== null) {
+    //    $("#lblErrorMsg").val("Housing allowance type is Incorrect");
+    //    $("#lblErrorMsg").show();
+    //    $("#cboallowanceType2").focus();
+    //    return;
+    //}
+    //if (allowanceType3 !== "TRANSPORT" || allowanceType3 !== null) {
+    //    $("#lblErrorMsg").val("Transport allowance type is Incorrect");
+    //    $("#lblErrorMsg").show();
+    //    $("#cboallowanceType3").focus();
+    //    return;
+    //}
+    //if (allowanceType4 !== "UTILITY" || allowanceType4 !== null) {
+    //    $("#lblErrorMsg").val("Utility allowance type is Incorrect");
+    //    $("#lblErrorMsg").show();
+    //    $("#cboallowanceType4").focus();
+    //    return;
+    //}
+    //if (allowanceType5 !== "LUNCH" || allowanceType5 !== null) {
+    //    $("#lblErrorMsg").val("Lunch allowance type is Incorrect");
+    //    $("#lblErrorMsg").show();
+    //    $("#cboallowanceType5").focus();
+    //    return;
+    //}
+    //if (allowanceType6 !== "OTHERS" || allowanceType6 !== null) {
+    //    $("#lblErrorMsg").val("Other allowance type is Incorrect");
+    //    $("#lblErrorMsg").show();
+    //    $("#cboallowanceType6").focus();
+    //    return;
+    //}
     var salary = {
-        StaffNo: staffId, StaffName: staffName, AllowanceDescription1: allowanceDes1, AllowanceType1: allowanceType1, AllowancePer1: allPercent1,
-        AllowanceDescription2: allowanceDes2, AllowanceType2: allowanceType2, AllowancePer2: allPercent2,
-        AllowanceDescription3: allowanceDes3, AllowanceType3: allowanceType3, AllowancePer3: allPercent3,
-        AllowanceDescription4: allowanceDes4, AllowanceType4: allowanceType4, AllowancePer4: allPercent4,
-        AllowanceDescription5: allowanceDes5, AllowanceType5: allowanceType5, AllowancePer5: allPercent5, Amount: amount
+        StaffNo: staffId, StaffName: staffName, BasicDescription: allowanceDes1, BasicType: allowanceType1, BasicPer: allPercent1, BasicAmt: allAmt1,
+        HousingDescription: allowanceDes2, HousingType: allowanceType2, HousingPer: allPercent2, HousingAmt: allAmt2,
+        TransportDescription: allowanceDes3, TransportType: allowanceType3, TransportPer: allPercent3, TransportAmt: allAmt3,
+        UtilityDescription: allowanceDes4, UtilityType: allowanceType4, UtilityPer: allPercent4, UtilityAmt: allAmt4,
+        LunchDescription: allowanceDes5, LunchType: allowanceType5, LunchPer: allPercent5, LunchAmt: allAmt5,
+        OtherDescription: allowanceDes6, OtherType: allowanceType6, OtherPer: allPercent6, OtherAmt: allAmt6, Amount: amount
     }
     $("#loading").show();
     $.ajax({
@@ -516,7 +562,7 @@ $("#SaveSalary").click(function () {
         type: "POST"
     }).success(function (result) {
         if (result.status) {
-            $("#lblSuccessMsg").html("Salary detail saved successfully!");
+            $("#lblSuccessMsg").html("Salary details saved successfully!");
             $("#lblSuccessMsg").show();
             $("#loading").hide();
         }
@@ -525,7 +571,7 @@ $("#SaveSalary").click(function () {
         $("#lblErrorMsg").show();
         $("#loading").hide();
     })
-})
+});
 
 // formating currency to naira
 function PriceFormat(price) {
@@ -586,8 +632,21 @@ function LoadTLA(totalAmt) {
     var loanAmt = $("#cbostaffLoanAmt").val();
     var interest = $("#txtinterest").val();
     var t = ((parseFloat(interest) / 100) * parseFloat(loanAmt)) + parseFloat(loanAmt);
-    if (!isNaN(t)){
-        $(totalAmt).val(t);
+    if (!isNaN(t)) {
+        var f = PriceFormat(t)
+        $(totalAmt).val(f);
+    }
+}
+
+//Calculating the Repayment for loan
+function Repayment(repay) {
+    var currency = $("#txttotalLoanAmt").val();
+    var totalAmt = Number(currency.replace(/[^0-9.-]+/g, ""));
+    var insta = $("#txtinstallment").val();
+    var r = parseFloat(totalAmt) / parseFloat(insta);
+    if (!isNaN(r)) {
+        var d = PriceFormat(r);
+        $(repay).val(d);
     }
 }
 
@@ -598,11 +657,12 @@ $("#SaveStaffLoan").click(function () {
     var interest = $("#txtinterest").val();
     var staffNameLoan = "";
     var staffSalary = $("#cbostaffSalary").val();
-    staffSalary.replace(/[^0-9\.]+/g, "");
     var staffLoan = $("#cbostaffLoanType").val();
-    var totalLoanAmt = $("#txttotalLoanAmt").val();
+    var totalLoa = $("#txttotalLoanAmt").val();
+    var totalLoanAmt = Number(totalLoa.replace(/[^0-9.-]+/g, ""));
     var installment = $("#txtinstallment").val();
-    var repaymentAmt = $("#txtrepaymentAmt").val();
+    var repaymen = $("#txtrepaymentAmt").val();
+    var repaymentAmt = Number(repaymen.replace(/[^0-9.-]+/g, ""));
     if (staffIdLoan.length === 0 || staffIdLoan === "") {
         $("#lblErrorMsg").html("Staff ID cannot be blank! Select an ID");
         $("#lblErrorMsg").show();
@@ -641,7 +701,7 @@ $("#SaveStaffLoan").click(function () {
         $("#lblErrorMsg").show();
         $("#loading").hide();
     });
-})
+});
 
 function LoadPenalty() {
     var cboPenalty = $("#cbopenaltyType");
@@ -681,7 +741,7 @@ $("#SaveDeduction").click(function () {
     var penaltyType = $("#cbopenaltyType").val();
     var deductionType = $("#cbodeductionType").val();
     var staffDedAmt = $("#cbostaffDedAmt").val();
-    
+
     if ($("#txtstaffNameAddDed").is(":visible")) {
         staffNameDed = $("#txtstaffNameAddDed").val();
     }
@@ -707,4 +767,108 @@ $("#SaveDeduction").click(function () {
         $("#lblErrorMsg").show();
         $("#loading").hide();
     })
-})
+});
+
+//Calculating the Allowance in Amount
+function LoadAllowancesAmount(allowanceAmt, allowancePer, salaryAmt) {
+    var PersentSalary = $(salaryAmt).val();
+    var alPer = $(allowancePer).val();
+    var s = ((parseFloat(alPer) / 100) * parseFloat(PersentSalary));
+    
+    $(allowanceAmt).val(PriceFormat(s));
+    return;
+}
+
+//PAY E
+function LoadSalaryPAYE(id, income, basic, housing, transport, utility, lunch, others) {
+    var Sid = $(id).val();
+    $.ajax({
+        url: "/Payroll/LoadALL",
+        type: "GET",
+        data: { sID: Sid},
+        cache: false
+    }).success(function (data) {
+        for (i = 0; i <= data.length - 1; i++) {
+            var pen = data[i];
+            var inco = pen.Amount;
+            var bas = pen.BasicAmt;
+            var hou = pen.HousingAmt;
+            var tra = pen.TransportAmt;
+            var uti = pen.UtilityAmt;
+            var lun = pen.LunchAmt;
+            var oth = pen.OtherAmt;
+            $(income).val(PriceFormat(inco));
+            if (bas !== null || bas !==""){
+                $(basic).val(bas);
+            }
+            if (hou !== null || hou !==""){
+                $(housing).val(hou);
+            }
+            if (tra !== null || tra !== "") {
+                $(transport).val(tra);
+            }
+            if (uti !== null || uti !== "") {
+                $(utility).val(uti);
+            }
+            if (lun !== null || lun !== "") {
+                $(lunch).val(lun);
+            }
+            if (oth !== null || oth !== "") {
+                $(others).val(oth)
+            }
+        }
+    });
+}
+
+//Calculating Deductions
+function Deduction(sal, loanDe, penaltyDe, period) {
+    var GI = $(sal).val();
+    var loanDeduct = $(loanDe).val();
+    var penaltyDed = $(penaltyDe).val();
+    var pensionDeduction = parseFloat(GI) * 0.075;
+    var NHF = parseFloat(GI) * 0.025;
+    var CF = "";
+    if ($(period).val() === "Monthly") {
+        CF = "# 16,666.67";
+    }
+    else if ($(period).val() === "Annually") {
+        CF = "# 200,000";
+    }
+    var calCF = Number(CF.replace(/[^0-9.-]+/g, ""));
+    var GIR = parseFloat(GI) * 0.2;
+    var totNoneTaxDed = pensionDeduction + NHF + parseFloat(calCF) + GIR;
+    var totalDed = totNoneTaxDed + parseInt(loanDeduct) + parseInt(penaltyDed);
+    return;
+}
+
+function LoadParticulatStaffLoan(sid, LD) {
+    var emp = $(sid).val();
+    $.ajax({
+        url: "/Payroll/PStaffLoan",
+        type: "GET",
+        data: { sID: emp },
+        cache: false
+    }).success(function (data) {
+        for (i = 0; i <= data.length - 1; i++) {
+            var pen = data[i];
+            var p = PriceFormat(pen.Repayment);
+            $(LD).val(p);
+        }
+    });
+}
+
+function LoadParticulatStaffPen(sid, PD) {
+    var empid = $(sid).val();
+    $.ajax({
+        url: "/Payroll/PStaffDeduction",
+        type: "GET",
+        data: { sID: empid },
+        cache: false
+    }).success(function (data) {
+        for (i = 0; i <= data.length - 1; i++) {
+            var pen = data[i];
+            var p = PriceFormat(pen.Amount);
+            $(PD).val(p);
+        }
+    });
+}

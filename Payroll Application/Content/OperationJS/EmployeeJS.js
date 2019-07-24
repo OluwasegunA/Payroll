@@ -381,7 +381,6 @@ $("#SavePersonal").click(function (evt) {
     var marital = $("#cboMarital").val();
     var nationality = $("#cboNation").val();
     var state = "";
-   
     var religion = $("#cboReligion").val();
     var spouse = $("#txtspouseName").val();
     var disability = $("#cboDisability").val();

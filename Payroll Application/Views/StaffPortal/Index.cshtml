@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "Welcome to Staff Dashboard";
+    Layout = "~/Views/Shared/_LayoutStaffPortal.cshtml";
+}
+
+<!-- Counts Section -->
+<div class="well">
+    <section class="dashboard-counts section-padding">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-2 col-md-4 col-6">
+                    <div class="wrapper count-title d-flex">
+                        <div class="icon"><i class="icon-user"></i></div>
+                        <div class="name">
+                            <strong class="text-uppercase">Employees</strong><span></span>
+                            <div class="EmployeeCount blue">0</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-4 col-6">
+                    <div class="wrapper count-title d-flex">
+                        <div class="icon"><i class="icon-padnote"></i></div>
+                        <div class="name">
+                            <strong class="text-uppercase">Department</strong><span></span>
+                            <div class="DeptCount blue">0</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-4 col-6">
+                    <div class="wrapper count-title d-flex">
+                        <div class="icon"><i class="icon-bill"></i></div>
+                        <div class="name">
+                            <strong class="text-uppercase">Designation</strong><span></span>
+                            <div class="DesignationCount blue">0</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6 col-7">
+                    <div class="wrapper count-title d-flex">
+                        <div class="icon"><i class="icon-clock"></i></div>
+                        <div class="card">
+                            <div class="card-header"><strong>Birthdays</strong></div>
+                            <div class="card-body">
+                                This Month <br/>
+                                <span class="BdayStaff"> Staff Name</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="col-md-10">
+    <div class="card">
+        <div class="card-header"><strong>STAFF PANEL</strong> </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="well applink">
+                        <a href="/StaffPortal/LeaveApplication" title="Staff Leave Application">
+                            <div style="color:#160202;"> <span class="fa fa-calendar-times-o fa-4x"></span><br />  <span class="text-center;">Leave Application</span></div>
+
+                        </a>
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+                    <div class="well applink">
+                        <a href="/StaffPortal/LoanApplication" title="Loan Application for Employees">
+                            <div style="color:#160202;"> <span class="fa fa-credit-card-alt fa-4x"></span><br />  <span class="text-center;">Loan Application</span></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="well applink">
+                        <a href="/StaffPortal/Training" title="Available Training For Employee">
+                            <div style="color:#160202;"> <span class="fa  fa-cogs fa-4x"></span><br />  <span class="text-center;"> Trainings</span></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

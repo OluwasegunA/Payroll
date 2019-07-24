@@ -32,3 +32,29 @@ function populateStafName(ddlStaffID, ddlStaffName) {
         }
     })
 }
+
+//Sening Messages
+$("#SendMessage").click(function () {
+    var receiver = $("#cbostaff").val();
+    var sender = $("#UserID").val();
+    var subject = $("#txtsubject").val();
+    var msgbody = $("#txtmessageBody").val();
+    var messageContent = {
+        Subject: subject, From_ID: sender, To_ID: receiver, Body: msgbody
+    }
+    $.ajax({
+        url: "/Message/SendMsg",
+        data: messageContent,
+        type: "POST"
+    }).success(function (result) {
+        if (result.status) {
+            $("#lblSuccessMsg").html("Message sent!");
+            $("#lblSuccessMsg").show();
+        }
+        $("#loading").hide();
+    }).fail(function (error) {
+        $("#lblErrorMsg").html(error.Desc);
+        $("#lblErrorMsg").show();
+        $("#loading").hide();
+    });
+})
