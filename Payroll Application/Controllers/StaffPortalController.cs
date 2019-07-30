@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Payroll_Application.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,81 @@ namespace Payroll_Application.Controllers
 {
     public class StaffPortalController : Controller
     {
+        MyDbContext db = new MyDbContext();
         // GET: StaffPortal
         public ActionResult Index()
         {
+            if (Session["Username"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
+        }
+
+        public ActionResult LeaveApplication()
+        {
+            if (Session["Username"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SaveLeave(LeaveEntity leave)
+        {
+            bool check = false; string desc = "";
+            try
+            {
+                LeaveEntity StaffLeave = new LeaveEntity();
+                StaffLeave.StaffId = leave.StaffId;
+                StaffLeave.StaffName = leave.StaffName;
+                StaffLeave.LeaveType = leave.LeaveType;
+                StaffLeave.FromDate = leave.FromDate;
+                StaffLeave.ToDate = leave.ToDate;
+                StaffLeave.NoDays = leave.NoDays;
+                StaffLeave.Recall = leave.Recall;
+                StaffLeave.Remark = leave.Remark;
+                StaffLeave.Balance = leave.Balance;
+                StaffLeave.Status = leave.Status;
+                db.Leaves.Add(leave);
+                db.SaveChanges();
+                check = true;
+            }
+            catch (Exception ex)
+            {
+                check = false;
+                desc = ex.Message;
+            }
+            return new JsonResult { Data = new { Status = check, Desc = desc } };
+        }
+
+        //Load Leaves
+        [HttpGet]
+        public ActionResult LoadLeave(string staffID)
+        {
+            var data = db.Leaves.Where(d => d.StaffId == staffID).ToList();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+        //Delete Leave Request
+        [HttpPost]
+        public ActionResult DeleteLeave(int ID)
+        {
+            bool check = false; string desc = "";
+            try
+            {
+                var data = db.Leaves.Where(d => d.ID == ID).FirstOrDefault();
+                db.Leaves.Remove(data);
+                db.SaveChanges();
+                check = true;
+            }
+            catch (Exception ex)
+            {
+                desc = ex.Message;
+                check = false;
+            }
+            return Json(check);
         }
     }
 }

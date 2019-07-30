@@ -35,7 +35,7 @@ namespace Payroll_Application.Controllers
         [HttpGet]
         public ActionResult GetEmpCount()
         {
-            var EmpCount = db.PersonalInfo.Count();
+            var EmpCount = db.PersonalInfo.Where(d => d.ID > 0).Count();
             return Json(EmpCount, JsonRequestBehavior.AllowGet);
         }
     }

@@ -382,7 +382,6 @@ namespace Payroll_Application.Controllers
             {
                 PayrollClass.SaveStaffLoan(indiviLoan);
                 check = true;
-                desc = "Staff Loan successfully saved!";
             }
             catch (Exception ex)
             {
@@ -409,7 +408,6 @@ namespace Payroll_Application.Controllers
             {
                 PayrollClass.Savededuct(staffDeduction);
                 check = true;
-                desc = "Deduction successfully saved for Staff!";
             }
             catch (Exception ex)
             {
@@ -423,7 +421,15 @@ namespace Payroll_Application.Controllers
         [HttpGet]
         public ActionResult LoadALL(string sID)
         {
-            var data = db.Salaries.Where(d => d.StaffNo == sID).ToList();
+            var data = db.Salaries.Where(d => d.StaffNo == sID && d.Period == "Monthly").ToList();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+        //load from Salary table with ID
+        [HttpGet]
+        public ActionResult LoadALLAnnual(string sID)
+        {
+            var data = db.Salaries.Where(d => d.StaffNo == sID && d.Period == "Annually").ToList();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 

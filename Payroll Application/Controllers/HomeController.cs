@@ -10,6 +10,7 @@ namespace Payroll_Application.Controllers
 {
     public class HomeController : Controller
     {
+        string staffId = "", staffName = "";
         MyDbContext db = new MyDbContext();
         public ActionResult Index()
         {
@@ -36,10 +37,14 @@ namespace Payroll_Application.Controllers
                     Session["UserImg"] = olduser.ImageUrl;
                     if (olduser.UserRole == "Admin")
                     {
+                        staffId = Session["OtherID"].ToString();
+                        staffName = Session["FullName"].ToString();
                         return RedirectToAction("Index", "AdminPortal");
                     }
                     else
                     {
+                        staffId = Session["OtherID"].ToString();
+                        staffName = Session["FullName"].ToString();
                         return RedirectToAction("Index", "StaffPortal");
                     }
                 }

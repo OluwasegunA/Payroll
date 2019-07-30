@@ -191,6 +191,7 @@
     <Compile Include="Models\EmploymentTypeEntity.cs" />
     <Compile Include="Models\EmpQualificationEntity.cs" />
     <Compile Include="Models\GurrantorEntity.cs" />
+    <Compile Include="Models\LeaveEntity.cs" />
     <Compile Include="Models\LevelEntity.cs" />
     <Compile Include="Models\LoanEntity.cs" />
     <Compile Include="Models\MedicalEntity.cs" />
@@ -340,6 +341,9 @@
     <Content Include="Content\OperationJS\NewSetupJS.js" />
     <Content Include="Content\OperationJS\CompanyInfoJS.js" />
     <Content Include="Content\OperationJS\PayrollJS.js" />
+    <Content Include="Content\OperationJS\StaffPortal.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />

@@ -36,9 +36,17 @@
     <script src="~/Content/ExternalFiles/js/jquery v1.11.0.min.js"></script>
     @*<script src="~/Scripts/jquery-3.1.1.min.js"></script>*@
     <script src="~/Scripts/ExternalJS/bootbox.min.js"></script>
+    <!--DATATABLE FILES-->
+    <link href="~/Content/DataTable/css/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/DataTable/css/jquery.dataTables.css" rel="stylesheet" />
+    <script src="~/Content/DataTable/js/jquery.dataTables.js"></script>
+    <script src="~/Content/DataTable/js/dataTables.bootstrap.js"></script>
     <!-- Custom stylesheet - for your changes-->
     <link href="~/Content/CustomStyles/AdminPageStyle.css" rel="stylesheet" />
     <link href="~/Content/CustomStyles/PageCss.css" rel="stylesheet" />
+    @*JQuery UI*@
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
 </head>
 <body>
     <!-- Side Navbar -->
@@ -153,6 +161,8 @@
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="text-transform:capitalize;">
                                     <i class="fa fa-user fa-fw"></i> @Session["Username"] <b class="caret"></b>
+                                    <div class="" id="staffIDL" style="display:none">@Session["OtherID"]</div>
+                                    <div class="" id="staffNameL" style="display:none">@Session["FullName"]</div>
                                 </a>
                                 <ul class="dropdown-menu dropdown-user">
                                     @if (Session["UserImg"] != null)
@@ -200,7 +210,7 @@
     </div>
 
     <!-- Javascript files-->
-
+    <script src="~/Content/OperationJS/StaffPortal.js"></script>
     <script src="~/Content/ExternalFiles/js/tether.min.js"></script>
     <script src="~/Content/ExternalFiles/js/bootstrap.min.js"></script>
     <script src="~/Content/ExternalFiles/js/jquery.cookie.js"> </script>

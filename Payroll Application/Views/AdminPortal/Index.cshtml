@@ -19,7 +19,7 @@
                     <div class="icon"><i class="icon-check"></i></div>
                     <div class="name">
                         <strong class="text-uppercase">Employees</strong><span></span>
-                        <div class="EmployeeCount blue bold">0</div>
+                        <div class="blue bold" id="EmployeeCount">0</div>
                     </div>
                 </div>
             </div>
@@ -117,7 +117,7 @@
 </div>
  
 <script>
-    LoadEmpCount();
+    //LoadEmpCount();
     $(function (e) {
         function LoadEmpCount() {
             $.ajax({
@@ -125,7 +125,7 @@
                 type: "GET",
                 cache: false
             }).success(function (result) {
-                $(".EmployeeCount").val(result);
+                $("#EmployeeCount").val(result);
             })
         }
     });

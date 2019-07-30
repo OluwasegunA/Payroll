@@ -235,6 +235,8 @@ C:\POS PROJECTS\Payroll Application\Payroll Application\obj\Debug\Payroll Applic
 C:\POS PROJECTS\Payroll Application\Payroll Application\obj\Debug\Payroll Application.csproj.CopyComplete
 C:\POS PROJECTS\Payroll Application\Payroll Application\obj\Debug\Payroll Application.dll
 C:\POS PROJECTS\Payroll Application\Payroll Application\obj\Debug\Payroll Application.pdb
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\VBCSCompiler.exe
 C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\ApplicationInsights.config
 C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\csc.exe
 C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\csc.exe.config
@@ -246,7 +248,6 @@ C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Applica
 C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
 C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\Microsoft.CodeAnalysis.dll
 C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\Microsoft.CSharp.Core.targets
 C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
 C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
@@ -260,7 +261,6 @@ C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Applica
 C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\vbc.exe
 C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\vbc.exe.config
 C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\vbc.rsp
-C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\VBCSCompiler.exe
 C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Payroll Application.dll.config
 C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Payroll Application.dll
@@ -310,6 +310,6 @@ C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Applica
 C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Microsoft.AI.Web.xml
-C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\obj\Debug\Payroll Application.csprojResolveAssemblyReference.cache
 C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\obj\Debug\Payroll Application.dll
 C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\obj\Debug\Payroll Application.pdb
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Content\OperationJS\StaffPortal.js

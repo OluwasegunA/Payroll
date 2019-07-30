@@ -29,6 +29,11 @@
         padding: 2px;
         margin: 2px;
     }
+    .black {
+        color: rgba(0, 0, 0, 0.79);
+        font-size: 22px;
+        font-weight: bold;
+    }
 </style>
 <div class="card">
     <div class="card-header"><strong>Staff Setup</strong></div>
@@ -79,6 +84,14 @@
                                                 <div class="col-md-7 control-space">
                                                     @Html.TextBox("staffName", null, new { @class = "form-control control-input-border", id = "cboStaffName", @readonly = "true" })
                                                     @Html.TextBox("staffName", null, new { @class = "form-control control-input-border hide-txt", placeholder = "Type Name here", id = "txtstaffNameAdd" })
+                                                </div>
+                                                <div class="col-md-3 control-space ml-2">
+                                                    <label class="label">Pay Period:</label>
+                                                </div>
+                                                <div class="col-md-7 control-space">
+                                                    @Html.DropDownList("period", new List<SelectListItem> {new SelectListItem {Text="Monthly",Value="Monthly" },
+                                                    new SelectListItem { Text = "Annually", Value = "Annually" }},
+                                                    "----Select----", new { @class = "form-control control-input-border", id = "cboPeriod" })
                                                 </div>
                                                 <div class="col-md-3 control-space ml-2">
                                                     <label class="label">Basic Allowance:</label>
@@ -392,6 +405,23 @@
                                                     <div class="col-md-3 control-space">
                                                         <button class="btn btn-danger" type="button" style="margin-bottom:10px;" id="calculPAYE"><i class="fa fa-calculator"></i> Calculate PAYE </button>
                                                     </div>
+                                                    <div class="card hide-txt" id="payEBody">
+                                                        <div class="card-header"> PAY E for Selected Staff </div>
+                                                        <div class="card-body">
+                                                            <div class="col-md-3 control-space">
+                                                                <label class="label"> PAY E : </label>
+                                                            </div>
+                                                            <div class="col-md-6 control-space">
+                                                                @Html.TextBox("PAYE", null, new { @class = "form-control control-input-border", id = "showPayE", @readonly = "true" })
+                                                            </div>
+                                                            <div class="col-md-3 control-space">
+                                                                <label class="label"> Net Salary : </label>
+                                                            </div>
+                                                            <div class="col-md-6 control-space">
+                                                                @Html.TextBox("netSala", null, new { @class = "form-control control-input-border", id = "showNetSalary", @readonly = "true" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
@@ -399,17 +429,67 @@
                                                     <div class="card">
                                                         <div class="card-header"> Deductions </div>
                                                         <div class="card-body">
-                                                            <div class="col-md-3 control-space">
-                                                                <label class="label">Loan Deduction:</label>
-                                                            </div>
-                                                            <div class="col-md-9 control-space">
-                                                                @Html.TextBox("loanDeduct", null, new { @class = "form-control control-input-border", id = "txtloanDeduct", @readonly = "true" })
-                                                            </div>
-                                                            <div class="col-md-3 control-space">
-                                                                <label class="label">Penalty Deduction:</label>
-                                                            </div>
-                                                            <div class="col-md-9 control-space">
-                                                                @Html.TextBox("penaDeduct", null, new { @class = "form-control control-input-border", id = "txtpenaDeduct", @readonly = "true" })
+                                                            <div class="row">
+                                                                <div class="col-md-3 control-space">
+                                                                    <label class="label">Loan Deduction:</label>
+                                                                </div>
+                                                                <div class="col-md-9 control-space">
+                                                                    @Html.TextBox("loanDeduct", null, new { @class = "form-control control-input-border", id = "txtloanDeduct", @readonly = "true" })
+                                                                </div>
+                                                                <div class="col-md-3 control-space">
+                                                                    <label class="label">Penalty Deduction:</label>
+                                                                </div>
+                                                                <div class="col-md-9 control-space">
+                                                                    @Html.TextBox("penaDeduct", null, new { @class = "form-control control-input-border", id = "txtpenaDeduct", @readonly = "true" })
+                                                                </div>
+                                                                <div class="col-md-9 control-space">
+                                                                    <button class="btn btn-dark" type="button" style="margin-bottom:10px;" id="chkDeduction"><i class="fa fa-check-circle"></i> Check </button>
+                                                                </div>
+                                                                <div class="col-md-6 control-space">
+                                                                    <label class="label"> Pension: </label>
+                                                                </div>
+                                                                <div class="col-md-6 control-space">
+                                                                    @Html.TextBox("pension", null, new { @class = "form-control control-input-border", id = "showPension", @readonly = "true" })
+                                                                </div>
+                                                                <div class="col-md-6 control-space">
+                                                                    <label class="label"> NHFC: </label>
+                                                                </div>
+                                                                <div class="col-md-6 control-space">
+                                                                    @Html.TextBox("penaDeduct", null, new { @class = "form-control control-input-border", id = "showNHF", @readonly = "true" })
+                                                                </div>
+                                                                <div class="col-md-6 control-space">
+                                                                    <label class="label"> Consolidated Relief: </label>
+                                                                </div>
+                                                                <div class="col-md-6 control-space">
+                                                                    @Html.TextBox("penaDeduct", null, new { @class = "form-control control-input-border", id = "showCF", @readonly = "true" })
+                                                                </div>
+                                                                <div class="col-md-6 control-space">
+                                                                    <label class="label"> Gross Income Relief: </label>
+                                                                </div>
+                                                                <div class="col-md-6 control-space">
+                                                                    @Html.TextBox("penaDeduct", null, new { @class = "form-control control-input-border", id = "showGIF", @readonly = "true" })
+                                                                </div>
+                                                                <div class="col-md-6 control-space">
+                                                                    <label class="label"> Total None Taxable Deduction: </label>
+                                                                </div>
+                                                                <div class="col-md-6 control-space">
+                                                                    @Html.TextBox("penaDeduct", null, new { @class = "form-control control-input-border", id = "showTotT", @readonly = "true" })
+                                                                </div>
+                                                                <div class="col-md-6 control-space">
+                                                                    <label class="label"> Total Deduction: </label>
+                                                                </div>
+                                                                <div class="col-md-6 control-space">
+                                                                    @Html.TextBox("penaDeduct", null, new { @class = "form-control control-input-border", id = "showTotDed", @readonly = "true" })
+                                                                </div>
+                                                                <div class="col-md-6 control-space">
+                                                                    <label class="label"> Net Taxable Income: </label>
+                                                                </div>
+                                                                <div class="col-md-6 control-space">
+                                                                    @Html.TextBox("penaDeduct", null, new { @class = "form-control control-input-border", id = "showNetTax", @readonly = "true" })
+                                                                </div>
+                                                                <div class="col-md-9 control-space">
+                                                                    <button class="btn btn-dark hide-txt" type="button" style="margin-bottom:10px;" id="ShowDeduction"><i class="fa fa-circle-o"></i> Show All Deductions </button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -490,7 +570,16 @@
         $("#cbostaffIdPay").change(function (evt) {
             evt.preventDefault();
             populateStafName(cbostaffIdPay, cboStaffNamePay, txtstaffNamePay);
-            LoadSalaryPAYE(cbostaffIdPay, txtIncome, txtbasic, txthousing, txtTransport, txtUtility, txtLunch, txtOthers);
+            
+        });
+        $("#cbopayPeriod").change(function (evt) {
+            evt.preventDefault();
+            if ($("#cbopayPeriod").val() === "Monthly") {
+                LoadSalaryPAYE(cbostaffIdPay, txtIncome, txtbasic, txthousing, txtTransport, txtUtility, txtLunch, txtOthers);
+            }
+            else if ($("#cbopayPeriod").val() === "Annually") {
+                LoadSalaryPAYEAnnual(cbostaffIdPay, txtIncome, txtbasic, txthousing, txtTransport, txtUtility, txtLunch, txtOthers);
+            }
         });
         //$("#txtstaffNameAddLoan").hide();
         $("#txttotalLoanAmt").focus(function () {

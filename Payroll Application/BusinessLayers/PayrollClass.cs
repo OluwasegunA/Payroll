@@ -86,6 +86,7 @@ namespace Payroll_Application.BusinessLayers
             SalaryEntity oldSalary = new SalaryEntity();
                 oldSalary.StaffNo = salary.StaffNo;
                 oldSalary.StaffName = salary.StaffName;
+                oldSalary.Period = salary.Period;
                 oldSalary.BasicDescription = salary.BasicDescription;
                 oldSalary.HousingDescription = salary.HousingDescription;
                 oldSalary.TransportDescription = salary.TransportDescription;

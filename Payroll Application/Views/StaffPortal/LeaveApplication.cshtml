@@ -1,5 +1,152 @@
 ﻿@{
+    ViewBag.Title = "Staff Portal";
+    ViewBag.PageTitle = "Staff Leave Request";
     Layout = "~/Views/Shared/_LayoutStaffPortal.cshtml";
 }
 
+<style>
+    .control-space {
+        margin-top: 8px;
+    }
+
+    label {
+        font-weight: bold;
+        font-family: Arial,'Times New Roman', Times, serif;
+        font-size: 14px;
+    }
+
+    .tab-border {
+        border: 1px solid gray;
+        margin-right: 5px;
+        color: black;
+    }
+
+    .hide-txt {
+        display: none !important;
+    }
+
+    .actionbtn {
+        padding: 2px;
+        margin: 2px;
+    }
+
+    .black {
+        color: rgba(0, 0, 0, 0.79);
+        font-size: 22px;
+        font-weight: bold;
+    }
+</style>
+
+<div class="row">
+    <div class="card">
+        <div class="card-header">
+            LEAVE REQUEST
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "" }))
+            {
+                <br />
+                <div class="alert alert-danger" id="lblErrorMsg">
+                </div>
+
+                <div class="alert alert-success" id="lblSuccessMsg">
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-4 control-space">
+                                <label class="label">Leave Type:</label>
+                            </div>
+                            <div class="col-md-8 control-space">
+                                @Html.DropDownList("type", new List<SelectListItem> { new SelectListItem {Text="Annual",Value="Annual" },
+                                               new SelectListItem { Text = "Compassionate/Casual", Value = "Compassionate/Casual" }, new SelectListItem { Text = "Examination", Value = "Examination" }, new SelectListItem { Text = "Sick", Value = "Sick" },
+                                               new SelectListItem { Text = "Maternity", Value = "Maternity" }
+                                           }, "Select...", new { @class = "form-control control-input-border", id = "txtType" })
+                            </div>
+                            <div class="col-md-3 control-space">
+                                <label class="label">From:</label>
+                            </div>
+                            <div class="col-md-4 control-space">
+                                @Html.TextBox("from", null, new { @class = "form-control control-input-border", id = "txtFrom", placeholder = "dd/mm/yyyy" })
+                            </div>
+                            <div class="col-md-2 control-space">
+                                <label class="label">To:</label>
+                            </div>
+                            <div class="col-md-3 control-space">
+                                @Html.TextBox("leaveTo", null, new { @class = "form-control control-input-border", id = "txtTo", placeholder = "dd/mm/yyyy" })
+                            </div>
+                            <div class="col-md-4 control-space">
+                                <label class="label">No of Days:</label>
+                            </div>
+                            <div class="col-md-3 control-space">
+                                @Html.TextBox("noDays", null, new { @class = "form-control control-input-border", id = "txtnoDays" })
+                            </div>
+                            <div class="col-md-4 control-space">
+                                <label class="label">Call Back?:</label>
+                            </div>
+                            <div class="col-md-1 control-space">
+                                @Html.CheckBox("recall", false, new { @class = "checkbox", id = "chkRecall" })
+                            </div>
+                            <div class="col-md-4 control-space">
+                                <label class="label">Balance Days:</label>
+                            </div>
+                            <div class="col-md-5 control-space">
+                                @Html.TextBox("balance", null, new { @class = "form-control control-input-border", id = "txtBalance" })
+                            </div>
+                            <div class="col-md-4 control-space">
+                                <label class="label">Remarks:</label>
+                            </div>
+                            <div class="col-md-7 control-space">
+                                @Html.TextArea("remark", null, new { @class = "form-control control-input-border", id = "txtremarks" })
+                            </div>
+                            <div class="col-md-3"></div>
+                            <div class="col-md-9 control-space">
+                                <button class="btn btn-outline-primary" type="submit" id="SubmitLeave"><i class="fa fa-save"></i> Submit </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" style="margin-left: 30px">
+                        <div class="row">
+                            <div class="card">
+                                <div class="card-header"> Approved Leave</div>
+                                <div class="card-body">
+                                    <table class="table table-bordered table-hover table-custom-border" id="Leavetable">
+                                        <thead>
+                                            <tr>
+                                                <th>S/N</th>
+                                                <th>TYPE</th>
+                                                <th>NO OF DAYS</th>
+                                                <th>RESUMPTION</th>
+                                                <th>STATUS</th>
+                                                <th>ACTION</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="LeaveBody"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/OperationJS/StaffPortal.js"></script>
+<script>
+    HideAjaxLoad();
+    LoadAllRequest(staffIDL);
+    $(function (e) {
+        $("#txtFrom").datepicker({
+            dateFormat: "dd/mm/yyyy",
+            autoclose: true
+        });
+        $("#txtTo").datepicker({
+            dateFormat: "dd/mm/yyyy",
+            autoclose: true
+        });
+    })
+</script>
 

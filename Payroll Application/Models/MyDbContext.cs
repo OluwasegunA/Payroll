@@ -40,5 +40,6 @@ namespace Payroll_Application.Models
         public DbSet<StaffLoanEntity> StaffLoans { get; set; }
         public DbSet<DeductionEntity> StaffDeductions { get; set; }
         public DbSet<MessageEntity> Messages { get; set; }
+        public DbSet<LeaveEntity> Leaves { get; set; }
     }
 }

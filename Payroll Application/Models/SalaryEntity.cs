@@ -7,6 +7,7 @@ namespace Payroll_Application.Models
     {
         public string StaffNo { get; set; }
         public string StaffName { get; set; }
+        public string Period { get; set; }
         public string BasicDescription { get; set; }
         public string BasicType { get; set; }
         public int BasicPer { get; set; }

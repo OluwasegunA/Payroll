@@ -70,13 +70,13 @@
             </div>
             <div class="main-menu">
                 <ul id="side-main-menu" class="side-menu list-unstyled">
-                    @if (Session["UserRole"] != "Admin")
-                    {
-                        <li class="active"><a href="/StaffPortal/Index"> <i class="icon-home"></i><span>Home</span></a></li>
-                    }
-                    @if (Session["UserRole"] != "REGULAR")
+                    @if (Session["UserRole"] == "Admin")
                     {
                         <li class="active"><a href="/AdminPortal/Index"> <i class="icon-home"></i><span>Home</span></a></li>
+                    }
+                    else
+                    {
+                        <li class="active"><a href="/StaffPortal/Index"> <i class="icon-home"></i><span>Home</span></a></li>
                     }
                     @*<li class="active"><a href="/Message/Message"> <i class="icon-mail"></i><span>Messages</span></a></li>*@
                 </ul>

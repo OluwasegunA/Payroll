@@ -356,8 +356,8 @@ function LoadPenalty() {
             no++;
             var penalty = data[i];
 
-            var link = "<a href='#' onclick='EditLoan(\"" + penalty.Code + "\")' title='Edit' ><i class='fa fa-pencil'></i></a>";
-            var link2 = "<a href='#' onclick='DeleteLoan(\"" + penalty.Code + "\")' title='Delete'><i class='fa fa-trash red'></i></a>";
+            var link = "<a href='#' onclick='EditPenalty(\"" + penalty.Code + "\")' title='Edit' ><i class='fa fa-pencil'></i></a>";
+            var link2 = "<a href='#' onclick='DeletePenalty(\"" + penalty.Code + "\")' title='Delete'><i class='fa fa-trash red'></i></a>";
             var space = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
             html = html + "<tr><td>" + no + "</td><td>" + penalty.Description + "</td><td>" + penalty.DeductType + "</td><td>" + penalty.Percentage + "</td><td>" + link + space + link2 + "</td></tr>";
         }
@@ -469,6 +469,7 @@ function populateAllowance(ddlDescript, ddlAllowance, ddlPer) {
 $("#SaveSalary").click(function () {
     var staffId = $("#cbostaffId").val();
     var staffName = "";
+    var period = $("#cboPeriod").val();
     var allowanceDes1 = $("#cboallowanceDes1").val();
     var allowanceType1 = $("#cboallowanceType1").val();
     var allPercent1 = $("#txtallPercent1").val();
@@ -548,8 +549,8 @@ $("#SaveSalary").click(function () {
     //    return;
     //}
     var salary = {
-        StaffNo: staffId, StaffName: staffName, BasicDescription: allowanceDes1, BasicType: allowanceType1, BasicPer: allPercent1, BasicAmt: allAmt1,
-        HousingDescription: allowanceDes2, HousingType: allowanceType2, HousingPer: allPercent2, HousingAmt: allAmt2,
+        StaffNo: staffId, StaffName: staffName, Period: period, BasicDescription: allowanceDes1, BasicType: allowanceType1, BasicPer: allPercent1,
+        BasicAmt: allAmt1, HousingDescription: allowanceDes2, HousingType: allowanceType2, HousingPer: allPercent2, HousingAmt: allAmt2,
         TransportDescription: allowanceDes3, TransportType: allowanceType3, TransportPer: allPercent3, TransportAmt: allAmt3,
         UtilityDescription: allowanceDes4, UtilityType: allowanceType4, UtilityPer: allPercent4, UtilityAmt: allAmt4,
         LunchDescription: allowanceDes5, LunchType: allowanceType5, LunchPer: allPercent5, LunchAmt: allAmt5,
@@ -692,7 +693,7 @@ $("#SaveStaffLoan").click(function () {
         type: "POST"
     }).success(function (result) {
         if (result.status) {
-            $("#lblSuccessMsg").html(data.Desc);
+            $("#lblSuccessMsg").html("Staff Loan successfully saved!");
             $("#lblSuccessMsg").show();
             $("#loading").hide();
         }
@@ -758,7 +759,7 @@ $("#SaveDeduction").click(function () {
         type: "POST"
     }).success(function (result) {
         if (result.status) {
-            $("#lblSuccessMsg").html(data.Desc);
+            $("#lblSuccessMsg").html("Deduction successfully saved for Staff!");
             $("#lblSuccessMsg").show();
             $("#loading").hide();
         }
@@ -779,7 +780,7 @@ function LoadAllowancesAmount(allowanceAmt, allowancePer, salaryAmt) {
     return;
 }
 
-//PAY E
+//PAY E Monthly
 function LoadSalaryPAYE(id, income, basic, housing, transport, utility, lunch, others) {
     var Sid = $(id).val();
     $.ajax({
@@ -820,11 +821,56 @@ function LoadSalaryPAYE(id, income, basic, housing, transport, utility, lunch, o
     });
 }
 
+
+//PAY E Annually
+function LoadSalaryPAYEAnnual(id, income, basic, housing, transport, utility, lunch, others) {
+    var Sid = $(id).val();
+    $.ajax({
+        url: "/Payroll/LoadALLAnnual",
+        type: "GET",
+        data: { sID: Sid },
+        cache: false
+    }).success(function (data) {
+        for (i = 0; i <= data.length - 1; i++) {
+            var pen = data[i];
+            var inco = pen.Amount;
+            var bas = pen.BasicAmt;
+            var hou = pen.HousingAmt;
+            var tra = pen.TransportAmt;
+            var uti = pen.UtilityAmt;
+            var lun = pen.LunchAmt;
+            var oth = pen.OtherAmt;
+            $(income).val(PriceFormat(inco));
+            if (bas !== null || bas !== "") {
+                $(basic).val(bas);
+            }
+            if (hou !== null || hou !== "") {
+                $(housing).val(hou);
+            }
+            if (tra !== null || tra !== "") {
+                $(transport).val(tra);
+            }
+            if (uti !== null || uti !== "") {
+                $(utility).val(uti);
+            }
+            if (lun !== null || lun !== "") {
+                $(lunch).val(lun);
+            }
+            if (oth !== null || oth !== "") {
+                $(others).val(oth)
+            }
+        }
+    });
+}
+
 //Calculating Deductions
 function Deduction(sal, loanDe, penaltyDe, period) {
-    var GI = $(sal).val();
-    var loanDeduct = $(loanDe).val();
-    var penaltyDed = $(penaltyDe).val();
+    var Gross = $(sal).val();
+    var GI = Number(Gross.replace(/[^0-9.-]+/g, ""));
+    var loDed = $(loanDe).val();
+    var loanDeduct = Number(loDed.replace(/[^0-9.-]+/g, ""));
+    var penDed = $(penaltyDe).val();
+    var penaltyDed = Number(penDed.replace(/[^0-9.-]+/g, ""));
     var pensionDeduction = parseFloat(GI) * 0.075;
     var NHF = parseFloat(GI) * 0.025;
     var CF = "";
@@ -838,6 +884,20 @@ function Deduction(sal, loanDe, penaltyDe, period) {
     var GIR = parseFloat(GI) * 0.2;
     var totNoneTaxDed = pensionDeduction + NHF + parseFloat(calCF) + GIR;
     var totalDed = totNoneTaxDed + parseInt(loanDeduct) + parseInt(penaltyDed);
+    var netTaxable = parseFloat(GI) - parseFloat(totNoneTaxDed);
+    var pe = PriceFormat(pensionDeduction);
+    var nf = PriceFormat(NHF);
+    var r = PriceFormat(GIR);
+    var TND = PriceFormat(totNoneTaxDed);
+    var TD = PriceFormat(totalDed);
+    var NT = PriceFormat(netTaxable);
+    $("#showPension").val(pe);
+    $("#showNHF").val(nf);
+    $("#showCF").val(CF);
+    $("#showGIF").val(r);
+    $("#showTotT").val(TND);
+    $("#showTotDed").val(TD);
+    $("#showNetTax").val(NT);
     return;
 }
 
@@ -850,9 +910,15 @@ function LoadParticulatStaffLoan(sid, LD) {
         cache: false
     }).success(function (data) {
         for (i = 0; i <= data.length - 1; i++) {
-            var pen = data[i];
-            var p = PriceFormat(pen.Repayment);
-            $(LD).val(p);
+            if (data.length === 0 || data === 0.00) {
+                $("#lblErrorMsg").html("This Staff does not have a running Loan");
+                $("#lblErrorMsg").show();
+            }
+            else{
+                var pen = data[i];
+                var p = PriceFormat(pen.Repayment);
+                $(LD).val(p);
+            }
         }
     });
 }
@@ -866,9 +932,109 @@ function LoadParticulatStaffPen(sid, PD) {
         cache: false
     }).success(function (data) {
         for (i = 0; i <= data.length - 1; i++) {
-            var pen = data[i];
-            var p = PriceFormat(pen.Amount);
-            $(PD).val(p);
+            if (data.length === 0 || data === 0.00) {
+                $("#lblErrorMsg").html("This Staff does not have any Penalty to Pay");
+                $("#lblErrorMsg").show();
+            }
+            else {
+                var pen = data[i];
+                var p = PriceFormat(pen.Amount);
+                $(PD).val(p);
+            }
         }
     });
 }
+
+$("#chkDeduction").click(function () {
+    LoadParticulatStaffLoan(cbostaffIdPay, txtloanDeduct);
+    LoadParticulatStaffPen(cbostaffIdPay, txtpenaDeduct);
+    $("#ShowDeduction").removeClass("hide-txt");
+    $("#ShowDeduction").show();
+})
+
+$("#ShowDeduction").click(function () {
+    Deduction(txtIncome, txtloanDeduct, txtpenaDeduct, cbopayPeriod);
+})
+
+$("#calculPAYE").click(function () {
+    var netInc = $("#showNetTax").val();
+    var netIncome = Number(netInc.replace(/[^0-9.-]+/g, ""));
+    var netIn = parseFloat(netIncome);
+    var GrossI = $("#txtIncome").val();
+    var GrossIncome = Number(GrossI.replace(/[^0-9.-]+/g, ""));
+    var GrossIn = parseFloat(GrossIncome);
+    if (netIn.length === 0) {
+        $("#lblErrorMsg").html("The field for the Net Taxable Income is Empty./n Please Click the Right button in the right format");
+        $("#lblErrorMsg").show();
+        return;
+    }
+    else {
+        var payE = $("#showPayE");
+        let first, remIn1, second, remIn2, third, remIn3, fourth, remIn4, fifth;
+        if ((netIn - 25000) > 0) {
+            first = 25000 * 0.07;
+            if ((netIn - 25000) < 25000) {
+                remIn1 = (netIn - 25000) * 0.11;
+                var t = parseFloat(first) + parseFloat(remIn1);
+                var t1 = PriceFormat(t);
+                payE.val(t1);
+            }
+            else if ((netIn - 25000) > 25000) {
+                second = 25000 * 0.11;
+                var s = parseFloat(first) + parseFloat(second);
+                var s1 = PriceFormat(s);
+                payE.val(s1);
+                if ((netIn - 50000) < 41666) {
+                    remIn2 = (netIn - 50000) * 0.15;
+                    var r = parseFloat(first) + parseFloat(second) + parseFloat(remIn2);
+                    var r1 = PriceFormat(r);
+                    payE.val(r1);
+                }
+                else if ((netIn - 50000) > 41666) {
+                    third = 41666 * 0.15;
+                    var q = parseFloat(first) + parseFloat(second) + parseFloat(third);
+                    var q1 = PriceFormat(q);
+                    payE.val(q1);
+                    if ((netIn - 91666) < 133333) {
+                        remIn3 = (netIn - 91666) * 0.21;
+                        var p = parseFloat(first) + parseFloat(second) + parseFloat(third) + parseFloat(remIn3);
+                        var p1 = PriceFormat(p);
+                        payE.val(p1);
+                    }
+                    else if ((netIn - 91666) > 133333) {
+                        fourth = 133333 * 0.21;
+                        var m = parseFloat(first) + parseFloat(second) + parseFloat(third) + parseFloat(fourth);
+                        var m1 = PriceFormat(m);
+                        payE.val(m1);
+                        if ((netIn - 224999) < 491665) {
+                            remIn4 = (netIn - 224999) * 0.24;
+                            var o = parseFloat(first) + parseFloat(second) + parseFloat(third) + parseFloat(remIn4);
+                            var o1 = PriceFormat(o);
+                            payE.val(o1);
+                        }
+                        else if ((netIn - 224999) > 491665) {
+                            fifth = 266666 * 0.24;
+                            var l = parseFloat(first) + parseFloat(second) + parseFloat(third) + parseFloat(fourth) + parseFloat(fifth);
+                            var l1 = PriceFormat(l);
+                            payE.val(l1);
+                        }
+                    }
+                }
+            }
+            $("#payEBody").removeClass("hide-txt");
+            $("#payEBody").show();
+            var payE = $("#payEBody").val();
+            var RPayE = Number(payE.replace(/[^0-9.-]+/g, ""));
+            var CRPayE = parseFloat(RPayE);
+            var net = GrossIn - CRPayE;
+            var n = PriceFormat(net);
+            $("#showNetSalary").val(n);
+            return;
+        }
+        else {
+            $("#lblErrorMsg").html("This Staff Earn less than # 25,000.00");
+            $("#lblErrorMsg").show();
+            return;
+        }
+    }
+})
