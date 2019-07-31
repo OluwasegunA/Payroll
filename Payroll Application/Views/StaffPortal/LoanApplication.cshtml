@@ -1,5 +1,97 @@
-﻿@{
+﻿
+@{
+    ViewBag.Title = "Staff Portal";
+    ViewBag.PageTitle = "Staff Loan Request";
     Layout = "~/Views/Shared/_LayoutStaffPortal.cshtml";
 }
 
+<style>
+    .control-space {
+        margin-top: 8px;
+    }
+
+    label {
+        font-weight: bold;
+        font-family: Arial,'Times New Roman', Times, serif;
+        font-size: 14px;
+    }
+
+    .tab-border {
+        border: 1px solid gray;
+        margin-right: 5px;
+        color: black;
+    }
+
+    .hide-txt {
+        display: none !important;
+    }
+
+    .actionbtn {
+        padding: 2px;
+        margin: 2px;
+    }
+
+    .black {
+        color: rgba(0, 0, 0, 0.79);
+        font-size: 22px;
+        font-weight: bold;
+    }
+</style>
+
+<div id="" class="row">
+    <div class="col-md-10">
+        <div class="card">
+            <div class="card-header alert-warning"> Please Note that this is sent Directly to the Admin</div>
+            <div class="card-body">
+                <div class="alert alert-success" id="lblSuccessMsg">
+
+                </div>
+                <div class="alert alert-danger" id="lblErrorMsg">
+
+                </div>
+                <div class="card-box"></div>
+                @using (Html.BeginForm())
+                {
+                    <div class="row">
+                        <div class="col-sm-3 form-group">
+                            <label class="label">To:</label>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            @Html.TextBox("admin", null, new { @class = "form-control control-input-border", id = "adminID", @readonly = "true"})
+                        </div>
+                        <div class="col-md-5 form-group">
+                            @Html.TextBox("adminName", null, new { @class = "form-control control-input-border", id = "txtadminName", @readonly = "true" })
+                        </div>
+                        <div class="col-sm-3 form-group">
+                            <label class="label">Loan Amount:</label>
+                        </div>
+                        <div class="col-md-9 form-group">
+                            @Html.TextBox("lAmount", null, new { @class = "form-control control-input-border", id = "txtlAmount" })
+                        </div>
+                        <div class="col-sm-3 form-group">
+                            <label class="label">Reason :</label>
+                        </div>
+                        <div class="form-group col-md-9">
+                            @Html.TextArea("reasonBody", null, new { @class = "form-control control-input-border", id = "txtreasonBody", row = 6 })
+                        </div>
+                        <div class="col-sm-3 form-group"></div>
+                        <button class="btn btn-purple waves-effect waves-light" type="submit" id="SendReq">
+                            <i class="fa fa-save"> </i> Send Req
+                        </button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/OperationJS/StaffPortal.js"></script>
+<script>
+    HideAjaxLoad();
+    LoadAdmin();
+    var sender = "@Request.RequestContext.HttpContext.Session["OtherID"]";
+    $(function (e) {
+
+    })
+</script>
 

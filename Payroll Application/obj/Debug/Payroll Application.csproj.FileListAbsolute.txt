@@ -313,3 +313,4 @@ C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Applica
 C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\obj\Debug\Payroll Application.dll
 C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\obj\Debug\Payroll Application.pdb
 C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\bin\Content\OperationJS\StaffPortal.js
+C:\Users\hp 8460p\Documents\Visual Studio 2017\POS Shop Projects\Payroll Application\Payroll Application\obj\Debug\Payroll Application.csprojResolveAssemblyReference.cache

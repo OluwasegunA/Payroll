@@ -1,12 +1,13 @@
-﻿function HideAjaxLoad() {
+﻿
+function HideAjaxLoad() {
     $("#lblErrorMsg").hide();
     $("#lblSuccessMsg").hide();
 }
 
 $("#SubmitLeave").click(function (evt) {
     evt.preventDefault();
-    var id = $("#staffIDL").val();
-    var name = $("#staffNameL").val();
+    //var id = $("#IDLoanee").val();
+    //var name = $("#staffNameL").data();
     var type = $("#txtType").val();
     var from = $("#txtFrom").val();
     var leaveTo = $("#txtTo").val();
@@ -14,14 +15,12 @@ $("#SubmitLeave").click(function (evt) {
     var recall = "";
     var balance = $("#txtBalance").val();
     var remark = $("#txtremarks").val();
-    $('#chkRecall').click(function () {
-        if ($(this).is(':checked')) {
+        if ($("#chkRecall").is(":checked")) {
             recall = "Yes";
         }
         else {
             recall = "No";
         }
-    });
     var leave = {
         StaffId: id, StaffName: name, LeaveType: type, FromDate: from, ToDate: leaveTo, NoDays: noDays, Recall: recall, Balance: balance,
         Remark: remark
@@ -32,10 +31,8 @@ $("#SubmitLeave").click(function (evt) {
         data: leave,
         cache: false
     }).success(function (result) {
-        if (result.status) {
-            $("#lblSuccessMsg").html("Leave Request Submmitted and waiting for response");
-            $("#lblSuccessMsg").show();
-        }
+        $("#lblSuccessMsg").html("Leave Request Submmitted");
+        $("#lblSuccessMsg").show();
     }).fail(function (error) {
         $("#lblErrorMsg").html(error.Desc);
         $("#lblErrorMsg").show();
@@ -43,11 +40,11 @@ $("#SubmitLeave").click(function (evt) {
 })
 
 function LoadAllRequest(staff) {
-    var SID = $(staff).val();
+    //var SID = $(staff).val();
     $.ajax({
         url: "/StaffPortal/LoadLeave",
         type: "GET",
-        data: { staffID: SID },
+        data: { staffID: staff },
         cache: false
     }).success(function (data) {
         $("#LeaveBody").empty();
@@ -56,6 +53,14 @@ function LoadAllRequest(staff) {
             no++;
             var staffLeave = data[i];
             var sta = "";
+            var r = staffLeave.ToDate;
+            var resump = new Date(parseInt(r.substr(6)));
+            var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+            var day = days[resump.getDay()];
+            var month = months[resump.getMonth()];
+            var resumptDate = day + "," + month + " - " + resump.getFullYear();
             if (staffLeave.Status === 1) {
                 sta = "Approved";
             }
@@ -63,7 +68,7 @@ function LoadAllRequest(staff) {
                 sta = "Pending";
             }
             var link = "<a href='#' onclick='DeleteLeav(\"" + staffLeave.ID + "\")' title='Delete'><i class='fa fa-trash red'></i></a>";
-            html = html + "<tr><td>" + no + "</td><td>" + staffLeave.LeaveType + "</td><td>" + staffLeave.NoDays + "</td><td>" + staffLeave.ToDate + "</td><td>" + sta + "</td><td>" + link + "</td></tr>";
+            html = html + "<tr><td>" + no + "</td><td>" + staffLeave.LeaveType + "</td><td>" + staffLeave.NoDays + "</td><td>" + resumptDate + "</td><td>" + sta + "</td><td>" + link + "</td></tr>";
         }
         $("#LeaveBody").html(html);
     })
@@ -75,6 +80,51 @@ function DeleteLeav(id) {
         data: { ID: id },
         type: "POST"
     }).success(function (result) {
-        LoadPenalty();
+        LoadAllRequest(id);
     })
 }
+
+function LoadAdmin() {
+    $.ajax({
+        url: "/StaffPortal/LoadAdmin",
+        cache: false,
+        type: "GET"
+    }).success(function (result) {
+        if (result.Length === 0){
+            $("#lblErrorMsg").html("System HR is not set!");
+            $("#lblErrorMsg").show();
+        }
+        else {
+            var c = result[i];
+            var hrID = c.OtherID;
+            var hrName = c.FullName;
+            $("#adminID").val(hrID);
+            $("#txtadminName").val(hrName);
+        }
+    })
+}
+
+$("#SendReq").click(function () {
+    var receiver = $("#adminID").val();
+    //var sender = $("#staffIDL").val();
+    var lAmount = $("#txtlAmount").val();
+    var reasonBody = $("#txtreasonBody").val();
+    var reqContent = {
+        Subject: lAmount, From_ID: sender, To_ID: receiver, Body: reasonBody
+    }
+    $.ajax({
+        url: "/Message/SendMsg",
+        data: messageContent,
+        type: "POST"
+    }).success(function (result) {
+        if (result.status) {
+            $("#lblSuccessMsg").html("Request sent!");
+            $("#lblSuccessMsg").show();
+        }
+        $("#loading").hide();
+    }).fail(function (error) {
+        $("#lblErrorMsg").html(error.Desc);
+        $("#lblErrorMsg").show();
+        $("#loading").hide();
+    });
+})

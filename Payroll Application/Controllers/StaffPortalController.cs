@@ -29,6 +29,15 @@ namespace Payroll_Application.Controllers
             return View();
         }
 
+        public ActionResult LoanApplication()
+        {
+            if (Session["Username"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+
         [HttpPost]
         public ActionResult SaveLeave(LeaveEntity leave)
         {
@@ -84,6 +93,14 @@ namespace Payroll_Application.Controllers
                 check = false;
             }
             return Json(check);
+        }
+
+        //Load Application Admin
+        [HttpGet]
+        public ActionResult LoadAdmin()
+        {
+            var data = db.Users.Where(d => d.Department == "HR").ToList();
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
     }
 }

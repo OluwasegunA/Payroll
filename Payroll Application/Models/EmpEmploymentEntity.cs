@@ -11,6 +11,7 @@ namespace Payroll_Application.Models
     public class EmpEmploymentEntity
     {
         public long RegistrationID { get; set; }
+        public string StaffNo { get; set; }
         public string Branch { get; set; }
         public DateTime DateJoined { get; set; }
         public string EmpLevel { get; set; }

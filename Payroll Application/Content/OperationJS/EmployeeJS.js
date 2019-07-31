@@ -670,6 +670,7 @@ $("#AddRef").click(function (evt) {
 $("#SaveEmployment").click(function (evt) {
     evt.preventDefault();
     var RegID = $("#txtRegId").val();
+    var staffNo = $("#txtStaffNo").val();
     var branch = $("#cboBranch").val();
     var dateJoined = $("#txtdateJoined").val();
     var level = $("#cboLevel").val();
@@ -680,7 +681,7 @@ $("#SaveEmployment").click(function (evt) {
     var jobDescription = $("#txtjobDescription").val();
     
     var employment = {
-        RegistrationID: RegID, Branch: branch, DateJoined: dateJoined, EmpLevel: level, DateStarted: dateStarted, Designation: designation,
+        RegistrationID: RegID, StaffNo: staffNo, Branch: branch, DateJoined: dateJoined, EmpLevel: level, DateStarted: dateStarted, Designation: designation,
         EmploymentType: empType, Department: dept, JobDescription: jobDescription
     };
     $("#lblSuccessMsg").hide();

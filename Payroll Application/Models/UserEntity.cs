@@ -16,6 +16,7 @@ namespace Payroll_Application.Models
         public string PhoneNo { get; set; }
         public string Password { get; set; }
         public string UserRole { get; set; }
+        public string Department { get; set; }
         public string OtherID { get; set; }
         public string ImageUrl { get; set; }
         public long ID { get; set; }

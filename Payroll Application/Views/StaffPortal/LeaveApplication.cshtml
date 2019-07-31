@@ -56,6 +56,8 @@
                         <div class="row">
                             <div class="col-md-4 control-space">
                                 <label class="label">Leave Type:</label>
+                                <input type="hidden" value="@Request.RequestContext.HttpContext.Session["OtherID"]" id="IDLoanee" /> 
+                                <input type="hidden" value="@Request.RequestContext.HttpContext.Session["FullName"]" id="NameLoanee" />
                             </div>
                             <div class="col-md-8 control-space">
                                 @Html.DropDownList("type", new List<SelectListItem> { new SelectListItem {Text="Annual",Value="Annual" },
@@ -137,14 +139,16 @@
 <script src="~/Content/OperationJS/StaffPortal.js"></script>
 <script>
     HideAjaxLoad();
-    LoadAllRequest(staffIDL);
+    var id = "@Request.RequestContext.HttpContext.Session["OtherID"]";
+    var name = "@Request.RequestContext.HttpContext.Session["FullName"]";
+    LoadAllRequest(id);
     $(function (e) {
         $("#txtFrom").datepicker({
-            dateFormat: "dd/mm/yyyy",
+            dateFormat: "dd/mm/yy",
             autoclose: true
         });
         $("#txtTo").datepicker({
-            dateFormat: "dd/mm/yyyy",
+            dateFormat: "dd/mm/yy",
             autoclose: true
         });
     })

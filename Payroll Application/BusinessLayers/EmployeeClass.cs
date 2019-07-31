@@ -299,6 +299,11 @@ namespace Payroll_Application.BusinessLayers
                 db.EmpEmploymentInfo.Add(employment);
             }
             db.EmpEmploymentInfo.Add(employment);
+            SqlConnection con = new SqlConnection(conString);
+            con.Open();
+            string sql = "Update tblUser set Department='" + employment.Department + "' where OtherID='" + employment.StaffNo + "'";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.ExecuteNonQuery();
             db.SaveChanges();
         }
     }

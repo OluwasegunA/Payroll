@@ -562,11 +562,9 @@ $("#SaveSalary").click(function () {
         data: salary,
         type: "POST"
     }).success(function (result) {
-        if (result.status) {
             $("#lblSuccessMsg").html("Salary details saved successfully!");
             $("#lblSuccessMsg").show();
             $("#loading").hide();
-        }
     }).fail(function (error) {
         $("#lblErrorMsg").html(error.Desc);
         $("#lblErrorMsg").show();
@@ -692,11 +690,9 @@ $("#SaveStaffLoan").click(function () {
         data: indiviLoan,
         type: "POST"
     }).success(function (result) {
-        if (result.status) {
             $("#lblSuccessMsg").html("Staff Loan successfully saved!");
             $("#lblSuccessMsg").show();
             $("#loading").hide();
-        }
     }).fail(function (error) {
         $("#lblErrorMsg").html(error.Desc);
         $("#lblErrorMsg").show();
@@ -758,11 +754,9 @@ $("#SaveDeduction").click(function () {
         data: staffDeduction,
         type: "POST"
     }).success(function (result) {
-        if (result.status) {
             $("#lblSuccessMsg").html("Deduction successfully saved for Staff!");
             $("#lblSuccessMsg").show();
             $("#loading").hide();
-        }
     }).fail(function (error) {
         $("#lblErrorMsg").html(error.Desc);
         $("#lblErrorMsg").show();
@@ -957,84 +951,168 @@ $("#ShowDeduction").click(function () {
 })
 
 $("#calculPAYE").click(function () {
-    var netInc = $("#showNetTax").val();
-    var netIncome = Number(netInc.replace(/[^0-9.-]+/g, ""));
-    var netIn = parseFloat(netIncome);
-    var GrossI = $("#txtIncome").val();
-    var GrossIncome = Number(GrossI.replace(/[^0-9.-]+/g, ""));
-    var GrossIn = parseFloat(GrossIncome);
-    if (netIn.length === 0) {
-        $("#lblErrorMsg").html("The field for the Net Taxable Income is Empty./n Please Click the Right button in the right format");
-        $("#lblErrorMsg").show();
-        return;
-    }
-    else {
-        var payE = $("#showPayE");
-        let first, remIn1, second, remIn2, third, remIn3, fourth, remIn4, fifth;
-        if ((netIn - 25000) > 0) {
-            first = 25000 * 0.07;
-            if ((netIn - 25000) < 25000) {
-                remIn1 = (netIn - 25000) * 0.11;
-                var t = parseFloat(first) + parseFloat(remIn1);
-                var t1 = PriceFormat(t);
-                payE.val(t1);
-            }
-            else if ((netIn - 25000) > 25000) {
-                second = 25000 * 0.11;
-                var s = parseFloat(first) + parseFloat(second);
-                var s1 = PriceFormat(s);
-                payE.val(s1);
-                if ((netIn - 50000) < 41666) {
-                    remIn2 = (netIn - 50000) * 0.15;
-                    var r = parseFloat(first) + parseFloat(second) + parseFloat(remIn2);
-                    var r1 = PriceFormat(r);
-                    payE.val(r1);
-                }
-                else if ((netIn - 50000) > 41666) {
-                    third = 41666 * 0.15;
-                    var q = parseFloat(first) + parseFloat(second) + parseFloat(third);
-                    var q1 = PriceFormat(q);
-                    payE.val(q1);
-                    if ((netIn - 91666) < 133333) {
-                        remIn3 = (netIn - 91666) * 0.21;
-                        var p = parseFloat(first) + parseFloat(second) + parseFloat(third) + parseFloat(remIn3);
-                        var p1 = PriceFormat(p);
-                        payE.val(p1);
-                    }
-                    else if ((netIn - 91666) > 133333) {
-                        fourth = 133333 * 0.21;
-                        var m = parseFloat(first) + parseFloat(second) + parseFloat(third) + parseFloat(fourth);
-                        var m1 = PriceFormat(m);
-                        payE.val(m1);
-                        if ((netIn - 224999) < 491665) {
-                            remIn4 = (netIn - 224999) * 0.24;
-                            var o = parseFloat(first) + parseFloat(second) + parseFloat(third) + parseFloat(remIn4);
-                            var o1 = PriceFormat(o);
-                            payE.val(o1);
-                        }
-                        else if ((netIn - 224999) > 491665) {
-                            fifth = 266666 * 0.24;
-                            var l = parseFloat(first) + parseFloat(second) + parseFloat(third) + parseFloat(fourth) + parseFloat(fifth);
-                            var l1 = PriceFormat(l);
-                            payE.val(l1);
-                        }
-                    }
-                }
-            }
-            $("#payEBody").removeClass("hide-txt");
-            $("#payEBody").show();
-            var payE = $("#payEBody").val();
-            var RPayE = Number(payE.replace(/[^0-9.-]+/g, ""));
-            var CRPayE = parseFloat(RPayE);
-            var net = GrossIn - CRPayE;
-            var n = PriceFormat(net);
-            $("#showNetSalary").val(n);
+    if ($("#cbopayPeriod").val() === "Monthly") {
+        var netInc = $("#showNetTax").val();
+        var netIncome = Number(netInc.replace(/[^0-9.-]+/g, ""));
+        var netIn = parseFloat(netIncome);
+        var GrossI = $("#txtIncome").val();
+        var GrossIncome = Number(GrossI.replace(/[^0-9.-]+/g, ""));
+        var GrossIn = parseFloat(GrossIncome);
+        if (netIn.length === 0) {
+            $("#lblErrorMsg").html("The field for the Net Taxable Income is Empty./n Please Click the Right button in the right format");
+            $("#lblErrorMsg").show();
             return;
         }
         else {
-            $("#lblErrorMsg").html("This Staff Earn less than # 25,000.00");
+            var payE = $("#showPayE");
+            let first, remIn1, second, remIn2, third, remIn3, fourth, remIn4, fifth;
+            if ((netIn - 25000) > 0) {
+                first = 25000 * 0.07;
+                if ((netIn - 25000) < 25000) {
+                    remIn1 = (netIn - 25000) * 0.11;
+                    var t = parseFloat(first) + parseFloat(remIn1);
+                    var t1 = PriceFormat(t);
+                    payE.val(t1);
+                }
+                else if ((netIn - 25000) > 25000) {
+                    second = 25000 * 0.11;
+                    var s = parseFloat(first) + parseFloat(second);
+                    var s1 = PriceFormat(s);
+                    payE.val(s1);
+                    if ((netIn - 50000) < 41666) {
+                        remIn2 = (netIn - 50000) * 0.15;
+                        var r = parseFloat(first) + parseFloat(second) + parseFloat(remIn2);
+                        var r1 = PriceFormat(r);
+                        payE.val(r1);
+                    }
+                    else if ((netIn - 50000) > 41666) {
+                        third = 41666 * 0.15;
+                        var q = parseFloat(first) + parseFloat(second) + parseFloat(third);
+                        var q1 = PriceFormat(q);
+                        payE.val(q1);
+                        if ((netIn - 91666) < 133333) {
+                            remIn3 = (netIn - 91666) * 0.21;
+                            var p = parseFloat(first) + parseFloat(second) + parseFloat(third) + parseFloat(remIn3);
+                            var p1 = PriceFormat(p);
+                            payE.val(p1);
+                        }
+                        else if ((netIn - 91666) > 133333) {
+                            fourth = 133333 * 0.21;
+                            var m = parseFloat(first) + parseFloat(second) + parseFloat(third) + parseFloat(fourth);
+                            var m1 = PriceFormat(m);
+                            payE.val(m1);
+                            if ((netIn - 224999) < 491665) {
+                                remIn4 = (netIn - 224999) * 0.24;
+                                var o = parseFloat(first) + parseFloat(second) + parseFloat(third) + parseFloat(remIn4);
+                                var o1 = PriceFormat(o);
+                                payE.val(o1);
+                            }
+                            else if ((netIn - 224999) > 491665) {
+                                fifth = 266666 * 0.24;
+                                var l = parseFloat(first) + parseFloat(second) + parseFloat(third) + parseFloat(fourth) + parseFloat(fifth);
+                                var l1 = PriceFormat(l);
+                                payE.val(l1);
+                            }
+                        }
+                    }
+                }
+                $("#payEBody").removeClass("hide-txt");
+                $("#payEBody").show();
+                var payE = $("#payEBody").val();
+                var RPayE = Number(payE.replace(/[^0-9.-]+/g, ""));
+                var CRPayE = parseFloat(RPayE);
+                var net = GrossIn - CRPayE;
+                var n = PriceFormat(net);
+                $("#showNetSalary").val(n);
+                return;
+            }
+            else {
+                $("#lblErrorMsg").html("This Staff Earn less than # 25,000.00");
+                $("#lblErrorMsg").show();
+                return;
+            }
+        }
+    }
+    else if ($("#cbopayPeriod").val() === "Annually"){
+        var netInc = $("#showNetTax").val();
+        var netIncome = Number(netInc.replace(/[^0-9.-]+/g, ""));
+        var netIn = parseFloat(netIncome);
+        var GrossI = $("#txtIncome").val();
+        var GrossIncome = Number(GrossI.replace(/[^0-9.-]+/g, ""));
+        var GrossIn = parseFloat(GrossIncome);
+        if (netIn.length === 0) {
+            $("#lblErrorMsg").html("The field for the Net Taxable Income is Empty./n Please Click the Right button in the right format");
             $("#lblErrorMsg").show();
             return;
+        }
+        else {
+            var payE = $("#showPayE");
+            let first, remIn1, second, remIn2, third, remIn3, fourth, remIn4, fifth;
+            if ((netIn - 300000) > 0) {
+                first = 300000 * 0.07;
+                if ((netIn - 300000) < 300000) {
+                    remIn1 = (netIn - 300000) * 0.11;
+                    var t = parseFloat(first) + parseFloat(remIn1);
+                    var t1 = PriceFormat(t);
+                    payE.val(t1);
+                }
+                else if ((netIn - 300000) > 300000) {
+                    second = 300000 * 0.11;
+                    var s = parseFloat(first) + parseFloat(second);
+                    var s1 = PriceFormat(s);
+                    payE.val(s1);
+                    if ((netIn - 600000) < 1100000) {
+                        remIn2 = (netIn - 600000) * 0.15;
+                        var r = parseFloat(first) + parseFloat(second) + parseFloat(remIn2);
+                        var r1 = PriceFormat(r);
+                        payE.val(r1);
+                    }
+                    else if ((netIn - 600000) > 1100000) {
+                        third = 500000 * 0.15;
+                        var q = parseFloat(first) + parseFloat(second) + parseFloat(third);
+                        var q1 = PriceFormat(q);
+                        payE.val(q1);
+                        if ((netIn - 1100000) < 2700000) {
+                            remIn3 = (netIn - 1100000) * 0.21;
+                            var p = parseFloat(first) + parseFloat(second) + parseFloat(third) + parseFloat(remIn3);
+                            var p1 = PriceFormat(p);
+                            payE.val(p1);
+                        }
+                        else if ((netIn - 1100000) > 2700000) {
+                            fourth = 1600000 * 0.21;
+                            var m = parseFloat(first) + parseFloat(second) + parseFloat(third) + parseFloat(fourth);
+                            var m1 = PriceFormat(m);
+                            payE.val(m1);
+                            if ((netIn - 2700000) < 5900000) {
+                                remIn4 = (netIn - 2700000) * 0.24;
+                                var o = parseFloat(first) + parseFloat(second) + parseFloat(third) + parseFloat(remIn4);
+                                var o1 = PriceFormat(o);
+                                payE.val(o1);
+                            }
+                            else if ((netIn - 2700000) > 5900000) {
+                                fifth = 3200000 * 0.24;
+                                var l = parseFloat(first) + parseFloat(second) + parseFloat(third) + parseFloat(fourth) + parseFloat(fifth);
+                                var l1 = PriceFormat(l);
+                                payE.val(l1);
+                            }
+                        }
+                    }
+                }
+                $("#payEBody").removeClass("hide-txt");
+                $("#payEBody").show();
+                var payE = $("#payEBody").val();
+                var RPayE = Number(payE.replace(/[^0-9.-]+/g, ""));
+                var CRPayE = parseFloat(RPayE);
+                var net = GrossIn - CRPayE;
+                var n = PriceFormat(net);
+                $("#showNetSalary").val(n);
+                return;
+            }
+            else {
+                $("#lblErrorMsg").html("This Staff Earn less than # 25,000.00");
+                $("#lblErrorMsg").show();
+                return;
+            }
         }
     }
 })

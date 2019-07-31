@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "Human Resource";
+    ViewBag.PageTitle = "Leave Management";
+    Layout = "~/Views/Shared/_LayoutHR.cshtml";
+}
+<div class="col-md-12" style="margin-left: 10px">
+    <div class="row">
+        <div class="card">
+            <div class="card-header"> PENDING LEAVE REQUEST</div>
+            <div class="card-body">
+                <table class="table table-bordered table-hover table-custom-border" id="Leavetable">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>TYPE</th>
+                            <th>NAME</th>
+                            <th>FROM</th>
+                            <th>RESUMPTION</th>
+                            <th>RECALL</th>
+                            <th>STATUS</th>
+                            <th>COMMENT</th>
+                            <th>MANAGE</th>
+                        </tr>
+                    </thead>
+                    <tbody id="LeaveBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12" style="margin-left: 10px">
+    <div class="row">
+        <div class="card">
+            <div class="card-header"> APPROVED LEAVE</div>
+            <div class="card-body">
+                <table class="table table-bordered table-hover table-custom-border" id="approveLeavetable">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>TYPE</th>
+                            <th>NAME</th>
+                            <th>DAYS</th>
+                            <th>RESUMPTION</th>
+                            <th>RECALL</th>
+                            <th>STATUS</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody id="approveLeaveBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+</script>
+

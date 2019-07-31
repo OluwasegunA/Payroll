@@ -14,6 +14,7 @@ namespace Payroll_Application.Models
         public decimal TotalLoanAmount { get; set; }
         public int Installment { get; set; }
         public decimal Repayment { get; set; }
+        public bool Status { get; set; }
         public int ID { get; set; }
     }
 }
