@@ -66,7 +66,14 @@
                         <h2 class="h5 text-uppercase">@Session["CompanyName"]</h2>
                     }
                 </div>
-                <div class="sidenav-header-logo"><a href="/AdminPortal/Index" class="brand-small text-center"> <strong>B</strong><strong class="text-primary">N</strong></a></div>
+                @if (Session["UserRole"] == "Admin")
+                {
+                    <div class="sidenav-header-logo"><a href="/AdminPortal/Index" class="brand-small text-center"> <strong>B</strong><strong class="text-primary">N</strong></a></div>
+                }
+                else
+                {
+                    <div class="sidenav-header-logo"><a href="/StaffPortal/Index" class="brand-small text-center"> <strong>B</strong><strong class="text-primary">N</strong></a></div>
+                }
             </div>
             <div class="main-menu">
                 <ul id="side-main-menu" class="side-menu list-unstyled">

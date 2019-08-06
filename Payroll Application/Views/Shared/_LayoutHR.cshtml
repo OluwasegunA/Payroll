@@ -67,11 +67,18 @@
             </div>
             <div class="main-menu">
                 <ul id="side-main-menu" class="side-menu list-unstyled">
-                    <li class="active"><a href="/StaffPortal/Index"> <i class="icon-home"></i><span>Home</span></a></li>
-                    <li class=""><a href="/Message/Message"> <i class="icon-mail"></i><span>Messages</span></a></li>
-                    @*<li class=""><a href="/StaffPortal/LeaveApplication"> <i class="icon-mail"></i><span>Staff Leave</span></a></li>
-                        <li class=""><a href="/StaffPortal/LoanApplication"> <i class="icon-mail"></i><span>Staff Loan</span></a></li>
-                        <li class=""><a href="/StaffPortal/Training"> <i class="icon-mail"></i><span>Training</span></a></li>*@
+                    <li><a href="/AdminPortal/Index"> <i class="icon-home"></i><span>Home</span></a></li>
+                    <li class="active">
+                        <a href="#setupList" data-toggle="collapse" aria-expanded="false">
+                            <i class="fa fa-cog"></i><span>HR Management</span>
+                            <div class="arrow pull-right"><i class="fa fa-angle-down"></i></div>
+                        </a>
+                        <ul id="setupList" class="collapse list-unstyled">
+                            <li> <a href="/HumanResource/LeaveMod">Manage Leave</a></li>
+                            <li> <a href="/HumanResource/LoanMod">Manage Loan</a></li>
+                            <li><a href="/Employee/EmployeeSearch">Employee Search</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
 

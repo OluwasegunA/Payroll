@@ -285,6 +285,7 @@ namespace Payroll_Application.BusinessLayers
             var oldEmpE = db.EmpEmploymentInfo.Where(d => d.RegistrationID == employment.RegistrationID).FirstOrDefault();
             if (oldEmpE != null)
             {
+                oldEmpE.StaffNo = employment.StaffNo;
                 oldEmpE.Branch = employment.Branch;
                 oldEmpE.DateJoined = employment.DateJoined;
                 oldEmpE.EmpLevel = employment.EmpLevel;

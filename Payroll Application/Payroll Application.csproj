@@ -532,6 +532,7 @@
     <Content Include="Views\Shared\_LayoutHR.cshtml" />
     <Content Include="Views\HumanResource\LeaveMod.cshtml" />
     <Content Include="Views\HumanResource\Index.cshtml" />
+    <Content Include="Views\HumanResource\LoanMod.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

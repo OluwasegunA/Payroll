@@ -16,6 +16,7 @@ namespace Payroll_Application.Models
         public string Balance { get; set; }
         public string Remark { get; set; }
         public bool Status { get; set; }
+        public bool IsDeclined { get; set; }
         public int ID { get; set; }
     }
 }

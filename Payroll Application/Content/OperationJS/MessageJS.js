@@ -36,11 +36,12 @@ function populateStafName(ddlStaffID, ddlStaffName) {
 //Sening Messages
 $("#SendMessage").click(function () {
     var receiver = $("#cbostaff").val();
-    var sender = $("#UserID").val();
+    //var sender = $("#UserID").val(); 
+    var receivername = $("#txtcontactName").val();
     var subject = $("#txtsubject").val();
     var msgbody = $("#txtmessageBody").val();
     var messageContent = {
-        Subject: subject, From_ID: sender, To_ID: receiver, Body: msgbody
+        Subject: subject, From_ID: sender, To_ID: receiver, Body: msgbody, RecieverName: receivername, SenderName: sendername
     }
     $.ajax({
         url: "/Message/SendMsg",

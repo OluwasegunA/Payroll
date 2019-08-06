@@ -35,7 +35,7 @@ namespace Payroll_Application.Controllers
                     Session["Username"] = olduser.Username;
                     Session["UserRole"] = olduser.UserRole;
                     Session["UserImg"] = olduser.ImageUrl;
-                    if (olduser.UserRole == "Admin")
+                    if (olduser.UserRole == "Admin" || olduser.Department == "HR")
                     {
                         staffId = Session["OtherID"].ToString();
                         staffName = Session["FullName"].ToString();

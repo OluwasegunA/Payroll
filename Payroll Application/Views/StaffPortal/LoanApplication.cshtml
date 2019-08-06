@@ -88,8 +88,9 @@
 <script src="~/Content/OperationJS/StaffPortal.js"></script>
 <script>
     HideAjaxLoad();
-    LoadAdmin();
+    LoadAdmin(adminID, txtadminName);
     var sender = "@Request.RequestContext.HttpContext.Session["OtherID"]";
+    var sendername = "@Request.RequestContext.HttpContext.Session["FullName"]";
     $(function (e) {
 
     })

@@ -1,6 +1,4 @@
-﻿var Id = $("#staffIDL").val();
-var name = "<%: Session["FullName"] %>";
-alert(id);
+﻿
 function HideAjaxLoad() {
     $("#lblErrorMsg").hide();
     $("#lblSuccessMsg").hide();
@@ -8,7 +6,7 @@ function HideAjaxLoad() {
 
 $("#SubmitLeave").click(function (evt) {
     evt.preventDefault();
-    //var id = $("#staffIDL").data();
+    //var id = $("#IDLoanee").val();
     //var name = $("#staffNameL").data();
     var type = $("#txtType").val();
     var from = $("#txtFrom").val();
@@ -42,11 +40,11 @@ $("#SubmitLeave").click(function (evt) {
 })
 
 function LoadAllRequest(staff) {
-    var SID = $(staff).val();
+    //var SID = $(staff).val();
     $.ajax({
         url: "/StaffPortal/LoadLeave",
         type: "GET",
-        data: { staffID: SID },
+        data: { staffID: staff },
         cache: false
     }).success(function (data) {
         $("#LeaveBody").empty();
@@ -55,6 +53,14 @@ function LoadAllRequest(staff) {
             no++;
             var staffLeave = data[i];
             var sta = "";
+            var r = staffLeave.ToDate;
+            var resump = new Date(parseInt(r.substr(6)));
+            var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+            var day = days[resump.getDay()];
+            var month = months[resump.getMonth()];
+            var resumptDate = day + "," + month + " - " + resump.getFullYear();
             if (staffLeave.Status === 1) {
                 sta = "Approved";
             }
@@ -62,7 +68,7 @@ function LoadAllRequest(staff) {
                 sta = "Pending";
             }
             var link = "<a href='#' onclick='DeleteLeav(\"" + staffLeave.ID + "\")' title='Delete'><i class='fa fa-trash red'></i></a>";
-            html = html + "<tr><td>" + no + "</td><td>" + staffLeave.LeaveType + "</td><td>" + staffLeave.NoDays + "</td><td>" + staffLeave.ToDate + "</td><td>" + sta + "</td><td>" + link + "</td></tr>";
+            html = html + "<tr><td>" + no + "</td><td>" + staffLeave.LeaveType + "</td><td>" + staffLeave.NoDays + "</td><td>" + resumptDate + "</td><td>" + sta + "</td><td>" + link + "</td></tr>";
         }
         $("#LeaveBody").html(html);
     })
@@ -74,41 +80,39 @@ function DeleteLeav(id) {
         data: { ID: id },
         type: "POST"
     }).success(function (result) {
-        LoadAllRequest(staff);
+        LoadAllRequest(id);
     })
 }
 
-function LoadAdmin() {
+function LoadAdmin(HRid, HRname) {
+    var hrID = $(HRid);
+    var hrName = $(HRname);
     $.ajax({
         url: "/StaffPortal/LoadAdmin",
         cache: false,
         type: "GET"
     }).success(function (result) {
-        if (result.Length === 0){
-            $("#lblErrorMsg").html("System HR is not set!");
-            $("#lblErrorMsg").show();
-        }
-        else {
+        if (result.Length !== 0){
             var c = result[i];
-            var hrID = result.OtherID;
-            var hrName = result.FullName;
-            $("#adminID").val(hrID);
-            $("#txtadminName").val(hrName);
+            var p = c.OtherID;
+            var r = c.FullName;
+            hrID.val(p);
+            hrName.val(r);
         }
     })
 }
 
 $("#SendReq").click(function () {
     var receiver = $("#adminID").val();
-    var sender = $("#staffIDL").val();
+    var reName = $("#txtadminName").val();
     var lAmount = $("#txtlAmount").val();
     var reasonBody = $("#txtreasonBody").val();
     var reqContent = {
-        Subject: lAmount, From_ID: sender, To_ID: receiver, Body: reasonBody
+        Subject: lAmount, From_ID: sender, To_ID: receiver, Body: reasonBody, SenderName: sendername, RecieverName: reName
     }
     $.ajax({
-        url: "/Message/SendMsg",
-        data: messageContent,
+        url: "/StaffPortal/SendLoanReq",
+        data: reqContent,
         type: "POST"
     }).success(function (result) {
         if (result.status) {

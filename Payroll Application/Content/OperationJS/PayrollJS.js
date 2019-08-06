@@ -331,13 +331,14 @@ $("#SavePenalty").click(function (evt) {
     $.ajax({
         url: "/Payroll/SavePenaltySet",
         type: "POST",
-        data: penalty
+        data: penalty,
+        cache: false
     }).success(function (result) {
         $("#txtcodePenal").val("");
         $("#txtdesPenal").val("");
         $("#txtpercentPenal").val("");
-        LoadPenalty();
         $("#loading").hide();
+        LoadPenalty();
     }).fail(function (error) {
         $("#lblErrorMsg").show("Please Check the fields")
         $("#loading").hide();
@@ -865,18 +866,29 @@ function Deduction(sal, loanDe, penaltyDe, period) {
     var loanDeduct = Number(loDed.replace(/[^0-9.-]+/g, ""));
     var penDed = $(penaltyDe).val();
     var penaltyDed = Number(penDed.replace(/[^0-9.-]+/g, ""));
-    var pensionDeduction = parseFloat(GI) * 0.075;
+    var pensionDeduction = parseFloat(GI) * 0.08;
     var NHF = parseFloat(GI) * 0.025;
+    var calculatedCF = parseFloat(GI) * 0.01;
+    var calConRel = parseFloat(calculatedCF);
     var CF = "";
-    if ($(period).val() === "Monthly") {
-        CF = "# 16,666.67";
+    if ($(period).val() === "Monthly") {  
+        if (16666.67 > calConRel){
+            CF = "# 16,666.67";
+        }
+        else {
+            CF = PriceFormat(calConRel);
+        }
     }
     else if ($(period).val() === "Annually") {
-        CF = "# 200,000";
+        if (200000 > calConRel) {
+            CF = "# 200,000";
+        }
+        else {
+            CF = PriceFormat(calConRel);
+        }
     }
     var calCF = Number(CF.replace(/[^0-9.-]+/g, ""));
-    var GIR = parseFloat(GI) * 0.2;
-    var totNoneTaxDed = pensionDeduction + NHF + parseFloat(calCF) + GIR;
+    var totNoneTaxDed = pensionDeduction + NHF + parseFloat(calCF);
     var totalDed = totNoneTaxDed + parseInt(loanDeduct) + parseInt(penaltyDed);
     var netTaxable = parseFloat(GI) - parseFloat(totNoneTaxDed);
     var pe = PriceFormat(pensionDeduction);

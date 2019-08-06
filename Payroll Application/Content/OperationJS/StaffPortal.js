@@ -84,37 +84,35 @@ function DeleteLeav(id) {
     })
 }
 
-function LoadAdmin() {
+function LoadAdmin(HRid, HRname) {
+    var hrID = $(HRid);
+    var hrName = $(HRname);
     $.ajax({
         url: "/StaffPortal/LoadAdmin",
         cache: false,
         type: "GET"
     }).success(function (result) {
-        if (result.Length === 0){
-            $("#lblErrorMsg").html("System HR is not set!");
-            $("#lblErrorMsg").show();
-        }
-        else {
+        if (result.Length !== 0){
             var c = result[i];
-            var hrID = c.OtherID;
-            var hrName = c.FullName;
-            $("#adminID").val(hrID);
-            $("#txtadminName").val(hrName);
+            var p = c.OtherID;
+            var r = c.FullName;
+            hrID.val(p);
+            hrName.val(r);
         }
     })
 }
 
 $("#SendReq").click(function () {
     var receiver = $("#adminID").val();
-    //var sender = $("#staffIDL").val();
+    var reName = $("#txtadminName").val();
     var lAmount = $("#txtlAmount").val();
     var reasonBody = $("#txtreasonBody").val();
     var reqContent = {
-        Subject: lAmount, From_ID: sender, To_ID: receiver, Body: reasonBody
+        Subject: lAmount, From_ID: sender, To_ID: receiver, Body: reasonBody, SenderName: sendername, RecieverName: reName
     }
     $.ajax({
-        url: "/Message/SendMsg",
-        data: messageContent,
+        url: "/StaffPortal/SendLoanReq",
+        data: reqContent,
         type: "POST"
     }).success(function (result) {
         if (result.status) {

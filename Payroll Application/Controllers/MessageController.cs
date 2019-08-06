@@ -29,11 +29,13 @@ namespace Payroll_Application.Controllers
             bool check = false; string desc = "";
             try
             {
-                MessageEntity Content = new MessageEntity();
-                Content.To_ID = messageContent.To_ID;
-                Content.From_ID = messageContent.From_ID;
-                Content.Body = messageContent.Body;
-                Content.Subject = messageContent.Subject;
+                MessageEntity Contents = new MessageEntity();
+                Contents.To_ID = messageContent.To_ID;
+                Contents.From_ID = messageContent.From_ID;
+                Contents.Body = messageContent.Body;
+                Contents.Subject = messageContent.Subject;
+                Contents.SenderName = messageContent.SenderName;
+                Contents.RecieverName = messageContent.RecieverName;
                 db.Messages.Add(messageContent);
                 db.SaveChanges();
                 check = true;

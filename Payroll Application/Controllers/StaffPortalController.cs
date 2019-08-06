@@ -102,5 +102,33 @@ namespace Payroll_Application.Controllers
             var data = db.Users.Where(d => d.Department == "HR").ToList();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
+
+        //Sending Loan Request
+        [HttpPost]
+        public ActionResult SendLoanReq(MessageEntity messageContent)
+        {
+            MyDbContext db = new MyDbContext();
+            bool check = false; string desc = "";
+            try
+            {
+                MessageEntity Content = new MessageEntity();
+                Content.To_ID = messageContent.To_ID;
+                Content.RecieverName = messageContent.RecieverName;
+                Content.SenderName = messageContent.SenderName;
+                Content.From_ID = messageContent.From_ID;
+                Content.Body = messageContent.Body;
+                Content.Subject = messageContent.Subject;
+                Content.IsLoan = true;
+                db.Messages.Add(messageContent);
+                db.SaveChanges();
+                check = true;
+            }
+            catch (Exception ex)
+            {
+                check = false;
+                desc = ex.Message;
+            }
+            return new JsonResult { Data = new { status = check, Desc = desc } };
+        }
     }
 }

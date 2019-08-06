@@ -8,12 +8,13 @@
         <div class="card">
             <div class="card-header"> PENDING LEAVE REQUEST</div>
             <div class="card-body">
-                <table class="table table-bordered table-hover table-custom-border" id="Leavetable">
+                <table class="table table-bordered table-hover table-custom-border" id="pendLeavetable">
                     <thead>
                         <tr>
                             <th>S/N</th>
-                            <th>TYPE</th>
                             <th>NAME</th>
+                            <th>TYPE</th>
+                            <th>DAYS</th>
                             <th>FROM</th>
                             <th>RESUMPTION</th>
                             <th>RECALL</th>
@@ -22,12 +23,13 @@
                             <th>MANAGE</th>
                         </tr>
                     </thead>
-                    <tbody id="LeaveBody"></tbody>
+                    <tbody id="pendLeaveBody"></tbody>
                 </table>
             </div>
         </div>
     </div>
 </div>
+<br/>
 
 <div class="col-md-12" style="margin-left: 10px">
     <div class="row">
@@ -38,13 +40,12 @@
                     <thead>
                         <tr>
                             <th>S/N</th>
-                            <th>TYPE</th>
                             <th>NAME</th>
-                            <th>DAYS</th>
+                            <th>TYPE</th>
+                            <th>FROM</th>
                             <th>RESUMPTION</th>
                             <th>RECALL</th>
                             <th>STATUS</th>
-                            <th>ACTION</th>
                         </tr>
                     </thead>
                     <tbody id="approveLeaveBody"></tbody>
@@ -53,9 +54,45 @@
         </div>
     </div>
 </div>
+<br/>
 
+<div class="col-md-12" style="margin-left: 10px">
+    <div class="row">
+        <div class="card">
+            <div class="card-header"> DECLINED LEAVE</div>
+            <div class="card-body">
+                <table class="table table-bordered table-hover table-custom-border" id="declineLeavetable">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>NAME</th>
+                            <th>TYPE</th>
+                            <th>DAYS</th>
+                            <th>FROM</th>
+                            <th>RESUMPTION</th>
+                            <th>RECALL</th>
+                            <th>STATUS</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody id="declineLeaveBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<br/>
 
+<script src="~/Content/OperationJS/HumanResourceJS.js"></script>
 <script>
-
+    LoadPendingRequest();
+    LoadApproveRequest();
+    LoadDeclineRequest();
+    $(function (e) {
+        e.perventDefault();
+        LoadPendingRequest();
+        LoadApproveRequest();
+        LoadDeclineRequest();
+    })
 </script>
 

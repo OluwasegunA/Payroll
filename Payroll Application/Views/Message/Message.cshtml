@@ -206,6 +206,8 @@
         <script src="~/Content/OperationJS/MessageJS.js"></script>
         <script type="text/javascript">
             LoadStaffs(cbostaff);
+            var sender = "@Request.RequestContext.HttpContext.Session["OtherID"]";
+            var sendername = "@Request.RequestContext.HttpContext.Session["FullName"]";
             $(function (e) {
                 $("#cbostaff").change(function () {
                     populateStafName(cbostaff, txtcontactName)
