@@ -29,6 +29,15 @@ namespace Payroll_Application.Controllers
             return View();
         }
 
+        public ActionResult LoanMod()
+        {
+            if (Session["Username"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+
         //Approve Leave
         [HttpPost]
         public ActionResult ApproveLeave(int ID)
