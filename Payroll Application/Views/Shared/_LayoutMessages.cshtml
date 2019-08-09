@@ -10,6 +10,7 @@
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.0.0/normalize.css" rel="stylesheet">
     <link rel="stylesheet" href="~/Content/ExternalFiles/css/bootstrap.css">
     @*<link href="~/Content/Bootstrap4 beta/css/bootstrap.css" rel="stylesheet" />*@
     <!-- Google fonts - Roboto -->
@@ -39,9 +40,10 @@
     <!-- Custom stylesheet - for your changes-->
     <link href="~/Content/CustomStyles/AdminPageStyle.css" rel="stylesheet" />
     <link href="~/Content/CustomStyles/PageCss.css" rel="stylesheet" />
-    <link href="~/Content/css/app.css" rel="stylesheet" />
+    @*<link href="~/Content/css/app.css" rel="stylesheet" />
     <link href="~/Content/css/app.skins.css" rel="stylesheet" />
-    <link href="~/Content/css/summernote.css" rel="stylesheet" />
+    <link href="~/Content/css/summernote.css" rel="stylesheet" />*@
+    <link href="~/Content/css/message.css" rel="stylesheet" />
         @*<link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
         <link href="~/Content/css/components.css" rel="stylesheet" />
         <link href="~/Content/css/icons.css" rel="stylesheet" />
@@ -207,7 +209,7 @@
 
             @RenderBody()
         </div>
-        <footer class="main-footer">
+        <footer class="footer">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-6">

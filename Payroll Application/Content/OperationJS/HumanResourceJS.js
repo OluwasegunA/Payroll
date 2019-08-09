@@ -158,7 +158,7 @@ function LoadDeclineRequest() {
 }
 
 //Loading loan from Message Table
-function LoadLoan() {
+function LoadLoanT() {
     $.ajax({
         url: "/HumanResource/LoadLoan",
         type: "GET",
@@ -166,7 +166,7 @@ function LoadLoan() {
     }).success(function (data) {
         $("#manLoanBody").empty();
         var no = 0; var html = "";
-        for (i = 0; i <= data.length - 1; i++) {
+        for (i = 0; i <= data.length; i++) {
             no++;
             var reqLon = data[i];
             var r = reqLon.Subject;

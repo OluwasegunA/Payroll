@@ -3,14 +3,20 @@
     ViewBag.PageTitle = "Messages";
     Layout = "~/Views/Shared/_LayoutMessages.cshtml";
 }
-<link href="~/Content/css/message.css" rel="stylesheet" />
+@*<link href="~/Content/css/message.css" rel="stylesheet" />*@
 @*<link href="~/Content/css/pages.css" rel="stylesheet" />*@
 <style>
-    
+    .innerIcon{
+        float: right;
+        margin: 50px 10px;
+    }
+    h6{
+        font-weight: 400;
+    }
 </style>
-<div class="secondary-sidebar">
-        <nav>
-            <ul class="">
+<div class="container" id="">
+        <div class="sidebar">
+            <ul class="no-bullet">
                 <li class="blacktext verLine bold">
                     <a href="#" data-animation="fadein" data-plugin="custommodal" data-overlaySpeed="200" data-overlayColor="#36404a"
                        data-target="#con-close-modal" data-toggle="modal">
@@ -36,60 +42,18 @@
                     </a>
                 </li>
             </ul>
-        </nav>
-    </div>
-    <div class="main-panel">
-        <!--<div class="content">-->
-        <div class="main-content">
-            <div class="col-sm-10">
-                <div class="inbox-app-main">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <main id="main" class="content-main">
-                                <div class="overlay"></div>
-                                <header class="header">
-                                    <h1 class="page-title">
-                                        <a class="sidebar-toggle-btn trigger-toggle-sidebar">
-                                            <span class="line"></span><span class="line"></span><span class="line"></span><span class="line line-angle1"></span><span class="line line-angle2"></span>
-                                        </a>
-                                    </h1>
-                                    <div class="search-box pull-right">
-                                        <input placeholder="Search Messages..."><span class="icon glyphicon glyphicon-search"></span>
-                                    </div>
-                                    <div class="pull-left">
-                                        <h3 class="title-page">Mailbox</h3>
-                                    </div>
-                                    <div class="clearfix"></div>
-
-                                </header>
-
-                                <div id="main-nano-wrapper" class="nano">
-                                    <div class="nano-content">
-                                        <ul class="message-list">
-                                            <li class="unread message-item clone cursor btn waves-effect waves-light" data-target="#custom-modal" data-animation="blur" data-plugin="custommodal"
-                                                    	data-overlaySpeed="100" data-overlayColor="#36404a" data-toggle="modal">
-                                                <div class="col col-1">
-                                                    <p class="title sender-name">Lucas Kriebel (via Twitter)</p>
-                                                    <span class="star-toggle fa fa-star-o"></span>
-                                                </div>
-                                                <div class="col col-2">
-                                                    <div class="subject">
-                                                        <div class="subject-title">Lucas Kriebel has sent you a direct message on Twitter! </div>
-                                                        @*<div class="date message-time right">11:49 am</div>*@
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        @*<a href="#" class="load-more-link">Show more messages</a>*@
-                                    </div>
-                                </div>
-                            </main>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
-        <!--</div>-->
+        <div class="inbox">
+            @*<ul class="" id="myTab">
+                <li class="message">
+                    <input type="checkbox" value="selected" class="check">
+                    <span id="senderName" class="sender">Oluwasegun Ayobami</span>
+                    <span id="msgSubject" class="subject">Starting the Meeting Now...</span>
+                    <span id="msgDate" class="date">Monday, 26-07-2019</span>
+                </li>
+            </ul>*@
+        </div>
+		<div class="inbox-body"></div>
     </div>
 
 
@@ -143,66 +107,6 @@
     </div>
 </div>
 
-<!-- Modal -->
-<div id="custom-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="header nopadding-bottom">
-                    <h1 class="modal-title">
-                        <button class="" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <span class="msg-title" style="text-align:center; padding-left:30px">Process</span>
-                    </h1>
-                </div>
-            </div>
-            <div class="modal-body">
-                <div id="message-nano-wrapper" class="nano">
-                    <div class="nano-content">
-                        <div class="message-container list-unstyled">
-                            <div class="sent">
-                                <div class="details">
-                                    <div class="left">
-                                        <span class="senderName">You</span>
-                                        <div class="arrow"></div>
-                                        <span class="recipientName">Scott</span>
-                                    </div>
-                                    <div class="right date-time">March 6, 2014, 20:08 pm</div>
-                                </div>
-                                <div class="message msg-bdy">
-                                    <p>
-                                        | The every winged bring, whose life. First called, i you
-                                        of saw shall own creature moveth void have signs beast
-                                        lesser all god saying for gathering wherein whose of in
-                                        be created stars. Them whales upon life divide earth
-                                        own.
-                                    </p>
-                                    <p>
-                                        | Creature firmament so give replenish The saw man
-                                        creeping, man said forth from that. Fruitful multiply
-                                        lights air. Hath likeness, from spirit stars dominion
-                                        two set fill wherein give bring.
-                                    </p>
-                                    <p>
-                                        | Gathering is. Lesser Set fruit subdue blessed let.
-                                        Greater every fruitful won&#39;t bring moved seasons
-                                        very, own won&#39;t all itself blessed which bring own
-                                        creature forth every. Called sixth light.
-                                    </p>
-                                </div>
-                                <div class="tool-box">
-                                    <span id="deleteMsg" class="circle-icon red-hover fa fa-trash-o" data-toggle="" data-placement="top" title="Delete Message"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
         <script src="~/Content/OperationJS/MessageJS.js"></script>
         <script type="text/javascript">
             LoadStaffs(cbostaff);
@@ -212,11 +116,34 @@
                 $("#cbostaff").change(function () {
                     populateStafName(cbostaff, txtcontactName)
                 })
+                $("#CallInboxMsg").click(function () {
+                    $("#CallInboxMsg").addClass("active");
+                    $("#CallSentMsg").removeClass("active");
+                    $("#CallDeletedMsg").removeClass("active");
+                    LoadInboxs(sender);
+                    countIn(sender);
+                })
+                $("#CallSentMsg").click(function () {
+                    $("#CallSentMsg").addClass("active");
+                    $("#CallInboxMsg").removeClass("active");
+                    $("#CallDeletedMsg").removeClass("active");
+                    LoadSentMsg(sender);
+                    countSe(sender);
+                })
+                $("#CallDeletedMsg").click(function () {
+                    $("#CallDeletedMsg").addClass("active");
+                    $("#CallInboxMsg").removeClass("active");
+                    $("#CallSentMsg").removeClass("active");
+                    LoadTrashMsg(sender);
+                    countTra(sender);
+                })
             });
             $("#lblsuccpref").hide();
-            $("[data-toggle=tooltip]").tooltip();
-            $("[data-toggle=popover]").popover().click(function (e) {
-                e.preventDefault();
-            });
-            var resizefunc = [];
+
+            window.onload = function () {
+                countIn(sender);
+                countSe(sender);
+                countTra(sender);
+            }; // end window.onload
         </script>
+

@@ -358,7 +358,7 @@ function LoadPenalty() {
             var penalty = data[i];
 
             var link = "<a href='#' onclick='EditPenalty(\"" + penalty.Code + "\")' title='Edit' ><i class='fa fa-pencil'></i></a>";
-            var link2 = "<a href='#' onclick='DeletePenalty(\"" + penalty.Code + "\")' title='Delete'><i class='fa fa-trash red'></i></a>";
+            var link2 = "<a href='#' onclick='DeletePenalty(\"" + penalty.Code + "\")' title='Delete'><i class='fa fa-trash btn-danger'></i></a>";
             var space = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
             html = html + "<tr><td>" + no + "</td><td>" + penalty.Description + "</td><td>" + penalty.DeductType + "</td><td>" + penalty.Percentage + "</td><td>" + link + space + link2 + "</td></tr>";
         }
@@ -962,6 +962,7 @@ $("#ShowDeduction").click(function () {
     Deduction(txtIncome, txtloanDeduct, txtpenaDeduct, cbopayPeriod);
 })
 
+
 $("#calculPAYE").click(function () {
     if ($("#cbopayPeriod").val() === "Monthly") {
         var netInc = $("#showNetTax").val();
@@ -1030,12 +1031,6 @@ $("#calculPAYE").click(function () {
                 }
                 $("#payEBody").removeClass("hide-txt");
                 $("#payEBody").show();
-                var payE = $("#payEBody").val();
-                var RPayE = Number(payE.replace(/[^0-9.-]+/g, ""));
-                var CRPayE = parseFloat(RPayE);
-                var net = GrossIn - CRPayE;
-                var n = PriceFormat(net);
-                $("#showNetSalary").val(n);
                 return;
             }
             else {
@@ -1052,7 +1047,7 @@ $("#calculPAYE").click(function () {
         var GrossI = $("#txtIncome").val();
         var GrossIncome = Number(GrossI.replace(/[^0-9.-]+/g, ""));
         var GrossIn = parseFloat(GrossIncome);
-        if (netIn.length === 0) {
+        if (netInc.length === 0) {
             $("#lblErrorMsg").html("The field for the Net Taxable Income is Empty./n Please Click the Right button in the right format");
             $("#lblErrorMsg").show();
             return;
@@ -1112,12 +1107,6 @@ $("#calculPAYE").click(function () {
                 }
                 $("#payEBody").removeClass("hide-txt");
                 $("#payEBody").show();
-                var payE = $("#payEBody").val();
-                var RPayE = Number(payE.replace(/[^0-9.-]+/g, ""));
-                var CRPayE = parseFloat(RPayE);
-                var net = GrossIn - CRPayE;
-                var n = PriceFormat(net);
-                $("#showNetSalary").val(n);
                 return;
             }
             else {
@@ -1127,4 +1116,17 @@ $("#calculPAYE").click(function () {
             }
         }
     }
+    var GrossI = $("#txtIncome").val();
+    var GrossIncome = Number(GrossI.replace(/[^0-9.-]+/g, ""));
+    var GrossIn = parseFloat(GrossIncome);
+    var loDed = $("#txtloanDeduct").val();
+    var loanDeduct = Number(loDed.replace(/[^0-9.-]+/g, ""));
+    var penDed = $("#txtpenaDeduct").val();
+    var penaltyDed = Number(penDed.replace(/[^0-9.-]+/g, ""));
+    var payEval = $("#showPayE").val();
+    var RPayE = Number(payEval.replace(/[^0-9.-]+/g, ""));
+    var CRPayE = parseFloat(RPayE);
+    var net = GrossIn - CRPayE - parseFloat(loanDeduct) - parseFloat(penaltyDed);
+    var n = PriceFormat(net);
+    $("#showNetSalary").val(n);
 })

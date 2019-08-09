@@ -325,10 +325,12 @@ function ClearPersonalInformation() {
      $("#txtstate").val("");
 }
 
-function LoadExperience() {
+function LoadExperience(reg) {
+    var RegID = $(reg).val();
     $.ajax({
         url: "/Employee/LoadExpInfo",
-        type: "POST"
+        type: "POST",
+        data: { RegistID: RegID}
     }).success(function (data) {
         $("#experienceDataList").html(data);
         $("#ExperienceList").DataTable({
@@ -875,11 +877,11 @@ $("#SaveMed").click(function (evt) {
 
 //Populating the table
 function LoadQualification() {
-   // var RegID = $("#txtRegId");
+    var RegID = $("#txtRegId");
     $.ajax({
         url: "/Employee/LoadQualificationInfo",
-        type: "POST"
-    //    data: { RegID: RegistrationID}
+        type: "POST",
+        data: { RegistID: RegID}
     }).success(function (data) {
         $("#quaDataList").html(data);
         $("#QualificationList").DataTable({

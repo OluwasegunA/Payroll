@@ -341,9 +341,9 @@ namespace Payroll_Application.Controllers
             return new JsonResult { Data = new { status = check, Desc = desc } };
         }
         //Load Qualification information
-        public ActionResult LoadQualificationInfo()
+        public ActionResult LoadQualificationInfo(int RegistID)
         {
-            var Model = db.EmpQualifications.Where(d => d.IsDeleted == false).OrderBy(d => d.Institution).ToList();
+            var Model = db.EmpQualifications.Where(d => d.IsDeleted == false && d.RegistrationID == RegistID).OrderBy(d => d.Institution).ToList();
             return PartialView("PartialQualificationList", Model);
         }
 
@@ -389,9 +389,9 @@ namespace Payroll_Application.Controllers
         }
 
         //Load experience information
-        public ActionResult LoadExpInfo()
+        public ActionResult LoadExpInfo(int RegistID)
         {
-            var Model = db.EmpExperiences.Where(d => d.IsDeleted == false).OrderBy(d => d.CompName).ToList();
+            var Model = db.EmpExperiences.Where(d => d.IsDeleted == false && d.RegistrationID == RegistID).OrderBy(d => d.CompName).ToList();
             return PartialView("PartialExperienceList", Model);
         }
 
