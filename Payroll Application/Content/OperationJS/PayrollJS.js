@@ -3,11 +3,13 @@
     $("#lblSuccessMsg").hide();
     $("#loading").hide();
 }
+
+
+
 //======================================Allowance========================================================
 
 //New Allowance Code
 $("#NewAllowance").click(function (e) {
-    e.preventDefault();
     $("#loading").show();
     $.ajax({
         url: "/Payroll/GetAllowanceCode",
@@ -22,8 +24,9 @@ $("#NewAllowance").click(function (e) {
         $("#loading").hide();
     }).fail(function (error) {
         $("#loading").hide();
-    })
-})
+    });
+    e.preventDefault();
+});
 
 //save Allowance
 $("#SaveAllowance").click(function (evt) {
@@ -58,7 +61,7 @@ $("#SaveAllowance").click(function (evt) {
         $("#loading").hide();
     }).fail(function (error) {
         $("#loading").hide();
-        })
+    });
 });
 
 function LoadAllowance() {
@@ -125,8 +128,8 @@ $("#NewPension").click(function (e) {
         $("#loading").hide();
     }).fail(function (error) {
         $("#loading").hide();
-    })
-})
+    });
+});
 
 //save Pension
 $("#SavePension").click(function (evt) {
@@ -563,14 +566,42 @@ $("#SaveSalary").click(function () {
         data: salary,
         type: "POST"
     }).success(function (result) {
-            $("#lblSuccessMsg").html("Salary details saved successfully!");
-            $("#lblSuccessMsg").show();
-            $("#loading").hide();
+        $("#lblSuccessMsg").html("Salary details saved successfully!");
+        $("#lblSuccessMsg").show();
+        $("#loading").hide();
+        $("#cbostaffId").val("");
+        $("#cboPeriod").val("");
+        $("#cboallowanceDes1").val("");
+        $("#cboallowanceType1").val("");
+        $("#txtallPercent1").val("");
+        $("#cboallowanceDes2").val("");
+        $("#cboallowanceType2").val("");
+        $("#txtallPercent2").val("");
+        $("#cboallowanceDes3").val("");
+        $("#cboallowanceType3").val("");
+        $("#txtallPercent3").val("");
+        $("#cboallowanceDes4").val("");
+        $("#cboallowanceType4").val("");
+        $("#txtallPercent4").val("");
+        $("#cboallowanceDes5").val("");
+        $("#cboallowanceType5").val("");
+        $("#txtallPercent5").val("");
+        $("#txtallAmount6").val("");
+        $("#cboallowanceDes6").val("");
+        $("#cboallowanceType6").val("");
+        $("#txtallPercent6").val("");
+        $("#txtallAmount1").val("");
+        $("#txtallAmount2").val("");
+        $("#txtallAmount3").val("");
+        $("#txtallAmount4").val("");
+        $("#txtallAmount5").val("");
+        $("#txtamount").val("");
+        $("#cboStaffName").val("");
     }).fail(function (error) {
         $("#lblErrorMsg").html(error.Desc);
         $("#lblErrorMsg").show();
         $("#loading").hide();
-    })
+    });
 });
 
 // formating currency to naira
@@ -593,7 +624,7 @@ function LoadSalary(staffID, staffName, netSal) {
     $.ajax({
         url: "/Payroll/LoadNetSalary",
         type: "GET",
-        data: { staffName: Name, staffID: staffNo},
+        data: { staffName: Name, staffID: staffNo },
         cache: false
     }).success(function (result) {
         if (result.length === 0) {
@@ -608,7 +639,7 @@ function LoadSalary(staffID, staffName, netSal) {
                 $(netSal).val(p);
             }
         }
-    })
+    });
 }
 
 //Loading Loan for Staff
@@ -694,6 +725,15 @@ $("#SaveStaffLoan").click(function () {
             $("#lblSuccessMsg").html("Staff Loan successfully saved!");
             $("#lblSuccessMsg").show();
             $("#loading").hide();
+        $("#cbostaffIdLoan").val("");
+        $("#cbostaffLoanAmt").val("");
+        $("#txtinterest").val("");
+        $("#cboStaffNameLoan").val("");
+        $("#cbostaffSalary").val("");
+        $("#cbostaffLoanType").val("");
+        $("#txttotalLoanAmt").val("");
+        $("#txtinstallment").val("");
+        $("#txtrepaymentAmt").val("");
     }).fail(function (error) {
         $("#lblErrorMsg").html(error.Desc);
         $("#lblErrorMsg").show();
@@ -755,14 +795,19 @@ $("#SaveDeduction").click(function () {
         data: staffDeduction,
         type: "POST"
     }).success(function (result) {
-            $("#lblSuccessMsg").html("Deduction successfully saved for Staff!");
-            $("#lblSuccessMsg").show();
-            $("#loading").hide();
+        $("#lblSuccessMsg").html("Deduction successfully saved for Staff!");
+        $("#lblSuccessMsg").show();
+        $("#loading").hide();
+        $("#cbostaffIdDed").val("");
+        $("#cboStaffNameDed").val("");
+        $("#cbopenaltyType").val("");
+        $("#cbodeductionType").val("");
+        $("#cbostaffDedAmt").val("");
     }).fail(function (error) {
         $("#lblErrorMsg").html(error.Desc);
         $("#lblErrorMsg").show();
         $("#loading").hide();
-    })
+    });
 });
 
 //Calculating the Allowance in Amount
@@ -893,14 +938,12 @@ function Deduction(sal, loanDe, penaltyDe, period) {
     var netTaxable = parseFloat(GI) - parseFloat(totNoneTaxDed);
     var pe = PriceFormat(pensionDeduction);
     var nf = PriceFormat(NHF);
-    var r = PriceFormat(GIR);
     var TND = PriceFormat(totNoneTaxDed);
     var TD = PriceFormat(totalDed);
     var NT = PriceFormat(netTaxable);
     $("#showPension").val(pe);
     $("#showNHF").val(nf);
     $("#showCF").val(CF);
-    $("#showGIF").val(r);
     $("#showTotT").val(TND);
     $("#showTotDed").val(TD);
     $("#showNetTax").val(NT);
@@ -1116,17 +1159,74 @@ $("#calculPAYE").click(function () {
             }
         }
     }
-    var GrossI = $("#txtIncome").val();
-    var GrossIncome = Number(GrossI.replace(/[^0-9.-]+/g, ""));
-    var GrossIn = parseFloat(GrossIncome);
-    var loDed = $("#txtloanDeduct").val();
-    var loanDeduct = Number(loDed.replace(/[^0-9.-]+/g, ""));
-    var penDed = $("#txtpenaDeduct").val();
-    var penaltyDed = Number(penDed.replace(/[^0-9.-]+/g, ""));
-    var payEval = $("#showPayE").val();
-    var RPayE = Number(payEval.replace(/[^0-9.-]+/g, ""));
-    var CRPayE = parseFloat(RPayE);
-    var net = GrossIn - CRPayE - parseFloat(loanDeduct) - parseFloat(penaltyDed);
-    var n = PriceFormat(net);
-    $("#showNetSalary").val(n);
 })
+
+$("#savePayE").click(function (e) {
+    var sId = $("#cbostaffIdPay").val();
+    var sName = "";
+    var payPeriod = $("#cbopayPeriod").val();
+    var income = $("#txtIncome").val();
+    var basic = $("#txtbasic").val();
+    var housing = $("#txthousing").val();
+    var utility = $("#txtUtility").val();
+    var lunch = $("#txtLunch").val();
+    var transport = $("#txtTransport").val();
+    var other = $("#txtOthers").val();
+    var loanDeduct = $("#txtloanDeduct").val();
+    var penaDeduct = $("#txtpenaDeduct").val();
+    var pension = $("#showPension").val();
+    var nHFC = $("#showNHF").val();
+    var CRelief = $("#showCF").val();
+    var TNTD = $("#showTotT").val();
+    var TD = $("#showTotDed").val();
+    var NetTI = $("#showNetTax").val();
+    var PAYE = $("#showPayE").val();
+    var netSala = $("#showNetSalary").val();
+
+    if ($("#txtstaffNamePay").is(":visible")) {
+        sName = $("#txtstaffNamePay").val();
+    }
+    else {
+        sName = $("#cboStaffNamePay").val();
+    }
+
+    var paye = {
+        StaffID: sId, StaffName: sName, PayPeriod: payPeriod, NetSalary: netSala, Basic: basic, GrossSalary: income, Housing: housing,
+        Transport: transport, Lunch: lunch, Utility: utility, Others: other, LoanDeduct: loanDeduct, PenaltyDeduct: penaDeduct, Pension: pension,
+        NationalHFC: nHFC, ConsolidatedR: CRelief, NetTIncome: NetTI, TDeduction: TD, TNonTDeduction: TNTD, CalPayE: PAYE
+    }
+    $("#loading").show();
+    $.ajax({
+        url: "/Payroll/SavePayE",
+        data: paye,
+        type: "POST"
+    }).success(function (result) {
+        $("#lblSuccessMsg").html("Deduction successfully saved for Staff!");
+        $("#lblSuccessMsg").show();
+        $("#loading").hide();
+        $("#cbostaffIdPay").val("");
+        $("#cboStaffNamePay").val("");
+        $("#cbopayPeriod").val("");
+        $("#txtIncome").val("");
+        $("#txtbasic").val("");
+        $("#txthousing").val("");
+        $("#txtUtility").val("");
+        $("#txtLunch").val("");
+        $("#txtTransport").val("");
+        $("#txtOthers").val("");
+        $("#txtloanDeduct").val("");
+        $("#txtpenaDeduct").val("");
+        $("#showPension").val("");
+        $("#showNHF").val("");
+        $("#showCF").val("");
+        $("#showTotT").val("");
+        $("#showTotDed").val("");
+        $("#showNetTax").val("");
+        $("#showPayE").val("");
+        $("#showNetSalary").val("");
+    }).fail(function (error) {
+        $("#lblErrorMsg").html(error.Desc);
+        $("#lblErrorMsg").show();
+        $("#loading").hide();
+    });
+});

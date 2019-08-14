@@ -112,7 +112,7 @@ namespace Payroll_Application.BusinessLayers
                 oldSalary.LunchAmt = salary.LunchAmt;
                 oldSalary.OtherAmt = salary.OtherAmt;
                 oldSalary.Amount = salary.Amount;
-            db.Salaries.Add(salary);
+            db.Salaries.Add(oldSalary);
             db.SaveChanges();
         }
 
@@ -145,6 +145,36 @@ namespace Payroll_Application.BusinessLayers
             newDeduct.DeductionType = staffDeduction.DeductionType;
             newDeduct.Amount = staffDeduction.Amount;
             db.StaffDeductions.Add(newDeduct);
+            db.SaveChanges();
+        }
+
+        //Saving generated Staff PAYE
+        public static void SaveStaffPayE(PAYEEntity paye)
+        {
+            MyDbContext db = new MyDbContext();
+            PAYEEntity newPayE = new PAYEEntity();
+            newPayE.StaffID = paye.StaffID;
+            newPayE.StaffName = paye.StaffName;
+            newPayE.PayPeriod = paye.PayPeriod;
+            newPayE.NetSalary = paye.NetSalary;
+            newPayE.Basic = paye.Basic;
+            newPayE.Housing = paye.Housing;
+            newPayE.Transport = paye.Transport;
+            newPayE.Lunch = paye.Lunch;
+            newPayE.Utility = paye.Utility;
+            newPayE.Others = paye.Others;
+            newPayE.LoanDeduct = paye.LoanDeduct;
+            newPayE.PenaltyDeduct = paye.PenaltyDeduct;
+            newPayE.Pension = paye.Pension;
+            newPayE.NationalHFC = paye.NationalHFC;
+            newPayE.ConsolidatedR = paye.ConsolidatedR;
+            newPayE.Date = DateTime.Now;
+            newPayE.NetTIncome = paye.NetTIncome;
+            newPayE.GrossSalary = paye.GrossSalary;
+            newPayE.TDeduction = paye.TDeduction;
+            newPayE.TNonTDeduction = paye.TNonTDeduction;
+            newPayE.CalPayE = paye.CalPayE;
+            db.PayE.Add(newPayE);
             db.SaveChanges();
         }
     }

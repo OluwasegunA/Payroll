@@ -199,6 +199,7 @@
     <Compile Include="Models\MessageEntity.cs" />
     <Compile Include="Models\MyDbContext.cs" />
     <Compile Include="Models\NextofKinEntity.cs" />
+    <Compile Include="Models\PAYEEntity.cs" />
     <Compile Include="Models\PenaltyEntity.cs" />
     <Compile Include="Models\PensionEntity.cs" />
     <Compile Include="Models\PersonalInformationEntity.cs" />

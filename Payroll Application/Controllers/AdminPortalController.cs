@@ -35,8 +35,31 @@ namespace Payroll_Application.Controllers
         [HttpGet]
         public ActionResult GetEmpCount()
         {
-            var EmpCount = db.PersonalInfo.Where(d => d.ID > 0).Count();
+            var EmpCount = db.PersonalInfo.AsEnumerable().Where(d => d.ID > 0).ToList().Count();
             return Json(EmpCount, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult GetUserCount()
+        {
+            var EmpCount = db.Users.AsEnumerable().Where(d => d.ID > 0).ToList().Count();
+            return Json(EmpCount, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult GetStaffLeaveCount()
+        {
+            var EmpCount = db.Leaves.AsEnumerable().Where(d => d.Status == true).ToList().Count();
+            return Json(EmpCount, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult GetUnapproveCount()
+        {
+            int unLeaves = db.Leaves.AsEnumerable().Where(d => d.IsDeclined == true).ToList().Count();
+            int unLoan = db.Messages.AsEnumerable().Where(d => d.IsLoan == true).ToList().Count();
+            int unapprove = unLeaves + unLoan;
+            return Json(unapprove, JsonRequestBehavior.AllowGet);
         }
     }
 }

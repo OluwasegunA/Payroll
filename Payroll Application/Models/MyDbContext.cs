@@ -41,5 +41,6 @@ namespace Payroll_Application.Models
         public DbSet<DeductionEntity> StaffDeductions { get; set; }
         public DbSet<MessageEntity> Messages { get; set; }
         public DbSet<LeaveEntity> Leaves { get; set; }
+        public DbSet<PAYEEntity> PayE { get; set; }
     }
 }

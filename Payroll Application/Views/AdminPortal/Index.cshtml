@@ -4,10 +4,10 @@
     Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
 }
 <style>
-    .blue{
-        color: cornflowerblue;
-        font-size: 22px;
-        font-weight: bold;
+    .blue {
+        color: cornflowerblue !important;
+        font-size: 22px !important;
+        font-weight: bold !important;
     }
 </style>
  <!-- Counts Section -->
@@ -19,7 +19,7 @@
                     <div class="icon"><i class="icon-check"></i></div>
                     <div class="name">
                         <strong class="text-uppercase">Employees</strong><span></span>
-                        <div class="blue bold" id="EmployeeCount">0</div>
+                        <span class="blue bold" id="EmployeeCount">0</span>
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                     <div class="icon"><i class="icon-user"></i></div>
                     <div class="name">
                         <strong class="text-uppercase">Users</strong><span></span>
-                        <div class="UserCount blue bold">0</div>
+                        <span class="UserCount blue bold">0</span>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                     <div class="icon"><i class="icon-bill"></i></div>
                     <div class="name">
                         <strong class="text-uppercase">Staff on Leave</strong><span></span>
-                        <div class="LeaveCount blue bold">0</div>
+                        <span class="LeaveCount blue bold">0</span>
                     </div>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                     <div class="icon"><i class="icon-list"></i></div>
                     <div class="name">
                         <strong class="text-uppercase">Unapproved Reqs</strong><span></span>
-                        <div class="UnapproveCount blue bold">0</div>
+                        <span class="UnapproveCount blue bold">0</span>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                     <div class="icon"><i class="icon-list-1"></i></div>
                     <div class="name">
                         <strong class="text-uppercase">Suspended Staff</strong><span></span>
-                        <div class="SuspendedCount blue bold">0</div>
+                        <span class="SuspendedCount blue bold">0</span>
                     </div>
                 </div>
             </div>
@@ -116,18 +116,14 @@
     </div>
 </div>
  
+<script src="~/Content/OperationJS/CompanyInfoJS.js"></script>
 <script>
-    //LoadEmpCount();
+    LoadEmpCount();
+    LoadUserCount();
+    LoadLeaveCount();
+    LoadUnapproveCount();
     $(function (e) {
-        function LoadEmpCount() {
-            $.ajax({
-                url: "/AdminPortal/GetEmpCount",
-                type: "GET",
-                cache: false
-            }).success(function (result) {
-                $("#EmployeeCount").val(result);
-            })
-        }
+        
     });
 </script>
 

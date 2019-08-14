@@ -10,7 +10,7 @@
             var p = new Option(staffID.StaffNo, staffID.StaffNo);
             cbostaffId.append(p);
         }
-    })
+    });
 }
 
 function populateStafName(ddlStaffID, ddlStaffName) {
@@ -30,7 +30,7 @@ function populateStafName(ddlStaffID, ddlStaffName) {
             Name.val(p);
             Name.show();
         }
-    })
+    });
 }
 
 //Sening Messages
@@ -66,13 +66,13 @@ $("#SendMessage").click(function () {
         $("#lblErrorMsg").show();
         $("#loading").hide();
     });
-})
+});
 
 function LoadInboxs(name) {
     $.ajax({
         url: "/Message/LoadInbox",
         type: "GET",
-        data: { myStaffNo: name},
+        data: { myStaffNo: name },
         cache: false
     }).success(function (data) {
         var count = 0;
@@ -138,11 +138,11 @@ function LoadInboxs(name) {
             msgBody += '<h3>' + data[index].SenderName + '</h3>';
             msgBody += '<h4>' + msDat + "  at  " + strTime + '</h4><hr>';
             msgBody += '<h6>' + data[index].Body + '</h6>';
-            msgBody += "<div class = 'innerIcon'><a href='#' onclick='LoadDeletedMsg(\"" + data[index].ID + "\")' title='Trash Message' ><i class='fa fa-2x fa-trash btn-outline-danger'></i></a></div>"; 
+            msgBody += "<div class = 'innerIcon'><a href='#' onclick='LoadDeletedMsg(\"" + data[index].ID + "\")' title='Trash Message' ><i class='fa fa-2x fa-trash btn-outline-danger'></i></a></div>";
             $(".inbox-body").html(msgBody);
         });
         //$("#inboxcount").val(count);
-    })
+    });
 }
 
 function LoadSentMsg(name) {
@@ -214,13 +214,13 @@ function LoadSentMsg(name) {
             var msDat = day + ", " + month + " - " + resump.getFullYear();
             var msgBody = '<h1>' + data[index].Subject + '</h1>';
             msgBody += '<h3>' + data[index].RecieverName + '</h3>';
-            msgBody += '<h4>' + msDat + "  at  " + strTime +  '</h4><hr>';
+            msgBody += '<h4>' + msDat + "  at  " + strTime + '</h4><hr>';
             msgBody += '<h6>' + data[index].Body + '</h6>';
             msgBody += "<div class = 'innerIcon'><a href='#' onclick='LoadDeletedMsg(\"" + data[index].ID + "\")' title='Trash Message' ><i class='fa fa-2x fa-trash btn-outline-danger'></i></a></div>";
             $(".inbox-body").html(msgBody);
         });
         //$("#sentcount").val(count);
-    })
+    });
 }
 
 function LoadTrashMsg(name) {
@@ -298,7 +298,7 @@ function LoadTrashMsg(name) {
             $(".inbox-body").html(msgBody);
         });
         //$("#trashcount").val(count);
-    })
+    });
 }
 
 function LoadDeletedMsg(Id) {
@@ -310,7 +310,7 @@ function LoadDeletedMsg(Id) {
         LoadTrashMsg(sender);
         LoadInboxs(sender);
         LoadSentMsg(sender);
-    })
+    });
 }
 
 function DeletedMsg(Id) {
@@ -322,7 +322,7 @@ function DeletedMsg(Id) {
         LoadTrashMsg(sender);
         LoadInboxs(sender);
         LoadSentMsg(sender);
-    })
+    });
 }
 
 function RecoverDeletedMsg(Id) {
@@ -334,38 +334,35 @@ function RecoverDeletedMsg(Id) {
         LoadTrashMsg(sender);
         LoadInboxs(sender);
         LoadSentMsg(sender);
-    })
+    });
 }
 
 function countIn(no) {
     $.ajax({
         url: "/Message/CountInbox",
         data: { myStaffNo: no },
-        type: "POST"
+        type: "GET"
     }).success(function (result) {
-        var c = result.ToString();
-        $("#inboxcount").val(c);
-    })
+        $("#inboxcount").text(result);
+    });
 }
 
 function countSe(no) {
     $.ajax({
         url: "/Message/CountSent",
         data: { myStaffNo: no },
-        type: "POST"
+        type: "GET"
     }).success(function (result) {
-        var c = result.ToString();
-        $("#sentcount").val(c);
-    })
+        $("#sentcount").text(result);
+    });
 }
 
 function countTra(no) {
     $.ajax({
         url: "/Message/CountTrash",
         data: { myStaffNo: no },
-        type: "POST"
+        type: "GET"
     }).success(function (result) {
-        var c = result.ToString();
-        $("#trashcount").val(c);
-    })
+        $("#trashcount").text(result);
+    });
 }

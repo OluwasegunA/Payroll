@@ -80,3 +80,40 @@ $(document).ready(function (e) {
 
     })
 });
+
+function LoadEmpCount() {
+    $.ajax({
+        url: "/AdminPortal/GetEmpCount",
+        type: "GET",
+        cache: false
+    }).success(function (result) {
+        $("#EmployeeCount").text(result);
+    })
+}
+function LoadUserCount() {
+    $.ajax({
+        url: "/AdminPortal/GetUserCount",
+        type: "GET",
+        cache: false
+    }).success(function (result) {
+        $(".UserCount").text(result);
+    })
+}
+function LoadLeaveCount() {
+    $.ajax({
+        url: "/AdminPortal/GetStaffLeaveCount",
+        type: "GET",
+        cache: false
+    }).success(function (result) {
+        $(".LeaveCount").text(result);
+    })
+}
+function LoadUnapproveCount() {
+    $.ajax({
+        url: "/AdminPortal/GetUnapproveCount",
+        type: "GET",
+        cache: false
+    }).success(function (result) {
+        $(".UnapproveCount").text(result);
+    })
+}

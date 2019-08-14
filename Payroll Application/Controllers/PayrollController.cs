@@ -448,5 +448,23 @@ namespace Payroll_Application.Controllers
             var data = db.StaffDeductions.Where(d => d.StaffNo == sID).ToList();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
+
+        //Saving Staff PayE
+        [HttpPost]
+        public ActionResult SavePayE(PAYEEntity paye)
+        {
+            bool check = false; string desc = "";
+            try
+            {
+                PayrollClass.SaveStaffPayE(paye);
+                check = true;
+            }
+            catch (Exception ex)
+            {
+                desc = ex.Message;
+                check = false;
+            }
+            return new JsonResult { Data = new { status = check, Desc = desc } };
+        }
     }
 }
